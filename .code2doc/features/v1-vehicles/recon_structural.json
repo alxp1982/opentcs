@@ -1,0 +1,625 @@
+{
+ "endpoints": {
+  "matched": [
+   "GET /v1/vehicles",
+   "GET /v1/vehicles/{NAME}",
+   "GET /v1/vehicles/{NAME}/commAdapter/attachmentInformation",
+   "POST /v1/vehicles/dispatcher/trigger",
+   "POST /v1/vehicles/{NAME}/commAdapter/message",
+   "POST /v1/vehicles/{NAME}/rerouteRequest",
+   "POST /v1/vehicles/{NAME}/routeComputationQuery",
+   "POST /v1/vehicles/{NAME}/withdrawal",
+   "PUT /v1/vehicles/{NAME}/acceptableOrderTypes",
+   "PUT /v1/vehicles/{NAME}/allowedOrderTypes",
+   "PUT /v1/vehicles/{NAME}/commAdapter/attachment",
+   "PUT /v1/vehicles/{NAME}/commAdapter/enabled",
+   "PUT /v1/vehicles/{NAME}/energyLevelThresholdSet",
+   "PUT /v1/vehicles/{NAME}/envelopeKey",
+   "PUT /v1/vehicles/{NAME}/integrationLevel",
+   "PUT /v1/vehicles/{NAME}/paused"
+  ],
+  "code_only": [],
+  "doc_only": []
+ },
+ "parameters": [],
+ "matched_schemas": [
+  "events:AcceptableOrderTypes.acceptableOrderTypes[]",
+  "sse:BoundingBox",
+  "common:Couple",
+  "common:DestinationState",
+  "sse:VehicleEvent",
+  "common:Couple",
+  "environmental-entities:EnvironmentalEntityEnvelope",
+  "sse:EnvironmentalEntity",
+  "environmental-entities:EnvironmentalEntity.layout",
+  "environmental-entities:EnvironmentalEntityPose",
+  "common:PrecisePosition",
+  "vehicles:AttachmentInformation",
+  "vehicles:VehicleState",
+  "common:PrecisePosition",
+  "common:ObjectHistory",
+  "common:ObjectHistoryEntry",
+  "sse:VehicleEvent",
+  "order-sequences:OrderSequenceState",
+  "events:OrderStatusMessage",
+  "sse:VehicleEvent",
+  "sse:PeripheralJob",
+  "sse:PeripheralOperation",
+  "common:PeripheralJobState",
+  "plant-model:PlantModelPath.peripheralOperations[]",
+  "vehicles:VehicleCommAdapterMessage",
+  "vehicles:RoutesRequest",
+  "vehicles:RoutesResponse",
+  "order-sequences:Property",
+  "events:AcceptableOrderTypes",
+  "vehicles:AllowedOrderTypes",
+  "sse:EnergyLevelThresholdSet",
+  "vehicles:Route",
+  "vehicles:Step",
+  "sse:VehicleEvent",
+  "sse:DriveOrder",
+  "sse:DriveOrderDestination",
+  "sse:Route",
+  "sse:RouteStep",
+  "sse:TransportOrder",
+  "sse:VehicleEvent",
+  "events:AcceptableOrderTypes.acceptableOrderTypes[]",
+  "sse:BoundingBox",
+  "common:Couple",
+  "sse:EnergyLevelThresholdSet",
+  "plant-model:PlantModelVehicle.layout",
+  "sse:Color",
+  "sse:LoadHandlingDevice",
+  "environmental-entities:EnvironmentalEntityPose",
+  "sse:TimestampedVehicleState",
+  "common:PrecisePosition",
+  "sse:Vehicle",
+  "events:VehicleStatusMessage",
+  "common:PrecisePosition",
+  "plant-model:PlantModelBlock.type",
+  "sse:DriveOrderState",
+  "sse:DriveOrderState",
+  "environmental-entities:EnvironmentalEntity.integrationLevel",
+  "environmental-entities:EnvironmentalEntity.integrationLevel",
+  "environmental-entities:EnvironmentalEntity.type",
+  "events:OrderStatusMessage.orderState",
+  "sse:PeripheralJobState",
+  "sse:PeripheralOperationExecutionTrigger",
+  "sse:PeripheralJobState",
+  "sse:PeripheralJobState",
+  "sse:PeripheralOperationExecutionTrigger",
+  "sse:RouteStep.reroutingType",
+  "events:OrderStatusMessage.orderState",
+  "sse:RouteStep.reroutingType",
+  "sse:RouteStep.vehicleOrientation",
+  "sse:DriveOrderState",
+  "events:OrderStatusMessage.orderState",
+  "user-notification:UserNotificationLevel",
+  "events:VehicleStatusMessage.integrationLevel",
+  "sse:RouteStep.vehicleOrientation",
+  "sse:TimestampedVehicleProcState.state",
+  "events:VehicleStatusMessage.state",
+  "events:VehicleStatusMessage.integrationLevel",
+  "sse:TimestampedVehicleProcState.state",
+  "events:VehicleStatusMessage.state",
+  "events:VehicleStatusMessage.integrationLevel",
+  "sse:TimestampedVehicleProcState.state",
+  "events:VehicleStatusMessage.state"
+ ],
+ "fields": [
+  {
+   "code_type": "GetVehicleResponseTO",
+   "doc_schema": "vehicles:VehicleState",
+   "field": "allowedOrderTypes",
+   "finding": "property documented, not in code type"
+  },
+  {
+   "code_type": "GetVehicleResponseTO",
+   "doc_schema": "vehicles:VehicleState",
+   "field": "length",
+   "finding": "property documented, not in code type"
+  },
+  {
+   "code_type": "OrderSequenceEventTO.OrderSequenceTO",
+   "doc_schema": "order-sequences:OrderSequenceState",
+   "field": "history",
+   "finding": "field in code, not in documented schema"
+  },
+  {
+   "code_type": "OrderStatusMessage",
+   "doc_schema": "events:OrderStatusMessage",
+   "field": "sequenceNumber",
+   "finding": "property documented, not in code type"
+  },
+  {
+   "code_type": "OrderStatusMessage",
+   "doc_schema": "events:OrderStatusMessage",
+   "field": "type",
+   "finding": "property documented, not in code type"
+  },
+  {
+   "code_type": "VehicleEventTO.TimestampedVehicleProcStateTO",
+   "doc_schema": null,
+   "finding": "no matching documented schema",
+   "fields": [
+    "procState",
+    "timestamp"
+   ]
+  },
+  {
+   "code_type": "VehicleStatusMessage",
+   "doc_schema": "events:VehicleStatusMessage",
+   "field": "orientationAngle",
+   "finding": "field in code, not in documented schema"
+  },
+  {
+   "code_type": "VehicleStatusMessage",
+   "doc_schema": "events:VehicleStatusMessage",
+   "field": "sequenceNumber",
+   "finding": "property documented, not in code type"
+  },
+  {
+   "code_type": "VehicleStatusMessage",
+   "doc_schema": "events:VehicleStatusMessage",
+   "field": "type",
+   "finding": "property documented, not in code type"
+  },
+  {
+   "code_type": "VehicleStatusMessage",
+   "doc_schema": "events:VehicleStatusMessage",
+   "field": "vehicleOrientationAngle",
+   "finding": "property documented, not in code type"
+  }
+ ],
+ "enums": [
+  {
+   "code_enum": "AngleProperty.Unit",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "DEG",
+    "RAD"
+   ]
+  },
+  {
+   "code_enum": "CommandProcessingTracker.PendingCommandState",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "ALLOCATION_PENDING",
+    "SENDING_PENDING",
+    "UNDEFINED",
+    "WONT_SEND"
+   ]
+  },
+  {
+   "code_enum": "DefaultDispatcherConfiguration.ReroutingImpossibleStrategy",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "IGNORE_PATH_LOCKS",
+    "PAUSE_AT_PATH_LOCK",
+    "PAUSE_IMMEDIATELY"
+   ]
+  },
+  {
+   "code_enum": "Kernel.State",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "MODELLING",
+    "OPERATING",
+    "SHUTDOWN"
+   ]
+  },
+  {
+   "code_enum": "KernelControlCenterApplication.ConnectionState",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "CONNECTING",
+    "OFFLINE",
+    "ONLINE"
+   ]
+  },
+  {
+   "code_enum": "KernelStateChangeEvent.State",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "DISCONNECTED",
+    "LOGGED_IN",
+    "MODELLING",
+    "OPERATING",
+    "SHUTDOWN"
+   ]
+  },
+  {
+   "code_enum": "LengthProperty.Unit",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "CM",
+    "KM",
+    "M",
+    "MM"
+   ]
+  },
+  {
+   "code_enum": "LocalVehicleEntry.Attribute",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "ATTACHMENT_INFORMATION",
+    "PROCESS_MODEL"
+   ]
+  },
+  {
+   "code_enum": "ModelRestorationProgressStatus",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "CLEANUP",
+    "LOADING_BLOCKS",
+    "LOADING_LOCATIONS",
+    "LOADING_PATHS",
+    "LOADING_POINTS",
+    "LOADING_VEHICLES",
+    "SET_UP_DIRECTORY_TREE",
+    "SET_UP_MODEL_VIEW",
+    "SET_UP_WORKING_AREA",
+    "START_LOADING_MODEL"
+   ]
+  },
+  {
+   "code_enum": "OperationMode",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "MODELLING",
+    "OPERATING",
+    "UNDEFINED"
+   ]
+  },
+  {
+   "code_enum": "OperationsDeskApplication.ConnectionState",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "CONNECTING",
+    "OFFLINE",
+    "ONLINE"
+   ]
+  },
+  {
+   "code_enum": "PercentProperty.Unit",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "PERCENT"
+   ]
+  },
+  {
+   "code_enum": "PeripheralProcessModel.Attribute",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "COMM_ADAPTER_CONNECTED",
+    "COMM_ADAPTER_ENABLED",
+    "LOCATION",
+    "STATE"
+   ]
+  },
+  {
+   "code_enum": "PortalManager.ConnectionMode",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "AUTO",
+    "MANUAL",
+    "RECONNECT"
+   ]
+  },
+  {
+   "code_enum": "PortalManager.ConnectionState",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "CONNECTED",
+    "CONNECTING",
+    "DISCONNECTED",
+    "DISCONNECTING"
+   ]
+  },
+  {
+   "code_enum": "SpeedProperty.Unit",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "KM_H",
+    "MM_S",
+    "M_S"
+   ]
+  },
+  {
+   "code_enum": "SystemModel.FolderKey",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "BLOCKS",
+    "LAYOUT",
+    "LINKS",
+    "LOCATIONS",
+    "LOCATION_TYPES",
+    "OTHER_GRAPHICAL_ELEMENTS",
+    "PATHS",
+    "POINTS",
+    "VEHICLES"
+   ]
+  },
+  {
+   "code_enum": "SystemModelTransitionEvent.Stage",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "LOADED",
+    "LOADING",
+    "UNLOADED",
+    "UNLOADING"
+   ]
+  },
+  {
+   "code_enum": "TCSObjectEvent.Type",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "OBJECT_CREATED",
+    "OBJECT_MODIFIED",
+    "OBJECT_REMOVED"
+   ]
+  },
+  {
+   "code_enum": "UserMessageHelper.Type",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "ERROR",
+    "INFO",
+    "PLAIN",
+    "QUESTION"
+   ]
+  },
+  {
+   "code_enum": "VehicleEntry.Attribute",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "COMM_ADAPTER",
+    "COMM_ADAPTER_FACTORY",
+    "PROCESS_MODEL"
+   ]
+  },
+  {
+   "code_enum": "VehicleProcessModel.Attribute",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "BOUNDING_BOX",
+    "COMMAND_ENQUEUED",
+    "COMMAND_EXECUTED",
+    "COMMAND_FAILED",
+    "COMMAND_SENT",
+    "COMM_ADAPTER_CONNECTED",
+    "COMM_ADAPTER_ENABLED",
+    "COMM_ADAPTER_EVENT",
+    "ENERGY_LEVEL",
+    "INTEGRATION_LEVEL_CHANGE_REQUESTED",
+    "LOAD_HANDLING_DEVICES",
+    "POSE",
+    "POSITION",
+    "POSITION_RESOLUTION_REQUESTED",
+    "STATE",
+    "TRANSPORT_ORDER_PROPERTY",
+    "TRANSPORT_ORDER_WITHDRAWAL_REQUESTED",
+    "USER_NOTIFICATION",
+    "VEHICLE_PROPERTY"
+   ]
+  }
+ ],
+ "statuses": [
+  {
+   "endpoint": "POST /v1/vehicles/dispatcher/trigger",
+   "documented": [
+    200
+   ],
+   "raised_in_unit": [
+    400,
+    500
+   ],
+   "undocumented": [
+    400
+   ]
+  },
+  {
+   "endpoint": "POST /v1/vehicles/{NAME}/routeComputationQuery",
+   "documented": [
+    200,
+    400,
+    404
+   ],
+   "raised_in_unit": [
+    400,
+    404,
+    500
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "PUT /v1/vehicles/{NAME}/commAdapter/attachment",
+   "documented": [
+    200,
+    400,
+    404
+   ],
+   "raised_in_unit": [
+    400,
+    404
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "GET /v1/vehicles/{NAME}/commAdapter/attachmentInformation",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    404
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "PUT /v1/vehicles/{NAME}/commAdapter/enabled",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    400,
+    404
+   ],
+   "undocumented": [
+    400
+   ]
+  },
+  {
+   "endpoint": "POST /v1/vehicles/{NAME}/commAdapter/message",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    404
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "PUT /v1/vehicles/{NAME}/paused",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    404
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "PUT /v1/vehicles/{NAME}/integrationLevel",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    400,
+    404
+   ],
+   "undocumented": [
+    400
+   ]
+  },
+  {
+   "endpoint": "POST /v1/vehicles/{NAME}/withdrawal",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    404
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "POST /v1/vehicles/{NAME}/rerouteRequest",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    400,
+    404
+   ],
+   "undocumented": [
+    400
+   ]
+  },
+  {
+   "endpoint": "PUT /v1/vehicles/{NAME}/allowedOrderTypes",
+   "documented": [
+    200,
+    400,
+    404
+   ],
+   "raised_in_unit": [
+    404
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "PUT /v1/vehicles/{NAME}/acceptableOrderTypes",
+   "documented": [
+    200,
+    400,
+    404
+   ],
+   "raised_in_unit": [],
+   "undocumented": []
+  },
+  {
+   "endpoint": "PUT /v1/vehicles/{NAME}/energyLevelThresholdSet",
+   "documented": [
+    200,
+    400,
+    404
+   ],
+   "raised_in_unit": [
+    404
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "PUT /v1/vehicles/{NAME}/envelopeKey",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    400,
+    404
+   ],
+   "undocumented": [
+    400
+   ]
+  },
+  {
+   "endpoint": "GET /v1/vehicles/{NAME}",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    404
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "GET /v1/vehicles",
+   "documented": [
+    200,
+    400
+   ],
+   "raised_in_unit": [],
+   "undocumented": []
+  }
+ ]
+}

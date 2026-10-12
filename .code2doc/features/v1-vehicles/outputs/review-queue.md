@@ -1,0 +1,140 @@
+# SME review queue — Vehicles (/v1/vehicles)
+
+Only exceptions are listed. Record decisions in `dispositions.jsonl` as `{"item","disposition","note","sme"}` with disposition INTENDED, DOC_BUG or CODE_BUG.
+
+## 1. Code vs. published docs
+
+| Item | Verdict | Finding | Suggested |
+|---|---|---|---|
+| C-0014 | CONTRADICTION | Claim states procState has IDLE, AWAITING_ORDER, PROCESSING_ORDER while v1 schema (D-0928, D-1606) includes UNAVAILABLE as a processing state ('UNAVAILABLE, IDLE, AWAITING_ORDER, PROCESSING_ORDER'). `Vehicle.java:1420-1435` | DOC_BUG or CODE_BUG |
+| C-0028 | AMBIGUOUS | Candidate D-1630 documents attachedCommAdapter, but does not explicitly document the full AttachmentInformation schema containing vehicle name, attachedCommAdapter, and availableCommAdapters in a single statement. `GetVehicleAttachmentInfoResponseTO.java:10-23` | clarify docs |
+| C-0029 | CONTRADICTION | Web API v1 specifies VehicleCommAdapterMessage.parameters as an array (D-1644: 'type array'), whereas Web API v8 / the claim specifies it as a map / object of key-value parameters (D-2206: 'type object'). `PostVehicleCommAdapterMessageRequestTO.java:13-26` | DOC_BUG or CODE_BUG |
+| C-0035 | AMBIGUOUS | D-0125 notes that claimed and allocated resources were added to the vehicle status message specification, but candidates do not detail the full broadcast message content. `VehicleStatusMessage.java:19-140` | clarify docs |
+| C-0041 | AMBIGUOUS | Documentation candidates describe TransportOrderState fields in the Web API (currentRouteStepIndex, state, currentDriveOrderIndex), but do not explicitly specify the SSE event streaming payload/behavior for transport orders and drive orders. `TransportOrderEventTO.java:18-105` | clarify docs |
+| C-0303 | CONTRADICTION | Doc D-0328 states property key is 'tcs:preferredAdapterClass', whereas code sets vehicle property 'tcs:preferredAdapter'. `AttachmentManager.java:206-210` | DOC_BUG or CODE_BUG |
+| C-0018 | CONTRADICTION | Doc states executionTrigger is one of AFTER_ALLOCATION, AFTER_MOVEMENT; code C-0018 also includes IMMEDIATE. `PeripheralOperationTO.java:83-87` | DOC_BUG or CODE_BUG |
+| C-0018 | CONTRADICTION | Spec lists executionTrigger as one of AFTER_ALLOCATION, AFTER_MOVEMENT; code supports IMMEDIATE, AFTER_ALLOCATION, or AFTER_MOVEMENT (C-0018). `PeripheralOperationTO.java:83-87` | DOC_BUG or CODE_BUG |
+| D-0729 | DOC_ONLY | Describes VDA 5050 protocol expectation for vehicle behaviour regarding instant actions and actionStates; not covered by any verified kernel API claims. | DOC_BUG (stale doc) or CODE_BUG |
+| D-0753 | DOC_ONLY | Describes driver behavior reporting vehicle IDLE state to the kernel upon receiving ONLINE connection state; not covered by verified API claims. | DOC_BUG (stale doc) or CODE_BUG |
+| D-0776 | DOC_ONLY | Describes VDA 5050 driver state mapping of info elements to property vda5050:information.info; not covered by verified API claims. | DOC_BUG (stale doc) or CODE_BUG |
+| D-0814 | DOC_ONLY | Specifies VDA 5050 vehicle behavior for instantActions acknowledgement and FAILED status; not covered by any verified claims. | DOC_BUG (stale doc) or CODE_BUG |
+
+## 2. Claims the verifier corrected or rejected
+
+| Claim | Verdict | Reason |
+|---|---|---|
+| C-0018 | CORRECTED | Lines 82-87 of PeripheralOperationTO.java and lines 70-74 of PeripheralJobEventTO.java show the enum constant is named IMMEDIATE, not IMMEDIATELY. |
+| C-0038 | CORRECTED | In EnvironmentalEntityEventTO.java lines 47-114 and EnvironmentalEntity.java lines 444-453, layout layer ID is not visible on LayoutTO (lines 110-114 cut off before showing any layer ID field), while the other fields are shown. |
+| C-0041 | CORRECTED | TransportOrderEventTO.java lines 47-107 show deadline (line 60), route steps (lines 97, 104-107), and currentRouteStepIndex (line 57), but 'execution allowance' is not present in the cited lines. |
+| C-0101 | REJECTED | The cited lines in ParkingPositionToPriorityFunction.java (lines 30-44) and TransportOrderDispatcherHandler.java (lines 41-59) do not show idle vehicles being assigned during a dispatch run or that the property key is 'tcs:dispatcher:parkin |
+| C-0901 | REJECTED | The cited lines (V1RequestHandler.java lines 437-445, 827-829 and TransportOrderDispatcherHandler.java lines 90-95) merely pass the boolean immediate flag to dispatcherService.withdrawByVehicle; they do not show that the transport order is  |
+
+## 3. Verified claims with confidence below 0.7
+
+None.
+
+## 4. Facts not explained by claims
+
+- `const:Dispatcher.PROPKEY_PARKING_POSITION_PRIORITY` (opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/dispatching/phase/parking/ParkingPositionToPriorityFunction.java:34)
+- `enum:TransportOrderEventTO.DriveOrderTO.StateTO.FAILED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:133)
+- `enum:TransportOrderEventTO.DriveOrderTO.StateTO.FINISHED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:132)
+- `enum:TransportOrderEventTO.DriveOrderTO.StateTO.OPERATING` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:131)
+- `enum:TransportOrderEventTO.DriveOrderTO.StateTO.PRISTINE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:129)
+- `enum:TransportOrderEventTO.DriveOrderTO.StateTO.TRAVELLING` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:130)
+- `error:IllegalArgumentException:String.format(
+              String.valueOf(messageTemplate)` (opentcs-api-base/src/main/java/org/opentcs/util/Assertions.java:46)
+- `error:KernelRuntimeException:exc.getCause()` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/KernelExecutorWrapper.java:62)
+- `param:query:immediate` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:828)
+
+## 5. Facts ignored as non-behavior (check the reasons)
+
+- `enum:AngleProperty.Unit.DEG`: GUI Plant Overview property presentation formatting unit.
+- `enum:AngleProperty.Unit.RAD`: GUI Plant Overview property presentation formatting unit.
+- `enum:LengthProperty.Unit.CM`: GUI Plant Overview property presentation formatting unit.
+- `enum:LengthProperty.Unit.KM`: GUI Plant Overview property presentation formatting unit.
+- `enum:LengthProperty.Unit.M`: GUI Plant Overview property presentation formatting unit.
+- `enum:LengthProperty.Unit.MM`: GUI Plant Overview property presentation formatting unit.
+- `enum:PercentProperty.Unit.PERCENT`: GUI Plant Overview property presentation formatting unit.
+- `enum:SpeedProperty.Unit.KM_H`: GUI Plant Overview property presentation formatting unit.
+- `enum:SpeedProperty.Unit.MM_S`: GUI Plant Overview property presentation formatting unit.
+- `enum:SpeedProperty.Unit.M_S`: GUI Plant Overview property presentation formatting unit.
+- `enum:KernelControlCenterApplication.ConnectionState.CONNECTING`: Internal GUI application lifecycle state.
+- `enum:KernelControlCenterApplication.ConnectionState.OFFLINE`: Internal GUI application lifecycle state.
+- `enum:KernelControlCenterApplication.ConnectionState.ONLINE`: Internal GUI application lifecycle state.
+- `enum:OperationsDeskApplication.ConnectionState.CONNECTING`: Internal GUI application lifecycle state.
+- `enum:OperationsDeskApplication.ConnectionState.OFFLINE`: Internal GUI application lifecycle state.
+- `enum:OperationsDeskApplication.ConnectionState.ONLINE`: Internal GUI application lifecycle state.
+- `enum:KernelStateChangeEvent.State.DISCONNECTED`: Internal GUI desktop client event state.
+- `enum:KernelStateChangeEvent.State.LOGGED_IN`: Internal GUI desktop client event state.
+- `enum:KernelStateChangeEvent.State.MODELLING`: Internal GUI desktop client event state.
+- `enum:KernelStateChangeEvent.State.OPERATING`: Internal GUI desktop client event state.
+- `enum:KernelStateChangeEvent.State.SHUTDOWN`: Internal GUI desktop client event state.
+- `enum:PortalManager.ConnectionMode.AUTO`: Internal RMI client connection manager configuration.
+- `enum:PortalManager.ConnectionMode.MANUAL`: Internal RMI client connection manager configuration.
+- `enum:PortalManager.ConnectionMode.RECONNECT`: Internal RMI client connection manager configuration.
+- `enum:PortalManager.ConnectionState.CONNECTED`: Internal RMI client connection manager lifecycle state.
+- `enum:PortalManager.ConnectionState.CONNECTING`: Internal RMI client connection manager lifecycle state.
+- `enum:PortalManager.ConnectionState.DISCONNECTED`: Internal RMI client connection manager lifecycle state.
+- `enum:PortalManager.ConnectionState.DISCONNECTING`: Internal RMI client connection manager lifecycle state.
+- `enum:OperationMode.MODELLING`: Internal Plant Overview GUI operating mode.
+- `enum:OperationMode.OPERATING`: Internal Plant Overview GUI operating mode.
+- `enum:OperationMode.UNDEFINED`: Internal Plant Overview GUI operating mode.
+- `enum:ModelRestorationProgressStatus.CLEANUP`: GUI progress bar loading indicator step.
+- `enum:ModelRestorationProgressStatus.LOADING_BLOCKS`: GUI progress bar loading indicator step.
+- `enum:ModelRestorationProgressStatus.LOADING_LOCATIONS`: GUI progress bar loading indicator step.
+- `enum:ModelRestorationProgressStatus.LOADING_PATHS`: GUI progress bar loading indicator step.
+- `enum:ModelRestorationProgressStatus.LOADING_POINTS`: GUI progress bar loading indicator step.
+- `enum:ModelRestorationProgressStatus.LOADING_VEHICLES`: GUI progress bar loading indicator step.
+- `enum:ModelRestorationProgressStatus.SET_UP_DIRECTORY_TREE`: GUI progress bar loading indicator step.
+- `enum:ModelRestorationProgressStatus.SET_UP_MODEL_VIEW`: GUI progress bar loading indicator step.
+- `enum:ModelRestorationProgressStatus.SET_UP_WORKING_AREA`: GUI progress bar loading indicator step.
+- `enum:ModelRestorationProgressStatus.START_LOADING_MODEL`: GUI progress bar loading indicator step.
+- `enum:SystemModel.FolderKey.BLOCKS`: Internal Plant Overview tree folder key enum.
+- `enum:SystemModel.FolderKey.LAYOUT`: Internal Plant Overview tree folder key enum.
+- `enum:SystemModel.FolderKey.LINKS`: Internal Plant Overview tree folder key enum.
+- `enum:SystemModel.FolderKey.LOCATIONS`: Internal Plant Overview tree folder key enum.
+- `enum:SystemModel.FolderKey.LOCATION_TYPES`: Internal Plant Overview tree folder key enum.
+- `enum:SystemModel.FolderKey.OTHER_GRAPHICAL_ELEMENTS`: Internal Plant Overview tree folder key enum.
+- `enum:SystemModel.FolderKey.PATHS`: Internal Plant Overview tree folder key enum.
+- `enum:SystemModel.FolderKey.POINTS`: Internal Plant Overview tree folder key enum.
+- `enum:SystemModel.FolderKey.VEHICLES`: Internal Plant Overview tree folder key enum.
+- `enum:SystemModelTransitionEvent.Stage.LOADED`: Internal Plant Overview UI transition stage.
+- `enum:SystemModelTransitionEvent.Stage.LOADING`: Internal Plant Overview UI transition stage.
+- `enum:SystemModelTransitionEvent.Stage.UNLOADED`: Internal Plant Overview UI transition stage.
+- `enum:SystemModelTransitionEvent.Stage.UNLOADING`: Internal Plant Overview UI transition stage.
+- `enum:UserMessageHelper.Type.ERROR`: Plant Overview Swing dialog message type.
+- `enum:UserMessageHelper.Type.INFO`: Plant Overview Swing dialog message type.
+- `enum:UserMessageHelper.Type.PLAIN`: Plant Overview Swing dialog message type.
+- `enum:UserMessageHelper.Type.QUESTION`: Plant Overview Swing dialog message type.
+- `enum:LocalVehicleEntry.Attribute.ATTACHMENT_INFORMATION`: Internal Kernel Control Center GUI model attribute.
+- `enum:LocalVehicleEntry.Attribute.PROCESS_MODEL`: Internal Kernel Control Center GUI model attribute.
+- `enum:VehicleEntry.Attribute.COMM_ADAPTER`: Internal Kernel Control Center vehicle entry attribute.
+- `enum:VehicleEntry.Attribute.COMM_ADAPTER_FACTORY`: Internal Kernel Control Center vehicle entry attribute.
+- `enum:VehicleEntry.Attribute.PROCESS_MODEL`: Internal Kernel Control Center vehicle entry attribute.
+- `const:DriveOrder.Destination.OP_PARK`: Constant used during transport order destination checking in DefaultRouter, unreachable in routeComputationQuery
+- `const:ObjectPropConstants.TRANSPORT_ORDER_RESOURCES_TO_AVOID`: Constant for transport order property key used when routing transport orders, not during routeComputationQuery
+- `const:ResourceAvoidanceExtractor.ResourcesToAvoid.EMPTY`: Internal sentinel constant representing an empty resource avoidance set
+- `const:CloseFileAction.ID`: Swing desktop action ID constant unrelated to HTTP attachment endpoint
+- `const:CloseFileAction.ID_MODEL_CLOSING`: Swing desktop action ID constant unrelated to HTTP attachment endpoint
+- `const:I18nPlantOverview.MENU_PATH`: Plant overview menu i18n bundle path constant unrelated to HTTP attachment endpoint
+- `const:LoopbackAdapterConstants.PROPKEY_INITIAL_POSITION`: Loopback adapter initial position property key constant not specific to attachment behavior
+- `const:OpenTCSView.NAME`: Model editor view name constant unrelated to HTTP attachment endpoint
+- `const:SseConstants.EVENT_TYPE_ENVIRONMENTAL_ENTITIES`: SSE event type constant for environmental entities unrelated to comm adapter attachment
+- `const:SseConstants.EVENT_TYPE_LOCATIONS`: SSE event type constant for locations unrelated to comm adapter attachment
+- `const:SseConstants.EVENT_TYPE_ORDER_SEQUENCES`: SSE event type constant for order sequences unrelated to comm adapter attachment
+- `const:SseConstants.EVENT_TYPE_PATHS`: SSE event type constant for paths unrelated to comm adapter attachment
+- `const:SseConstants.EVENT_TYPE_PERIPHERAL_JOBS`: SSE event type constant for peripheral jobs unrelated to comm adapter attachment
+- `const:SseConstants.EVENT_TYPE_TRANSPORT_ORDERS`: SSE event type constant for transport orders unrelated to comm adapter attachment
+- `const:SseConstants.EVENT_TYPE_USER_NOTIFICATIONS`: SSE event type constant for user notifications unrelated to comm adapter attachment
+- `const:SseConstants.EVENT_TYPE_VEHICLES`: SSE event type constant for vehicles unrelated to comm adapter attachment
+- `error:IllegalArgumentException:: Could not allocate now although permission previously granted: `: Internal vehicle controller resource allocation error not reachable from comm adapter attachment
+- `error:IllegalArgumentException:String.format(\n              String.valueOf(messageTemplate)`: Generic assertion utility exception template unrelated to comm adapter attachment
+- `error:IllegalArgumentException:Unhandled model class: `: Plant overview GUI process adapter error unrelated to HTTP attachment endpoint
+- `error:IllegalArgumentException:Unhandled state: `: Operations desk GUI kernel state event error unrelated to HTTP attachment endpoint
+- `error:IllegalArgumentException:currentObjectState == null but eventType != OBJECT_REMOVED`: Low-level TCSObjectEvent constructor validation unrelated to comm adapter attachment endpoint
+- `error:IllegalArgumentException:previousObjectState == null but eventType != OBJECT_CREATED`: Low-level TCSObjectEvent constructor validation unrelated to comm adapter attachment endpoint
+- `error:ObjectUnknownException:Unknown vehicle: `: Anchored in TransportOrderDispatcherHandler line 84 rather than VehicleHandler
+- `error:ServiceUnavailableException:Could not connect to portal`: Plant overview GUI portal connection exception unrelated to HTTP attachment endpoint
+- `const:OrderConstants.TYPE_ANY`: Default order type constant used in Vehicle initial state, not relevant to pausing vehicles.
+- `error:ObjectUnknownException:name`: Internal repository lookup error thrown when an object name is not found, superseded by the handler's explicit Unknown vehicle exception
+- `error:ObjectUnknownException:ref`: Internal repository lookup error thrown when an object reference is not found in the kernel repository

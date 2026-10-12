@@ -1,0 +1,421 @@
+{
+ "feature": "v1-vehicles",
+ "coverage": 0.981,
+ "explained": 465,
+ "total": 474,
+ "ignored": [
+  {
+   "fact": "const:CloseFileAction.ID",
+   "reason": "Swing desktop action ID constant unrelated to HTTP attachment endpoint"
+  },
+  {
+   "fact": "const:CloseFileAction.ID_MODEL_CLOSING",
+   "reason": "Swing desktop action ID constant unrelated to HTTP attachment endpoint"
+  },
+  {
+   "fact": "const:DriveOrder.Destination.OP_PARK",
+   "reason": "Constant used during transport order destination checking in DefaultRouter, unreachable in routeComputationQuery"
+  },
+  {
+   "fact": "const:I18nPlantOverview.MENU_PATH",
+   "reason": "Plant overview menu i18n bundle path constant unrelated to HTTP attachment endpoint"
+  },
+  {
+   "fact": "const:LoopbackAdapterConstants.PROPKEY_INITIAL_POSITION",
+   "reason": "Loopback adapter initial position property key constant not specific to attachment behavior"
+  },
+  {
+   "fact": "const:ObjectPropConstants.TRANSPORT_ORDER_RESOURCES_TO_AVOID",
+   "reason": "Constant for transport order property key used when routing transport orders, not during routeComputationQuery"
+  },
+  {
+   "fact": "const:OpenTCSView.NAME",
+   "reason": "Model editor view name constant unrelated to HTTP attachment endpoint"
+  },
+  {
+   "fact": "const:OrderConstants.TYPE_ANY",
+   "reason": "Default order type constant used in Vehicle initial state, not relevant to pausing vehicles."
+  },
+  {
+   "fact": "const:ResourceAvoidanceExtractor.ResourcesToAvoid.EMPTY",
+   "reason": "Internal sentinel constant representing an empty resource avoidance set"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_ENVIRONMENTAL_ENTITIES",
+   "reason": "SSE event type constant for environmental entities unrelated to comm adapter attachment"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_LOCATIONS",
+   "reason": "SSE event type constant for locations unrelated to comm adapter attachment"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_ORDER_SEQUENCES",
+   "reason": "SSE event type constant for order sequences unrelated to comm adapter attachment"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_PATHS",
+   "reason": "SSE event type constant for paths unrelated to comm adapter attachment"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_PERIPHERAL_JOBS",
+   "reason": "SSE event type constant for peripheral jobs unrelated to comm adapter attachment"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_TRANSPORT_ORDERS",
+   "reason": "SSE event type constant for transport orders unrelated to comm adapter attachment"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_USER_NOTIFICATIONS",
+   "reason": "SSE event type constant for user notifications unrelated to comm adapter attachment"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_VEHICLES",
+   "reason": "SSE event type constant for vehicles unrelated to comm adapter attachment"
+  },
+  {
+   "fact": "enum:AngleProperty.Unit.DEG",
+   "reason": "GUI Plant Overview property presentation formatting unit."
+  },
+  {
+   "fact": "enum:AngleProperty.Unit.RAD",
+   "reason": "GUI Plant Overview property presentation formatting unit."
+  },
+  {
+   "fact": "enum:KernelControlCenterApplication.ConnectionState.CONNECTING",
+   "reason": "Internal GUI application lifecycle state."
+  },
+  {
+   "fact": "enum:KernelControlCenterApplication.ConnectionState.OFFLINE",
+   "reason": "Internal GUI application lifecycle state."
+  },
+  {
+   "fact": "enum:KernelControlCenterApplication.ConnectionState.ONLINE",
+   "reason": "Internal GUI application lifecycle state."
+  },
+  {
+   "fact": "enum:KernelStateChangeEvent.State.DISCONNECTED",
+   "reason": "Internal GUI desktop client event state."
+  },
+  {
+   "fact": "enum:KernelStateChangeEvent.State.LOGGED_IN",
+   "reason": "Internal GUI desktop client event state."
+  },
+  {
+   "fact": "enum:KernelStateChangeEvent.State.MODELLING",
+   "reason": "Internal GUI desktop client event state."
+  },
+  {
+   "fact": "enum:KernelStateChangeEvent.State.OPERATING",
+   "reason": "Internal GUI desktop client event state."
+  },
+  {
+   "fact": "enum:KernelStateChangeEvent.State.SHUTDOWN",
+   "reason": "Internal GUI desktop client event state."
+  },
+  {
+   "fact": "enum:LengthProperty.Unit.CM",
+   "reason": "GUI Plant Overview property presentation formatting unit."
+  },
+  {
+   "fact": "enum:LengthProperty.Unit.KM",
+   "reason": "GUI Plant Overview property presentation formatting unit."
+  },
+  {
+   "fact": "enum:LengthProperty.Unit.M",
+   "reason": "GUI Plant Overview property presentation formatting unit."
+  },
+  {
+   "fact": "enum:LengthProperty.Unit.MM",
+   "reason": "GUI Plant Overview property presentation formatting unit."
+  },
+  {
+   "fact": "enum:LocalVehicleEntry.Attribute.ATTACHMENT_INFORMATION",
+   "reason": "Internal Kernel Control Center GUI model attribute."
+  },
+  {
+   "fact": "enum:LocalVehicleEntry.Attribute.PROCESS_MODEL",
+   "reason": "Internal Kernel Control Center GUI model attribute."
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.CLEANUP",
+   "reason": "GUI progress bar loading indicator step."
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.LOADING_BLOCKS",
+   "reason": "GUI progress bar loading indicator step."
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.LOADING_LOCATIONS",
+   "reason": "GUI progress bar loading indicator step."
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.LOADING_PATHS",
+   "reason": "GUI progress bar loading indicator step."
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.LOADING_POINTS",
+   "reason": "GUI progress bar loading indicator step."
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.LOADING_VEHICLES",
+   "reason": "GUI progress bar loading indicator step."
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.SET_UP_DIRECTORY_TREE",
+   "reason": "GUI progress bar loading indicator step."
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.SET_UP_MODEL_VIEW",
+   "reason": "GUI progress bar loading indicator step."
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.SET_UP_WORKING_AREA",
+   "reason": "GUI progress bar loading indicator step."
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.START_LOADING_MODEL",
+   "reason": "GUI progress bar loading indicator step."
+  },
+  {
+   "fact": "enum:OperationMode.MODELLING",
+   "reason": "Internal Plant Overview GUI operating mode."
+  },
+  {
+   "fact": "enum:OperationMode.OPERATING",
+   "reason": "Internal Plant Overview GUI operating mode."
+  },
+  {
+   "fact": "enum:OperationMode.UNDEFINED",
+   "reason": "Internal Plant Overview GUI operating mode."
+  },
+  {
+   "fact": "enum:OperationsDeskApplication.ConnectionState.CONNECTING",
+   "reason": "Internal GUI application lifecycle state."
+  },
+  {
+   "fact": "enum:OperationsDeskApplication.ConnectionState.OFFLINE",
+   "reason": "Internal GUI application lifecycle state."
+  },
+  {
+   "fact": "enum:OperationsDeskApplication.ConnectionState.ONLINE",
+   "reason": "Internal GUI application lifecycle state."
+  },
+  {
+   "fact": "enum:PercentProperty.Unit.PERCENT",
+   "reason": "GUI Plant Overview property presentation formatting unit."
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionMode.AUTO",
+   "reason": "Internal RMI client connection manager configuration."
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionMode.MANUAL",
+   "reason": "Internal RMI client connection manager configuration."
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionMode.RECONNECT",
+   "reason": "Internal RMI client connection manager configuration."
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionState.CONNECTED",
+   "reason": "Internal RMI client connection manager lifecycle state."
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionState.CONNECTING",
+   "reason": "Internal RMI client connection manager lifecycle state."
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionState.DISCONNECTED",
+   "reason": "Internal RMI client connection manager lifecycle state."
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionState.DISCONNECTING",
+   "reason": "Internal RMI client connection manager lifecycle state."
+  },
+  {
+   "fact": "enum:SpeedProperty.Unit.KM_H",
+   "reason": "GUI Plant Overview property presentation formatting unit."
+  },
+  {
+   "fact": "enum:SpeedProperty.Unit.MM_S",
+   "reason": "GUI Plant Overview property presentation formatting unit."
+  },
+  {
+   "fact": "enum:SpeedProperty.Unit.M_S",
+   "reason": "GUI Plant Overview property presentation formatting unit."
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.BLOCKS",
+   "reason": "Internal Plant Overview tree folder key enum."
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.LAYOUT",
+   "reason": "Internal Plant Overview tree folder key enum."
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.LINKS",
+   "reason": "Internal Plant Overview tree folder key enum."
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.LOCATIONS",
+   "reason": "Internal Plant Overview tree folder key enum."
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.LOCATION_TYPES",
+   "reason": "Internal Plant Overview tree folder key enum."
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.OTHER_GRAPHICAL_ELEMENTS",
+   "reason": "Internal Plant Overview tree folder key enum."
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.PATHS",
+   "reason": "Internal Plant Overview tree folder key enum."
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.POINTS",
+   "reason": "Internal Plant Overview tree folder key enum."
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.VEHICLES",
+   "reason": "Internal Plant Overview tree folder key enum."
+  },
+  {
+   "fact": "enum:SystemModelTransitionEvent.Stage.LOADED",
+   "reason": "Internal Plant Overview UI transition stage."
+  },
+  {
+   "fact": "enum:SystemModelTransitionEvent.Stage.LOADING",
+   "reason": "Internal Plant Overview UI transition stage."
+  },
+  {
+   "fact": "enum:SystemModelTransitionEvent.Stage.UNLOADED",
+   "reason": "Internal Plant Overview UI transition stage."
+  },
+  {
+   "fact": "enum:SystemModelTransitionEvent.Stage.UNLOADING",
+   "reason": "Internal Plant Overview UI transition stage."
+  },
+  {
+   "fact": "enum:UserMessageHelper.Type.ERROR",
+   "reason": "Plant Overview Swing dialog message type."
+  },
+  {
+   "fact": "enum:UserMessageHelper.Type.INFO",
+   "reason": "Plant Overview Swing dialog message type."
+  },
+  {
+   "fact": "enum:UserMessageHelper.Type.PLAIN",
+   "reason": "Plant Overview Swing dialog message type."
+  },
+  {
+   "fact": "enum:UserMessageHelper.Type.QUESTION",
+   "reason": "Plant Overview Swing dialog message type."
+  },
+  {
+   "fact": "enum:VehicleEntry.Attribute.COMM_ADAPTER",
+   "reason": "Internal Kernel Control Center vehicle entry attribute."
+  },
+  {
+   "fact": "enum:VehicleEntry.Attribute.COMM_ADAPTER_FACTORY",
+   "reason": "Internal Kernel Control Center vehicle entry attribute."
+  },
+  {
+   "fact": "enum:VehicleEntry.Attribute.PROCESS_MODEL",
+   "reason": "Internal Kernel Control Center vehicle entry attribute."
+  },
+  {
+   "fact": "error:IllegalArgumentException:: Could not allocate now although permission previously granted: ",
+   "reason": "Internal vehicle controller resource allocation error not reachable from comm adapter attachment"
+  },
+  {
+   "fact": "error:IllegalArgumentException:Unhandled model class: ",
+   "reason": "Plant overview GUI process adapter error unrelated to HTTP attachment endpoint"
+  },
+  {
+   "fact": "error:IllegalArgumentException:Unhandled state: ",
+   "reason": "Operations desk GUI kernel state event error unrelated to HTTP attachment endpoint"
+  },
+  {
+   "fact": "error:IllegalArgumentException:currentObjectState == null but eventType != OBJECT_REMOVED",
+   "reason": "Low-level TCSObjectEvent constructor validation unrelated to comm adapter attachment endpoint"
+  },
+  {
+   "fact": "error:IllegalArgumentException:previousObjectState == null but eventType != OBJECT_CREATED",
+   "reason": "Low-level TCSObjectEvent constructor validation unrelated to comm adapter attachment endpoint"
+  },
+  {
+   "fact": "error:ObjectUnknownException:Unknown vehicle: ",
+   "reason": "Anchored in TransportOrderDispatcherHandler line 84 rather than VehicleHandler"
+  },
+  {
+   "fact": "error:ObjectUnknownException:name",
+   "reason": "Internal repository lookup error thrown when an object name is not found, superseded by the handler's explicit Unknown vehicle exception"
+  },
+  {
+   "fact": "error:ObjectUnknownException:ref",
+   "reason": "Internal repository lookup error thrown when an object reference is not found in the kernel repository"
+  },
+  {
+   "fact": "error:ServiceUnavailableException:Could not connect to portal",
+   "reason": "Plant overview GUI portal connection exception unrelated to HTTP attachment endpoint"
+  }
+ ],
+ "by_kind": {
+  "body": "5/5",
+  "const": "9/10",
+  "endpoint": "16/16",
+  "enum": "150/155",
+  "error": "19/21",
+  "field": "255/255",
+  "param": "6/7",
+  "status": "5/5"
+ },
+ "unexplained": [
+  {
+   "fact": "const:Dispatcher.PROPKEY_PARKING_POSITION_PRIORITY",
+   "src": "opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/dispatching/phase/parking/ParkingPositionToPriorityFunction.java:34",
+   "symbol": "org.opentcs.strategies.basic.dispatching.phase.parking.ParkingPositionToPriorityFunction#apply"
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.StateTO.FAILED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:133",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.StateTO.FINISHED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:132",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.StateTO.OPERATING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:131",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.StateTO.PRISTINE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:129",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.StateTO.TRAVELLING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:130",
+   "symbol": null
+  },
+  {
+   "fact": "error:IllegalArgumentException:String.format(\n              String.valueOf(messageTemplate)",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/util/Assertions.java:46",
+   "symbol": "org.opentcs.util.Assertions#checkArgument"
+  },
+  {
+   "fact": "error:KernelRuntimeException:exc.getCause()",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/KernelExecutorWrapper.java:62",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.common.KernelExecutorWrapper#callAndWait"
+  },
+  {
+   "fact": "param:query:immediate",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:828",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#immediate"
+  }
+ ]
+}

@@ -1,0 +1,1188 @@
+[
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/kernel/version",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetVersion",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 166,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "DELETE",
+  "path": "/v1/kernel",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleDeleteKernel",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 167,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/events",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetEvents",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 168,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/vehicles/dispatcher/trigger",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostDispatcherTrigger",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 169,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/vehicles/{NAME}/routeComputationQuery",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetVehicleRoutes",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 170,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/vehicles/{NAME}/commAdapter/attachment",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehicleCommAdapterAttachment",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 171,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/vehicles/{NAME}/commAdapter/attachmentInformation",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetVehicleCommAdapterAttachmentInfo",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 175,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/vehicles/{NAME}/commAdapter/enabled",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehicleCommAdapterEnabled",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 179,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/vehicles/{NAME}/commAdapter/message",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostVehicleCommAdapterMessage",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 180,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/vehicles/{NAME}/paused",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehiclePaused",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 181,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/vehicles/{NAME}/integrationLevel",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehicleIntegrationLevel",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 182,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/vehicles/{NAME}/withdrawal",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostWithdrawalByVehicle",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 183,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/vehicles/{NAME}/rerouteRequest",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostVehicleRerouteRequest",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 184,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/vehicles/{NAME}/allowedOrderTypes",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehicleAllowedOrderTypes",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 185,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/vehicles/{NAME}/acceptableOrderTypes",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehicleAcceptableOrderTypes",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 186,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/vehicles/{NAME}/energyLevelThresholdSet",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehicleEnergyLevelThresholdSet",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 190,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/vehicles/{NAME}/envelopeKey",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehicleEnvelopeKey",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 194,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/vehicles/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetVehicleByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 195,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/vehicles",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetVehicles",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 196,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/transportOrders/dispatcher/trigger",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostDispatcherTrigger",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 197,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/transportOrders/{NAME}/immediateAssignment",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostImmediateAssignment",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 198,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/transportOrders/{NAME}/withdrawal",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostWithdrawalByOrder",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 202,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/transportOrders/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostTransportOrder",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 203,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/transportOrders/{NAME}/intendedVehicle",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutTransportOrderIntendedVehicle",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 204,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/transportOrders/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetTransportOrderByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 208,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/transportOrders",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetTransportOrders",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 209,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/orderSequences/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostOrderSequence",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 210,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/orderSequences",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetOrderSequences",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 211,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/orderSequences/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetOrderSequenceByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 212,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/orderSequences/{NAME}/complete",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutOrderSequenceComplete",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 213,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/plantModel",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutPlantModel",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 214,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/plantModel",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetPlantModel",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 215,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/plantModel/topologyUpdateRequest",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostUpdateTopology",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 216,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/paths/{NAME}/locked",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutPathLocked",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 217,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/locations/{NAME}/locked",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutLocationLocked",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 218,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/environmentalEntities",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetEnvironmentalEntities",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 219,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/environmentalEntities/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetEnvironmentalEntity",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 220,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/environmentalEntities/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostEnvironmentalEntity",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 221,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/environmentalEntities/{NAME}/envelope",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutEnvironmentalEntityEnvelope",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 222,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/environmentalEntities/{NAME}/pose",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutEnvironmentalEntityPose",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 226,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/environmentalEntities/{NAME}/integrationLevel",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutEnvironmentalEntityIntegrationLevel",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 227,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/environmentalEntities/{NAME}/retired",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutEnvironmentalEntityRetired",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 231,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/dispatcher/trigger",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostDispatcherTrigger",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 232,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/peripherals/dispatcher/trigger",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostPeripheralJobsDispatchTrigger",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 233,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/peripherals/{NAME}/withdrawal",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostPeripheralWithdrawal",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 234,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/peripherals/{NAME}/commAdapter/enabled",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutPeripheralCommAdapterEnabled",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 235,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/peripherals/{NAME}/commAdapter/attachmentInformation",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetPeripheralCommAdapterAttachmentInfo",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 239,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v1/peripherals/{NAME}/commAdapter/attachment",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutPeripheralCommAdapterAttachment",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 243,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/peripheralJobs",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetPeripheralJobs",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 247,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v1/peripheralJobs/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetPeripheralJobsByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 248,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/peripheralJobs/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostPeripheralJobsByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 249,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/peripheralJobs/{NAME}/withdrawal",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostPeripheralJobWithdrawal",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 250,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v1/peripheralJobs/dispatcher/trigger",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostPeripheralJobsDispatchTrigger",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java",
+  "line": 251,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/login",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostLogin",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 194,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/logout",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostLogout",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 195,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/session",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetSession",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 196,
+  "guards": []
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/kernel/version",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetVersion",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 197,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "DELETE",
+  "path": "/v8/kernel",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleDeleteKernel",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 198,
+  "guards": [
+   "UserPermission.SHUTDOWN_KERNEL"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/vehicles/dispatcher/trigger",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostDispatcherTrigger",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 199,
+  "guards": [
+   "UserPermission.MODIFY_VEHICLE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/vehicles/{NAME}/routeComputationQuery",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetVehicleRoutes",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 204,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/vehicles/{NAME}/commAdapter/attachment",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutVehicleCommAdapterAttachment",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 209,
+  "guards": [
+   "UserPermission.MODIFY_VEHICLE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/vehicles/{NAME}/commAdapter/attachmentInformation",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetVehicleCommAdapterAttachmentInfo",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 214,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/vehicles/{NAME}/commAdapter/enabled",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutVehicleCommAdapterEnabled",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 219,
+  "guards": [
+   "UserPermission.MODIFY_VEHICLE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/vehicles/{NAME}/commAdapter/message",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostVehicleCommAdapterMessage",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 224,
+  "guards": [
+   "UserPermission.MODIFY_VEHICLE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/vehicles/{NAME}/paused",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutVehiclePaused",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 229,
+  "guards": [
+   "UserPermission.MODIFY_VEHICLE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/vehicles/{NAME}/integrationLevel",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutVehicleIntegrationLevel",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 234,
+  "guards": [
+   "UserPermission.MODIFY_VEHICLE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/vehicles/{NAME}/withdrawal",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostWithdrawalByVehicle",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 239,
+  "guards": [
+   "UserPermission.MODIFY_ORDER"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/vehicles/{NAME}/rerouteRequest",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostVehicleRerouteRequest",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 244,
+  "guards": [
+   "UserPermission.MODIFY_VEHICLE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/vehicles/{NAME}/acceptableOrderTypes",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutVehicleAcceptableOrderTypes",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 249,
+  "guards": [
+   "UserPermission.MODIFY_VEHICLE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/vehicles/{NAME}/energyLevelThresholdSet",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutVehicleEnergyLevelThresholdSet",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 254,
+  "guards": [
+   "UserPermission.MODIFY_VEHICLE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/vehicles/{NAME}/envelopeKey",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutVehicleEnvelopeKey",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 259,
+  "guards": [
+   "UserPermission.MODIFY_VEHICLE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/vehicles/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetVehicleByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 264,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/vehicles",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetVehicles",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 265,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/transportOrders/dispatcher/trigger",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostDispatcherTrigger",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 266,
+  "guards": [
+   "UserPermission.MODIFY_ORDER"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/transportOrders/{NAME}/immediateAssignment",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostImmediateAssignment",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 271,
+  "guards": [
+   "UserPermission.MODIFY_ORDER"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/transportOrders/{NAME}/withdrawal",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostWithdrawalByOrder",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 276,
+  "guards": [
+   "UserPermission.MODIFY_ORDER"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/transportOrders/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostTransportOrder",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 281,
+  "guards": [
+   "UserPermission.MODIFY_ORDER"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/transportOrders/{NAME}/intendedVehicle",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutTransportOrderIntendedVehicle",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 286,
+  "guards": [
+   "UserPermission.MODIFY_ORDER"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/transportOrders/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetTransportOrderByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 291,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/transportOrders",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetTransportOrders",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 296,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/orderSequences/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostOrderSequence",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 297,
+  "guards": [
+   "UserPermission.MODIFY_ORDER_SEQUENCE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/orderSequences",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetOrderSequences",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 302,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/orderSequences/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetOrderSequenceByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 303,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/orderSequences/{NAME}/complete",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutOrderSequenceComplete",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 308,
+  "guards": [
+   "UserPermission.MODIFY_ORDER_SEQUENCE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/plantModel",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutPlantModel",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 313,
+  "guards": [
+   "UserPermission.LOAD_MODEL"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/plantModel",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetPlantModel",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 314,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/plantModel/topologyUpdateRequest",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostUpdateTopology",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 315,
+  "guards": [
+   "UserPermission.UPDATE_ROUTING_TOPOLOGY"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/points",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetPoints",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 320,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/points/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetPointByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 321,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/paths",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetPaths",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 322,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/paths/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetPathByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 323,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/paths/{NAME}/locked",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutPathLocked",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 324,
+  "guards": [
+   "UserPermission.LOCK_RESOURCE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/locations",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetLocations",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 325,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/locations/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetLocationByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 326,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/locations/{NAME}/locked",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutLocationLocked",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 327,
+  "guards": [
+   "UserPermission.LOCK_RESOURCE"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/locationTypes",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetLocationTypes",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 332,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/locationTypes/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetLocationTypeByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 333,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/blocks",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetBlocks",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 338,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/blocks/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetBlockByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 339,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/visualLayout",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetVisualLayout",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 340,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/peripherals/dispatcher/trigger",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostPeripheralJobsDispatchTrigger",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 341,
+  "guards": [
+   "UserPermission.MODIFY_PERIPHERAL"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/peripherals/{NAME}/withdrawal",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostPeripheralWithdrawal",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 346,
+  "guards": [
+   "UserPermission.MODIFY_PERIPHERAL"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/peripherals/{NAME}/commAdapter/enabled",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutPeripheralCommAdapterEnabled",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 351,
+  "guards": [
+   "UserPermission.MODIFY_PERIPHERAL"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/peripherals/{NAME}/commAdapter/attachmentInformation",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetPeripheralCommAdapterAttachmentInfo",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 356,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/peripherals/{NAME}/commAdapter/attachment",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutPeripheralCommAdapterAttachment",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 361,
+  "guards": [
+   "UserPermission.MODIFY_PERIPHERAL"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/peripheralJobs",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetPeripheralJobs",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 366,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/peripheralJobs/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetPeripheralJobsByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 367,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/peripheralJobs/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostPeripheralJobsByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 372,
+  "guards": [
+   "UserPermission.MODIFY_PERIPHERAL_JOB"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/peripheralJobs/{NAME}/withdrawal",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostPeripheralJobWithdrawal",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 377,
+  "guards": [
+   "UserPermission.MODIFY_PERIPHERAL_JOB"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/peripheralJobs/dispatcher/trigger",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostPeripheralJobsDispatchTrigger",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 382,
+  "guards": [
+   "UserPermission.MODIFY_PERIPHERAL_JOB"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/environmentalEntities",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetEnvironmentalEntities",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 387,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/environmentalEntities/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetEnvironmentalEntityByName",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 392,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "POST",
+  "path": "/v8/environmentalEntities/{NAME}",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePostEnvironmentalEntity",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 397,
+  "guards": [
+   "UserPermission.MODIFY_ENVIRONMENTAL_ENTITY"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/environmentalEntities/{NAME}/envelope",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutEnvironmentalEntityEnvelope",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 402,
+  "guards": [
+   "UserPermission.MODIFY_ENVIRONMENTAL_ENTITY"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/environmentalEntities/{NAME}/pose",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutEnvironmentalEntityPose",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 407,
+  "guards": [
+   "UserPermission.MODIFY_ENVIRONMENTAL_ENTITY"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/environmentalEntities/{NAME}/integrationLevel",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutEnvironmentalEntityIntegrationLevel",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 412,
+  "guards": [
+   "UserPermission.MODIFY_ENVIRONMENTAL_ENTITY"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "PUT",
+  "path": "/v8/environmentalEntities/{NAME}/retired",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handlePutEnvironmentalEntityRetired",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 417,
+  "guards": [
+   "UserPermission.MODIFY_ENVIRONMENTAL_ENTITY"
+  ]
+ },
+ {
+  "kind": "http",
+  "method": "GET",
+  "path": "/v8/userNotifications",
+  "handler": "org.opentcs.kernel.extensions.servicewebapi.v8.RequestHandler#handleGetUserNotifications",
+  "file": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/RequestHandler.java",
+  "line": 422,
+  "guards": [
+   "UserPermission.READ_DATA"
+  ]
+ }
+]

@@ -1,0 +1,6 @@
+# regenerated on every run
+index/
+docs/statements.jsonl
+features/*/units/*.md
+features/*/claims/
+features/*/recon_candidates.jsonl

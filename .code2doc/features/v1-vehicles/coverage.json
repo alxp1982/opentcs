@@ -1,0 +1,2558 @@
+{
+ "feature": "v1-vehicles",
+ "coverage": 0.0,
+ "explained": 0,
+ "total": 287,
+ "ignored": [
+  {
+   "fact": "const:CloseFileAction.ID",
+   "reason": "GUI application action ID is not server API product behavior."
+  },
+  {
+   "fact": "const:CloseFileAction.ID_MODEL_CLOSING",
+   "reason": "GUI application action ID is not server API product behavior."
+  },
+  {
+   "fact": "const:Dispatcher.PROPKEY_PARKING_POSITION_PRIORITY",
+   "reason": "Dispatcher internals (parking priority property) beyond the boundary of triggering the dispatcher."
+  },
+  {
+   "fact": "const:DriveOrder.Destination.OP_MOVE",
+   "reason": "Dispatcher internals beyond the boundary of triggering the dispatcher."
+  },
+  {
+   "fact": "const:DriveOrder.Destination.OP_NOP",
+   "reason": "Dispatcher internals beyond the boundary of triggering the dispatcher."
+  },
+  {
+   "fact": "const:DriveOrder.Destination.OP_PARK",
+   "reason": "Used in transport order routing logic, which is not executed by this point-to-point route query endpoint."
+  },
+  {
+   "fact": "const:I18nPlantOverview.MENU_PATH",
+   "reason": "GUI application menu path is not server API product behavior."
+  },
+  {
+   "fact": "const:ObjectPropConstants.TRANSPORT_ORDER_RESOURCES_TO_AVOID",
+   "reason": "Used to extract resources to avoid from a transport order, which is not applicable to this point-to-point route query."
+  },
+  {
+   "fact": "const:OpenTCSView.NAME",
+   "reason": "GUI application view name is not server API product behavior."
+  },
+  {
+   "fact": "const:OrderConstants.TYPE_ANY",
+   "reason": "This constant is used in the default Vehicle constructor, which is not called during a paused state update."
+  },
+  {
+   "fact": "const:OrderConstants.TYPE_CHARGE",
+   "reason": "Dispatcher internals (charge order creation) beyond the boundary of triggering the dispatcher."
+  },
+  {
+   "fact": "const:OrderConstantsTO.TYPE_NONE",
+   "reason": "Dispatcher internals (transport order creation defaults) beyond the boundary of triggering the dispatcher."
+  },
+  {
+   "fact": "error:IllegalArgumentException:: Could not allocate now although permission previously granted: ",
+   "reason": "Internal scheduler assertion error that may never happen, not observable endpoint behavior."
+  },
+  {
+   "fact": "error:IllegalArgumentException:: Not part of a sequence",
+   "reason": "Dispatcher internals (sequence error) beyond the boundary of triggering the dispatcher."
+  },
+  {
+   "fact": "error:IllegalArgumentException:Unhandled model class: ",
+   "reason": "GUI application model mapping error, not server API product behavior."
+  },
+  {
+   "fact": "error:IllegalArgumentException:Unhandled state: ",
+   "reason": "GUI application state mapping error, not server API product behavior."
+  },
+  {
+   "fact": "error:IllegalArgumentException:currentObjectState == null but eventType != OBJECT_REMOVED",
+   "reason": "Internal event creation validation error."
+  },
+  {
+   "fact": "error:IllegalArgumentException:previousObjectState == null but eventType != OBJECT_CREATED",
+   "reason": "Internal event creation validation error."
+  },
+  {
+   "fact": "error:ObjectUnknownException:name",
+   "reason": "Internal data consistency exception for unknown objects by name, overridden by application-level checks."
+  },
+  {
+   "fact": "error:ObjectUnknownException:ref",
+   "reason": "Internal data consistency exception for unknown objects by reference, overridden by application-level checks."
+  },
+  {
+   "fact": "error:ServiceUnavailableException:Could not connect to portal",
+   "reason": "GUI application portal connection error, not server API product behavior."
+  },
+  {
+   "fact": "field:AcceptableOrderTypeTO.name",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:AcceptableOrderTypeTO.priority",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:BoundingBoxTO.height",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:BoundingBoxTO.length",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:BoundingBoxTO.referenceOffset",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:BoundingBoxTO.width",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:CoupleTO.x",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:CoupleTO.y",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:DestinationState.locationName",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:DestinationState.operation",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:DestinationState.properties",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:DestinationState.state",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.CoupleTO.x",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.CoupleTO.y",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.EnvelopeTO.vertices",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.createdTime",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.envelope",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.history",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.integrationLevel",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.layout",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.name",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.pose",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.properties",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.retiredTime",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.type",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.LayoutTO.layerId",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.PoseTO.orientationAngle",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.PoseTO.position",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.TripleTO.x",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.TripleTO.y",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.TripleTO.z",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.currentObjectState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:EnvironmentalEntityEventTO.previousObjectState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleAttachmentInfoResponseTO.attachedCommAdapter",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleAttachmentInfoResponseTO.availableCommAdapters",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleAttachmentInfoResponseTO.vehicleName",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.PrecisePosition.x",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.PrecisePosition.y",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.PrecisePosition.z",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.acceptableOrderTypes",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.allocatedResources",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.boundingBox",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.claimedResources",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.currentPosition",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.energyLevel",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.energyLevelCritical",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.energyLevelFullyRecharged",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.energyLevelGood",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.energyLevelSufficientlyRecharged",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.envelopeKey",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.integrationLevel",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.name",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.orientationAngle",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.paused",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.precisePosition",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.procState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.procStateTimestamp",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.properties",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.state",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.stateTimestamp",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:GetVehicleResponseTO.transportOrder",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:ObjectHistoryTO.ObjectHistoryEntryTO.eventCode",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:ObjectHistoryTO.ObjectHistoryEntryTO.supplements",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:ObjectHistoryTO.ObjectHistoryEntryTO.timestamp",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:ObjectHistoryTO.entries",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.complete",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.creationTime",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.failureFatal",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.finished",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.finishedIndex",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.finishedTime",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.history",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.intendedVehicle",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.name",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.orderTypes",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.orders",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.processingVehicle",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.properties",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.OrderSequenceTO.type",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.currentObjectState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderSequenceEventTO.previousObjectState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderStatusMessage.destinations",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderStatusMessage.dispensable",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderStatusMessage.intendedVehicle",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderStatusMessage.orderName",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderStatusMessage.orderState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderStatusMessage.orderType",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderStatusMessage.peripheralReservationToken",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderStatusMessage.processingVehicleName",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderStatusMessage.properties",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:OrderStatusMessage.wrappingSequence",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.completionRequired",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.executionTrigger",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.location",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.operation",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.creationTime",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.finishedTime",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.history",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.name",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.peripheralOperation",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.properties",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.relatedTransportOrder",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.relatedVehicle",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.reservationToken",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.PeripheralJobTO.state",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.currentObjectState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobEventTO.previousObjectState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobStatusMessage.creationTime",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobStatusMessage.finishedTime",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobStatusMessage.name",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobStatusMessage.peripheralOperation",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobStatusMessage.properties",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobStatusMessage.relatedTransportOrder",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobStatusMessage.relatedVehicle",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobStatusMessage.reservationToken",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralJobStatusMessage.state",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralOperationDescription.completionRequired",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralOperationDescription.executionTrigger",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralOperationDescription.locationName",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PeripheralOperationDescription.operation",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PostVehicleCommAdapterMessageRequestTO.parameters",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PostVehicleCommAdapterMessageRequestTO.type",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PostVehicleRoutesRequestTO.destinationPoints",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PostVehicleRoutesRequestTO.resourcesToAvoid",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PostVehicleRoutesRequestTO.sourcePoint",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PostVehicleRoutesResponseTO.routes",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:Property.key",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:Property.value",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PutVehicleAcceptableOrderTypesTO.acceptableOrderTypes",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PutVehicleAllowedOrderTypesTO.orderTypes",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PutVehicleEnergyLevelThresholdSetTO.energyLevelCritical",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PutVehicleEnergyLevelThresholdSetTO.energyLevelFullyRecharged",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PutVehicleEnergyLevelThresholdSetTO.energyLevelGood",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:PutVehicleEnergyLevelThresholdSetTO.energyLevelSufficientlyRecharged",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:RouteTO.Step.destinationPoint",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:RouteTO.Step.path",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:RouteTO.Step.sourcePoint",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:RouteTO.Step.vehicleOrientation",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:RouteTO.costs",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:RouteTO.destinationPoint",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:RouteTO.steps",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.DestinationTO.destination",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.DestinationTO.operation",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.DestinationTO.properties",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.costs",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.destinationPoint",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.executionAllowed",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.path",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.reroutingType",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.routeIndex",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.sourcePoint",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.vehicleOrientation",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.RouteTO.costs",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.RouteTO.steps",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.destination",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.name",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.route",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.state",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.DriveOrderTO.transportOrder",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.creationTime",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.currentDriveOrderIndex",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.currentRouteStepIndex",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.deadline",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.dependencies",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.dispensable",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.driveOrders",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.finishedTime",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.history",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.intendedVehicle",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.name",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.peripheralReservationToken",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.processingVehicle",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.properties",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.state",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.type",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.TransportOrderTO.wrappingSequence",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.currentObjectState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:TransportOrderEventTO.previousObjectState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.AcceptableOrderTypeTO.name",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.AcceptableOrderTypeTO.priority",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.BoundingBoxTO.height",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.BoundingBoxTO.length",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.BoundingBoxTO.referenceOffset",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.BoundingBoxTO.width",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.CoupleTO.x",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.CoupleTO.y",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.EnergyLevelThresholdSetTO.energyLevelCritical",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.EnergyLevelThresholdSetTO.energyLevelFullyRecharged",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.EnergyLevelThresholdSetTO.energyLevelGood",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.EnergyLevelThresholdSetTO.energyLevelSufficientlyRecharged",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.LayoutTO.ColorTO.blue",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.LayoutTO.ColorTO.green",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.LayoutTO.ColorTO.red",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.LayoutTO.routeColor",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.LoadHandlingDeviceTO.full",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.LoadHandlingDeviceTO.label",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.PoseTO.orientationAngle",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.PoseTO.position",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.TimestampedVehicleProcStateTO.procState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.TimestampedVehicleProcStateTO.timestamp",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.TimestampedVehicleStateTO.state",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.TimestampedVehicleStateTO.timestamp",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.TripleTO.x",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.TripleTO.y",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.TripleTO.z",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.acceptableOrderTypes",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.allocatedResources",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.boundingBox",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.claimedResources",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.currentPosition",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.energyLevel",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.energyLevelThresholdSet",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.envelopeKey",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.history",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.integrationLevel",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.layout",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.loadHandlingDevices",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.maxReverseVelocity",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.maxVelocity",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.name",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.orderSequence",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.paused",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.pose",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.procState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.properties",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.rechargeOperation",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.state",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.VehicleTO.transportOrder",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.currentObjectState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleEventTO.previousObjectState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.PrecisePosition.x",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.PrecisePosition.y",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.PrecisePosition.z",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.acceptableOrderTypes",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.allocatedResources",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.boundingBox",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.claimedResources",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.energyLevel",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.energyLevelCritical",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.energyLevelFullyRecharged",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.energyLevelGood",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.energyLevelSufficientlyRecharged",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.envelopeKey",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.integrationLevel",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.orientationAngle",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.paused",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.position",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.precisePosition",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.procState",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.procStateTimestamp",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.properties",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.state",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.stateTimestamp",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.transportOrderName",
+   "reason": "Restatement of the type system without behavior."
+  },
+  {
+   "fact": "field:VehicleStatusMessage.vehicleName",
+   "reason": "Restatement of the type system without behavior."
+  }
+ ],
+ "by_kind": {
+  "body": "0/5",
+  "const": "0/15",
+  "endpoint": "0/16",
+  "enum": "0/218",
+  "error": "0/21",
+  "param": "0/7",
+  "status": "0/5"
+ },
+ "unexplained": [
+  {
+   "fact": "body:PostVehicleCommAdapterMessageRequestTO",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:301",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostVehicleCommAdapterMessage"
+  },
+  {
+   "fact": "body:PostVehicleRoutesRequestTO",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:330",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetVehicleRoutes"
+  },
+  {
+   "fact": "body:PutVehicleAcceptableOrderTypesTO",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:667",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehicleAcceptableOrderTypes"
+  },
+  {
+   "fact": "body:PutVehicleAllowedOrderTypesTO",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:652",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehicleAllowedOrderTypes"
+  },
+  {
+   "fact": "body:PutVehicleEnergyLevelThresholdSetTO",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:678",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehicleEnergyLevelThresholdSet"
+  },
+  {
+   "fact": "const:HttpConstants.CONTENT_TYPE_APPLICATION_JSON_UTF8",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:310",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetVehicleCommAdapterAttachmentInfo"
+  },
+  {
+   "fact": "const:HttpConstants.CONTENT_TYPE_TEXT_PLAIN_UTF8",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:272",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostDispatcherTrigger"
+  },
+  {
+   "fact": "const:LoopbackAdapterConstants.PROPKEY_INITIAL_POSITION",
+   "src": "opentcs-commadapter-loopback/src/main/java/org/opentcs/virtualvehicle/LoopbackCommunicationAdapter.java:166",
+   "symbol": "org.opentcs.virtualvehicle.LoopbackCommunicationAdapter#initialize"
+  },
+  {
+   "fact": "const:MovementCommand.NO_OPERATION",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/MovementCommandMapper.java:70",
+   "symbol": "org.opentcs.kernel.vehicles.MovementCommandMapper#toMovementCommands"
+  },
+  {
+   "fact": "const:ResourceAvoidanceExtractor.ResourcesToAvoid.EMPTY",
+   "src": "opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/routing/ResourceAvoidanceExtractor.java:64",
+   "symbol": "org.opentcs.strategies.basic.routing.ResourceAvoidanceExtractor#extractResourcesToAvoid"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_ENVIRONMENTAL_ENTITIES",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1SseHandler.java:180",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1SseHandler#handleObjectEvent"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_LOCATIONS",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/SseHandler.java:192",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v8.SseHandler#handleObjectEvent"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_ORDER_SEQUENCES",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1SseHandler.java:168",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1SseHandler#handleObjectEvent"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_PATHS",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/SseHandler.java:186",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v8.SseHandler#handleObjectEvent"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_PERIPHERAL_JOBS",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1SseHandler.java:174",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1SseHandler#handleObjectEvent"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_TRANSPORT_ORDERS",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1SseHandler.java:162",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1SseHandler#handleObjectEvent"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_USER_NOTIFICATIONS",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/SseHandler.java:206",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v8.SseHandler#handleNotificationEvent"
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_VEHICLES",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1SseHandler.java:156",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1SseHandler#handleObjectEvent"
+  },
+  {
+   "fact": "const:TransportOrder.ROUTE_STEP_INDEX_DEFAULT",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/DefaultVehicleController.java:502",
+   "symbol": "org.opentcs.kernel.vehicles.DefaultVehicleController#driveOrdersContinual"
+  },
+  {
+   "fact": "const:Vehicle.PREFERRED_ADAPTER",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/extensions/controlcenter/vehicles/AttachmentManager.java:208",
+   "symbol": "org.opentcs.kernel.extensions.controlcenter.vehicles.AttachmentManager#attachAdapterToVehicle"
+  },
+  {
+   "fact": "endpoint:GET /v1/vehicles",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:196",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:GET /v1/vehicles/{NAME}",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:195",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:GET /v1/vehicles/{NAME}/commAdapter/attachmentInformation",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:175",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:POST /v1/vehicles/dispatcher/trigger",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:169",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:POST /v1/vehicles/{NAME}/commAdapter/message",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:180",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:POST /v1/vehicles/{NAME}/rerouteRequest",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:184",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:POST /v1/vehicles/{NAME}/routeComputationQuery",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:170",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:POST /v1/vehicles/{NAME}/withdrawal",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:183",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:PUT /v1/vehicles/{NAME}/acceptableOrderTypes",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:186",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:PUT /v1/vehicles/{NAME}/allowedOrderTypes",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:185",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:PUT /v1/vehicles/{NAME}/commAdapter/attachment",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:171",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:PUT /v1/vehicles/{NAME}/commAdapter/enabled",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:179",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:PUT /v1/vehicles/{NAME}/energyLevelThresholdSet",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:190",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:PUT /v1/vehicles/{NAME}/envelopeKey",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:194",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:PUT /v1/vehicles/{NAME}/integrationLevel",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:182",
+   "symbol": null
+  },
+  {
+   "fact": "endpoint:PUT /v1/vehicles/{NAME}/paused",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:181",
+   "symbol": null
+  },
+  {
+   "fact": "enum:AngleProperty.Unit.DEG",
+   "src": "opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/AngleProperty.java:77",
+   "symbol": null
+  },
+  {
+   "fact": "enum:AngleProperty.Unit.RAD",
+   "src": "opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/AngleProperty.java:81",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Block.Type.SAME_DIRECTION_ONLY",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Block.java:214",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Block.Type.SINGLE_VEHICLE_ONLY",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Block.java:209",
+   "symbol": null
+  },
+  {
+   "fact": "enum:CommandProcessingTracker.PendingCommandState.ALLOCATION_PENDING",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/CommandProcessingTracker.java:747",
+   "symbol": null
+  },
+  {
+   "fact": "enum:CommandProcessingTracker.PendingCommandState.SENDING_PENDING",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/CommandProcessingTracker.java:752",
+   "symbol": null
+  },
+  {
+   "fact": "enum:CommandProcessingTracker.PendingCommandState.UNDEFINED",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/CommandProcessingTracker.java:743",
+   "symbol": null
+  },
+  {
+   "fact": "enum:CommandProcessingTracker.PendingCommandState.WONT_SEND",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/CommandProcessingTracker.java:757",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DefaultDispatcherConfiguration.ReroutingImpossibleStrategy.IGNORE_PATH_LOCKS",
+   "src": "opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/dispatching/DefaultDispatcherConfiguration.java:200",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DefaultDispatcherConfiguration.ReroutingImpossibleStrategy.PAUSE_AT_PATH_LOCK",
+   "src": "opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/dispatching/DefaultDispatcherConfiguration.java:209",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DefaultDispatcherConfiguration.ReroutingImpossibleStrategy.PAUSE_IMMEDIATELY",
+   "src": "opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/dispatching/DefaultDispatcherConfiguration.java:204",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DestinationState.State.FAILED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:136",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DestinationState.State.FINISHED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:132",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DestinationState.State.OPERATING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:128",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DestinationState.State.PRISTINE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:119",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DestinationState.State.TRAVELLING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:123",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DriveOrder.State.FAILED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:368",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DriveOrder.State.FINISHED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:364",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DriveOrder.State.OPERATING",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:360",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DriveOrder.State.PRISTINE",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:352",
+   "symbol": null
+  },
+  {
+   "fact": "enum:DriveOrder.State.TRAVELLING",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:356",
+   "symbol": null
+  },
+  {
+   "fact": "enum:EnvironmentalEntity.IntegrationLevel.TO_BE_IGNORED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/EnvironmentalEntity.java:462",
+   "symbol": null
+  },
+  {
+   "fact": "enum:EnvironmentalEntity.IntegrationLevel.TO_BE_NOTICED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/EnvironmentalEntity.java:466",
+   "symbol": null
+  },
+  {
+   "fact": "enum:EnvironmentalEntity.IntegrationLevel.TO_BE_RESPECTED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/EnvironmentalEntity.java:470",
+   "symbol": null
+  },
+  {
+   "fact": "enum:EnvironmentalEntityEventTO.IntegrationLevelTO.TO_BE_IGNORED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/EnvironmentalEntityEventTO.java:105",
+   "symbol": null
+  },
+  {
+   "fact": "enum:EnvironmentalEntityEventTO.IntegrationLevelTO.TO_BE_NOTICED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/EnvironmentalEntityEventTO.java:106",
+   "symbol": null
+  },
+  {
+   "fact": "enum:EnvironmentalEntityEventTO.IntegrationLevelTO.TO_BE_RESPECTED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/EnvironmentalEntityEventTO.java:107",
+   "symbol": null
+  },
+  {
+   "fact": "enum:EnvironmentalEntityEventTO.TypeTO.OBJECT",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/EnvironmentalEntityEventTO.java:100",
+   "symbol": null
+  },
+  {
+   "fact": "enum:EnvironmentalEntityEventTO.TypeTO.ZONE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/EnvironmentalEntityEventTO.java:101",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Kernel.State.MODELLING",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/access/Kernel.java:49",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Kernel.State.OPERATING",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/access/Kernel.java:54",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Kernel.State.SHUTDOWN",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/access/Kernel.java:58",
+   "symbol": null
+  },
+  {
+   "fact": "enum:KernelControlCenterApplication.ConnectionState.CONNECTING",
+   "src": "opentcs-kernelcontrolcenter/src/main/java/org/opentcs/kernelcontrolcenter/KernelControlCenterApplication.java:180",
+   "symbol": null
+  },
+  {
+   "fact": "enum:KernelControlCenterApplication.ConnectionState.OFFLINE",
+   "src": "opentcs-kernelcontrolcenter/src/main/java/org/opentcs/kernelcontrolcenter/KernelControlCenterApplication.java:176",
+   "symbol": null
+  },
+  {
+   "fact": "enum:KernelControlCenterApplication.ConnectionState.ONLINE",
+   "src": "opentcs-kernelcontrolcenter/src/main/java/org/opentcs/kernelcontrolcenter/KernelControlCenterApplication.java:184",
+   "symbol": null
+  },
+  {
+   "fact": "enum:KernelStateChangeEvent.State.DISCONNECTED",
+   "src": "opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/event/KernelStateChangeEvent.java:86",
+   "symbol": null
+  },
+  {
+   "fact": "enum:KernelStateChangeEvent.State.LOGGED_IN",
+   "src": "opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/event/KernelStateChangeEvent.java:82",
+   "symbol": null
+  },
+  {
+   "fact": "enum:KernelStateChangeEvent.State.MODELLING",
+   "src": "opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/event/KernelStateChangeEvent.java:70",
+   "symbol": null
+  },
+  {
+   "fact": "enum:KernelStateChangeEvent.State.OPERATING",
+   "src": "opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/event/KernelStateChangeEvent.java:74",
+   "symbol": null
+  },
+  {
+   "fact": "enum:KernelStateChangeEvent.State.SHUTDOWN",
+   "src": "opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/event/KernelStateChangeEvent.java:78",
+   "symbol": null
+  },
+  {
+   "fact": "enum:LengthProperty.Unit.CM",
+   "src": "opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/LengthProperty.java:66",
+   "symbol": null
+  },
+  {
+   "fact": "enum:LengthProperty.Unit.KM",
+   "src": "opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/LengthProperty.java:74",
+   "symbol": null
+  },
+  {
+   "fact": "enum:LengthProperty.Unit.M",
+   "src": "opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/LengthProperty.java:70",
+   "symbol": null
+  },
+  {
+   "fact": "enum:LengthProperty.Unit.MM",
+   "src": "opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/LengthProperty.java:62",
+   "symbol": null
+  },
+  {
+   "fact": "enum:LocalVehicleEntry.Attribute.ATTACHMENT_INFORMATION",
+   "src": "opentcs-kernelcontrolcenter/src/main/java/org/opentcs/kernelcontrolcenter/vehicles/LocalVehicleEntry.java:115",
+   "symbol": null
+  },
+  {
+   "fact": "enum:LocalVehicleEntry.Attribute.PROCESS_MODEL",
+   "src": "opentcs-kernelcontrolcenter/src/main/java/org/opentcs/kernelcontrolcenter/vehicles/LocalVehicleEntry.java:111",
+   "symbol": null
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.CLEANUP",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:18",
+   "symbol": null
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.LOADING_BLOCKS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:42",
+   "symbol": null
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.LOADING_LOCATIONS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:34",
+   "symbol": null
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.LOADING_PATHS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:30",
+   "symbol": null
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.LOADING_POINTS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:26",
+   "symbol": null
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.LOADING_VEHICLES",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:38",
+   "symbol": null
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.SET_UP_DIRECTORY_TREE",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:50",
+   "symbol": null
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.SET_UP_MODEL_VIEW",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:46",
+   "symbol": null
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.SET_UP_WORKING_AREA",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:54",
+   "symbol": null
+  },
+  {
+   "fact": "enum:ModelRestorationProgressStatus.START_LOADING_MODEL",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:22",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OperationMode.MODELLING",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/OperationMode.java:20",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OperationMode.OPERATING",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/OperationMode.java:24",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OperationMode.UNDEFINED",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/OperationMode.java:16",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OperationsDeskApplication.ConnectionState.CONNECTING",
+   "src": "opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/application/OperationsDeskApplication.java:170",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OperationsDeskApplication.ConnectionState.OFFLINE",
+   "src": "opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/application/OperationsDeskApplication.java:166",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OperationsDeskApplication.ConnectionState.ONLINE",
+   "src": "opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/application/OperationsDeskApplication.java:174",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OrderStatusMessage.OrderState.ACTIVE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:159",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OrderStatusMessage.OrderState.BEING_PROCESSED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:167",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OrderStatusMessage.OrderState.DISPATCHABLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:163",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OrderStatusMessage.OrderState.FAILED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:180",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OrderStatusMessage.OrderState.FINISHED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:176",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OrderStatusMessage.OrderState.RAW",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:154",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OrderStatusMessage.OrderState.UNROUTABLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:184",
+   "symbol": null
+  },
+  {
+   "fact": "enum:OrderStatusMessage.OrderState.WITHDRAWN",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:172",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PercentProperty.Unit.PERCENT",
+   "src": "opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/PercentProperty.java:66",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJob.State.BEING_PROCESSED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/peripherals/PeripheralJob.java:428",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJob.State.FAILED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/peripherals/PeripheralJob.java:436",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJob.State.FINISHED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/peripherals/PeripheralJob.java:432",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJob.State.TO_BE_PROCESSED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/peripherals/PeripheralJob.java:424",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.ExecutionTriggerTO.AFTER_ALLOCATION",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:72",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.ExecutionTriggerTO.AFTER_MOVEMENT",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:73",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.ExecutionTriggerTO.IMMEDIATE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:71",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobEventTO.PeripheralJobTO.StateTO.BEING_PROCESSED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:79",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobEventTO.PeripheralJobTO.StateTO.FAILED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:81",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobEventTO.PeripheralJobTO.StateTO.FINISHED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:80",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobEventTO.PeripheralJobTO.StateTO.TO_BE_PROCESSED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:78",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobStateTO.BEING_PROCESSED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralJobStateTO.java:8",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobStateTO.FAILED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralJobStateTO.java:10",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobStateTO.FINISHED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralJobStateTO.java:9",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobStateTO.TO_BE_PROCESSED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralJobStateTO.java:7",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralOperationTO.ExecutionTrigger.AFTER_ALLOCATION",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralOperationTO.java:85",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralOperationTO.ExecutionTrigger.AFTER_MOVEMENT",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralOperationTO.java:86",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralOperationTO.ExecutionTrigger.IMMEDIATE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralOperationTO.java:84",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralProcessModel.Attribute.COMM_ADAPTER_CONNECTED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/peripherals/PeripheralProcessModel.java:155",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralProcessModel.Attribute.COMM_ADAPTER_ENABLED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/peripherals/PeripheralProcessModel.java:151",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralProcessModel.Attribute.LOCATION",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/peripherals/PeripheralProcessModel.java:147",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralProcessModel.Attribute.STATE",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/peripherals/PeripheralProcessModel.java:159",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionMode.AUTO",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:94",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionMode.MANUAL",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:98",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionMode.RECONNECT",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:102",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionState.CONNECTED",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:73",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionState.CONNECTING",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:69",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionState.DISCONNECTED",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:83",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionState.DISCONNECTING",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:77",
+   "symbol": null
+  },
+  {
+   "fact": "enum:ReroutingType.FORCED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/ReroutingType.java:20",
+   "symbol": null
+  },
+  {
+   "fact": "enum:ReroutingType.REGULAR",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/ReroutingType.java:15",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SpeedProperty.Unit.KM_H",
+   "src": "opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/SpeedProperty.java:62",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SpeedProperty.Unit.MM_S",
+   "src": "opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/SpeedProperty.java:70",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SpeedProperty.Unit.M_S",
+   "src": "opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/SpeedProperty.java:66",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.BLOCKS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:282",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.LAYOUT",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:258",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.LINKS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:274",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.LOCATIONS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:266",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.LOCATION_TYPES",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:278",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.OTHER_GRAPHICAL_ELEMENTS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:286",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.PATHS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:270",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.POINTS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:262",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.VEHICLES",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:254",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModelTransitionEvent.Stage.LOADED",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/event/SystemModelTransitionEvent.java:89",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModelTransitionEvent.Stage.LOADING",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/event/SystemModelTransitionEvent.java:85",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModelTransitionEvent.Stage.UNLOADED",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/event/SystemModelTransitionEvent.java:81",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModelTransitionEvent.Stage.UNLOADING",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/event/SystemModelTransitionEvent.java:77",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TCSObjectEvent.Type.OBJECT_CREATED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/TCSObjectEvent.java:125",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TCSObjectEvent.Type.OBJECT_MODIFIED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/TCSObjectEvent.java:129",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TCSObjectEvent.Type.OBJECT_REMOVED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/TCSObjectEvent.java:133",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrder.State.ACTIVE",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1002",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrder.State.BEING_PROCESSED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1011",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrder.State.DISPATCHABLE",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1007",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrder.State.FAILED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1025",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrder.State.FINISHED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1021",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrder.State.RAW",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:997",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrder.State.UNROUTABLE",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1031",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrder.State.WITHDRAWN",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1017",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.RouteTO.ReroutingTypeTO.FORCED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:124",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.RouteTO.ReroutingTypeTO.REGULAR",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:123",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.RouteTO.VehicleOrientationTO.BACKWARD",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:118",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.RouteTO.VehicleOrientationTO.FORWARD",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:117",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.RouteTO.VehicleOrientationTO.UNDEFINED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:119",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.StateTO.FAILED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:133",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.StateTO.FINISHED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:132",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.StateTO.OPERATING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:131",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.StateTO.PRISTINE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:129",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.DriveOrderTO.StateTO.TRAVELLING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:130",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.StateTO.ACTIVE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:139",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.StateTO.BEING_PROCESSED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:141",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.StateTO.DISPATCHABLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:140",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.StateTO.FAILED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:144",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.StateTO.FINISHED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:143",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.StateTO.RAW",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:138",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.StateTO.UNROUTABLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:145",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TransportOrderEventTO.StateTO.WITHDRAWN",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:142",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserMessageHelper.Type.ERROR",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/util/UserMessageHelper.java:161",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserMessageHelper.Type.INFO",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/util/UserMessageHelper.java:157",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserMessageHelper.Type.PLAIN",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/util/UserMessageHelper.java:153",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserMessageHelper.Type.QUESTION",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/util/UserMessageHelper.java:165",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserNotification.Level.IMPORTANT",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/notification/UserNotification.java:146",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserNotification.Level.INFORMATIONAL",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/notification/UserNotification.java:138",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserNotification.Level.NOTEWORTHY",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/notification/UserNotification.java:142",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.IntegrationLevel.TO_BE_IGNORED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1401",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.IntegrationLevel.TO_BE_NOTICED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1406",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.IntegrationLevel.TO_BE_RESPECTED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1410",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.IntegrationLevel.TO_BE_UTILIZED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1414",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.Orientation.BACKWARD",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1452",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.Orientation.FORWARD",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1447",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.Orientation.UNDEFINED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1456",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.ProcState.AWAITING_ORDER",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1430",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.ProcState.IDLE",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1425",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.ProcState.PROCESSING_ORDER",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1434",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.State.CHARGING",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1390",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.State.ERROR",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1378",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.State.EXECUTING",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1386",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.State.IDLE",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1382",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.State.UNAVAILABLE",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1374",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.State.UNKNOWN",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1369",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEntry.Attribute.COMM_ADAPTER",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/extensions/controlcenter/vehicles/VehicleEntry.java:191",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEntry.Attribute.COMM_ADAPTER_FACTORY",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/extensions/controlcenter/vehicles/VehicleEntry.java:187",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEntry.Attribute.PROCESS_MODEL",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/extensions/controlcenter/vehicles/VehicleEntry.java:183",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.IntegrationLevelTO.TO_BE_IGNORED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:139",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.IntegrationLevelTO.TO_BE_NOTICED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:140",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.IntegrationLevelTO.TO_BE_RESPECTED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:141",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.IntegrationLevelTO.TO_BE_UTILIZED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:142",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.ProcStateTO.AWAITING_ORDER",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:156",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.ProcStateTO.IDLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:155",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.ProcStateTO.PROCESSING_ORDER",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:157",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.StateTO.CHARGING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:151",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.StateTO.ERROR",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:148",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.StateTO.EXECUTING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:150",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.StateTO.IDLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:149",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.StateTO.UNAVAILABLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:147",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.StateTO.UNKNOWN",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:146",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.BOUNDING_BOX",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:723",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.COMMAND_ENQUEUED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:735",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.COMMAND_EXECUTED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:743",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.COMMAND_FAILED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:747",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.COMMAND_SENT",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:739",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.COMM_ADAPTER_CONNECTED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:699",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.COMM_ADAPTER_ENABLED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:695",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.COMM_ADAPTER_EVENT",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:731",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.ENERGY_LEVEL",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:711",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.INTEGRATION_LEVEL_CHANGE_REQUESTED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:759",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.LOAD_HANDLING_DEVICES",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:715",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.POSE",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:707",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.POSITION",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:703",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.POSITION_RESOLUTION_REQUESTED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:768",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.STATE",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:719",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.TRANSPORT_ORDER_PROPERTY",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:755",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.TRANSPORT_ORDER_WITHDRAWAL_REQUESTED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:763",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.USER_NOTIFICATION",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:727",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleProcessModel.Attribute.VEHICLE_PROPERTY",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:751",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.IntegrationLevel.TO_BE_IGNORED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:200",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.IntegrationLevel.TO_BE_NOTICED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:201",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.IntegrationLevel.TO_BE_RESPECTED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:202",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.IntegrationLevel.TO_BE_UTILIZED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:203",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.ProcState.AWAITING_ORDER",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:211",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.ProcState.IDLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:210",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.ProcState.PROCESSING_ORDER",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:212",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.State.CHARGING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:193",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.State.ERROR",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:190",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.State.EXECUTING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:192",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.State.IDLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:191",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.State.UNAVAILABLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:189",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.State.UNKNOWN",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:188",
+   "symbol": null
+  },
+  {
+   "fact": "error:IllegalArgumentException:%s: Cannot change integration level to %s while processing orders.",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/services/StandardVehicleService.java:353",
+   "symbol": "org.opentcs.kernel.services.StandardVehicleService#updateVehicleIntegrationLevel"
+  },
+  {
+   "fact": "error:IllegalArgumentException:Could not parse JSON input",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/JsonBinder.java:47",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.common.JsonBinder#fromJson"
+  },
+  {
+   "fact": "error:IllegalArgumentException:Malformed maxRoutesPerDestinationPoint: ",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:788",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#maxRoutePerDestinationPoint"
+  },
+  {
+   "fact": "error:IllegalArgumentException:No vehicle entry found for",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/services/StandardVehicleService.java:274",
+   "symbol": "org.opentcs.kernel.services.StandardVehicleService#disableCommAdapter"
+  },
+  {
+   "fact": "error:IllegalArgumentException:No vehicle entry found for ",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/services/StandardVehicleService.java:289",
+   "symbol": "org.opentcs.kernel.services.StandardVehicleService#enableCommAdapter"
+  },
+  {
+   "fact": "error:IllegalArgumentException:Resources for the vehicle's current position may not be allocated now.",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/DefaultVehicleController.java:393",
+   "symbol": "org.opentcs.kernel.vehicles.DefaultVehicleController#setTransportOrder"
+  },
+  {
+   "fact": "error:IllegalArgumentException:String.format(\n              String.valueOf(messageTemplate)",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/util/Assertions.java:46",
+   "symbol": "org.opentcs.util.Assertions#checkArgument"
+  },
+  {
+   "fact": "error:IllegalArgumentException:The vehicle's current position is unknown.",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/DefaultVehicleController.java:380",
+   "symbol": "org.opentcs.kernel.vehicles.DefaultVehicleController#setTransportOrder"
+  },
+  {
+   "fact": "error:IllegalArgumentException:Unable to allocate resources for the vehicle's current position.",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/DefaultVehicleController.java:411",
+   "symbol": "org.opentcs.kernel.vehicles.DefaultVehicleController#setTransportOrder"
+  },
+  {
+   "fact": "error:IllegalArgumentException:Unknown vehicle driver class name: ",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/VehicleHandler.java:207",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.VehicleHandler#putVehicleCommAdapter"
+  },
+  {
+   "fact": "error:IllegalArgumentException:Unknown vehicle position: ",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/VehicleHandler.java:301",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.VehicleHandler#getVehicleRoutes"
+  },
+  {
+   "fact": "error:IllegalArgumentException:Updating a vehicle's envelope key while the vehicle is processing an order or ",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/services/StandardVehicleService.java:420",
+   "symbol": "org.opentcs.kernel.services.StandardVehicleService#updateVehicleEnvelopeKey"
+  },
+  {
+   "fact": "error:IllegalStateException:Could not get path from '%s' to '%s'",
+   "src": "opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/routing/jgrapht/ShortestPathPointRouter.java:120",
+   "symbol": "org.opentcs.strategies.basic.routing.jgrapht.ShortestPathPointRouter#getPath"
+  },
+  {
+   "fact": "error:IllegalStateException:Could not produce JSON output",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/JsonBinder.java:67",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.common.JsonBinder#toJson"
+  },
+  {
+   "fact": "error:IllegalStateException:Unexpectedly interrupted",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/KernelExecutorWrapper.java:56",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.common.KernelExecutorWrapper#callAndWait"
+  },
+  {
+   "fact": "error:KernelRuntimeException:exc.getCause()",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/KernelExecutorWrapper.java:62",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.common.KernelExecutorWrapper#callAndWait"
+  },
+  {
+   "fact": "error:ObjectUnknownException:Unknown destination point: ",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/VehicleHandler.java:320",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.VehicleHandler#getVehicleRoutes"
+  },
+  {
+   "fact": "error:ObjectUnknownException:Unknown resource: ",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/VehicleHandler.java:348",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.VehicleHandler#getVehicleRoutes"
+  },
+  {
+   "fact": "error:ObjectUnknownException:Unknown source point: ",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/VehicleHandler.java:308",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.VehicleHandler#getVehicleRoutes"
+  },
+  {
+   "fact": "error:ObjectUnknownException:Unknown vehicle: ",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/TransportOrderDispatcherHandler.java:84",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.TransportOrderDispatcherHandler#withdrawByVehicle"
+  },
+  {
+   "fact": "error:ResourceAllocationException:%s: Requested resources not available for allocation: %s",
+   "src": "opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/scheduling/DefaultScheduler.java:234",
+   "symbol": "org.opentcs.strategies.basic.scheduling.DefaultScheduler#allocateNow"
+  },
+  {
+   "fact": "param:path:NAME",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:291",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehicleCommAdapterEnabled"
+  },
+  {
+   "fact": "param:query:disableVehicle",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:832",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#disableVehicle"
+  },
+  {
+   "fact": "param:query:forced",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:836",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#forced"
+  },
+  {
+   "fact": "param:query:immediate",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:828",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#immediate"
+  },
+  {
+   "fact": "param:query:maxRoutesPerDestinationPoint",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:782",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#maxRoutePerDestinationPoint"
+  },
+  {
+   "fact": "param:query:newValue",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:291",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutVehicleCommAdapterEnabled"
+  },
+  {
+   "fact": "param:query:procState",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:609",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetVehicles"
+  },
+  {
+   "fact": "status:IllegalArgumentException->400",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:175",
+   "symbol": null
+  },
+  {
+   "fact": "status:IllegalStateException->500",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:180",
+   "symbol": null
+  },
+  {
+   "fact": "status:KernelRuntimeException->500",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:197",
+   "symbol": null
+  },
+  {
+   "fact": "status:ObjectExistsException->409",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:192",
+   "symbol": null
+  },
+  {
+   "fact": "status:ObjectUnknownException->404",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:187",
+   "symbol": null
+  }
+ ]
+}

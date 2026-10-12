@@ -1,0 +1,595 @@
+# SME review queue — Vehicles (/v1/vehicles)
+
+Only exceptions are listed. Record decisions in `dispositions.jsonl` as `{"item","disposition","note","sme"}` with disposition INTENDED, DOC_BUG or CODE_BUG.
+
+## 1. Code vs. published docs
+
+| Item | Verdict | Finding | Suggested |
+|---|---|---|---|
+| D-0899 | DOC_ONLY | The documentation specifies an optional 'type' property with default 'TransportOrder' on OrderStatusMessage, but the code type OrderStatusMessage does not have this property. | DOC_BUG (stale doc) or CODE_BUG |
+| D-0900 | DOC_ONLY | The documentation specifies allowed values for OrderStatusMessage.type, but the code type OrderStatusMessage does not define a 'type' property. | DOC_BUG (stale doc) or CODE_BUG |
+| D-0901 | DOC_ONLY | The documentation specifies 'sequenceNumber' on OrderStatusMessage, but the code type OrderStatusMessage does not have a sequenceNumber property. | DOC_BUG (stale doc) or CODE_BUG |
+| D-1599 | DOC_ONLY | Documentation states 'at/below which' the vehicle's energy level is considered 'sufficiently recharged', but code implements 'at/above which' (Vehicle.java: isEnergyLevelSufficientlyRecharged checks energyLevel >= energyLevelSufficientlyRecharged). | DOC_BUG (stale doc) or CODE_BUG |
+| D-1600 | DOC_ONLY | Documentation states 'at/below which' the vehicle's energy level is considered 'fully recharged', but code implements 'at/above which' (Vehicle.java: isEnergyLevelFullyRecharged checks energyLevel >= energyLevelFullyRecharged). | DOC_BUG (stale doc) or CODE_BUG |
+| D-2193 | DOC_ONLY | The documentation specifies fallback behavior using the vehicle's current position if sourcePoint is null or not set, but the codebase does not implement a RoutesRequest or vehicle route computation endpoint. | DOC_BUG (stale doc) or CODE_BUG |
+| D-0188 | DOC_ONLY | The feature code does not implement an UNAVAILABLE vehicle processing state; Vehicle.ProcState only includes UNCOMMISSIONED, IDLE, AWAITING_ORDER, and PROCESSING_ORDER. | DOC_BUG (stale doc) or CODE_BUG |
+| D-0189 | DOC_ONLY | The feature code does not support dispatching vehicles in state UNAVAILABLE as the UNAVAILABLE processing state does not exist in openTCS. | DOC_BUG (stale doc) or CODE_BUG |
+
+## 2. Claims the verifier corrected or rejected
+
+None.
+
+## 3. Verified claims with confidence below 0.7
+
+None.
+
+## 4. Facts not explained by claims
+
+- `body:PostVehicleCommAdapterMessageRequestTO` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:301)
+- `body:PostVehicleRoutesRequestTO` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:330)
+- `body:PutVehicleAcceptableOrderTypesTO` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:667)
+- `body:PutVehicleAllowedOrderTypesTO` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:652)
+- `body:PutVehicleEnergyLevelThresholdSetTO` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:678)
+- `const:HttpConstants.CONTENT_TYPE_APPLICATION_JSON_UTF8` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:310)
+- `const:HttpConstants.CONTENT_TYPE_TEXT_PLAIN_UTF8` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:272)
+- `const:LoopbackAdapterConstants.PROPKEY_INITIAL_POSITION` (opentcs-commadapter-loopback/src/main/java/org/opentcs/virtualvehicle/LoopbackCommunicationAdapter.java:166)
+- `const:MovementCommand.NO_OPERATION` (opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/MovementCommandMapper.java:70)
+- `const:ResourceAvoidanceExtractor.ResourcesToAvoid.EMPTY` (opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/routing/ResourceAvoidanceExtractor.java:64)
+- `const:SseConstants.EVENT_TYPE_ENVIRONMENTAL_ENTITIES` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1SseHandler.java:180)
+- `const:SseConstants.EVENT_TYPE_LOCATIONS` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/SseHandler.java:192)
+- `const:SseConstants.EVENT_TYPE_ORDER_SEQUENCES` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1SseHandler.java:168)
+- `const:SseConstants.EVENT_TYPE_PATHS` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/SseHandler.java:186)
+- `const:SseConstants.EVENT_TYPE_PERIPHERAL_JOBS` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1SseHandler.java:174)
+- `const:SseConstants.EVENT_TYPE_TRANSPORT_ORDERS` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1SseHandler.java:162)
+- `const:SseConstants.EVENT_TYPE_USER_NOTIFICATIONS` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v8/SseHandler.java:206)
+- `const:SseConstants.EVENT_TYPE_VEHICLES` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1SseHandler.java:156)
+- `const:TransportOrder.ROUTE_STEP_INDEX_DEFAULT` (opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/DefaultVehicleController.java:502)
+- `const:Vehicle.PREFERRED_ADAPTER` (opentcs-kernel/src/main/java/org/opentcs/kernel/extensions/controlcenter/vehicles/AttachmentManager.java:208)
+- `endpoint:GET /v1/vehicles` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:196)
+- `endpoint:GET /v1/vehicles/{NAME}` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:195)
+- `endpoint:GET /v1/vehicles/{NAME}/commAdapter/attachmentInformation` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:175)
+- `endpoint:POST /v1/vehicles/dispatcher/trigger` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:169)
+- `endpoint:POST /v1/vehicles/{NAME}/commAdapter/message` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:180)
+- `endpoint:POST /v1/vehicles/{NAME}/rerouteRequest` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:184)
+- `endpoint:POST /v1/vehicles/{NAME}/routeComputationQuery` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:170)
+- `endpoint:POST /v1/vehicles/{NAME}/withdrawal` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:183)
+- `endpoint:PUT /v1/vehicles/{NAME}/acceptableOrderTypes` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:186)
+- `endpoint:PUT /v1/vehicles/{NAME}/allowedOrderTypes` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:185)
+- `endpoint:PUT /v1/vehicles/{NAME}/commAdapter/attachment` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:171)
+- `endpoint:PUT /v1/vehicles/{NAME}/commAdapter/enabled` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:179)
+- `endpoint:PUT /v1/vehicles/{NAME}/energyLevelThresholdSet` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:190)
+- `endpoint:PUT /v1/vehicles/{NAME}/envelopeKey` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:194)
+- `endpoint:PUT /v1/vehicles/{NAME}/integrationLevel` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:182)
+- `endpoint:PUT /v1/vehicles/{NAME}/paused` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:181)
+- `enum:AngleProperty.Unit.DEG` (opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/AngleProperty.java:77)
+- `enum:AngleProperty.Unit.RAD` (opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/AngleProperty.java:81)
+- `enum:Block.Type.SAME_DIRECTION_ONLY` (opentcs-api-base/src/main/java/org/opentcs/data/model/Block.java:214)
+- `enum:Block.Type.SINGLE_VEHICLE_ONLY` (opentcs-api-base/src/main/java/org/opentcs/data/model/Block.java:209)
+- `enum:CommandProcessingTracker.PendingCommandState.ALLOCATION_PENDING` (opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/CommandProcessingTracker.java:747)
+- `enum:CommandProcessingTracker.PendingCommandState.SENDING_PENDING` (opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/CommandProcessingTracker.java:752)
+- `enum:CommandProcessingTracker.PendingCommandState.UNDEFINED` (opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/CommandProcessingTracker.java:743)
+- `enum:CommandProcessingTracker.PendingCommandState.WONT_SEND` (opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/CommandProcessingTracker.java:757)
+- `enum:DefaultDispatcherConfiguration.ReroutingImpossibleStrategy.IGNORE_PATH_LOCKS` (opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/dispatching/DefaultDispatcherConfiguration.java:200)
+- `enum:DefaultDispatcherConfiguration.ReroutingImpossibleStrategy.PAUSE_AT_PATH_LOCK` (opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/dispatching/DefaultDispatcherConfiguration.java:209)
+- `enum:DefaultDispatcherConfiguration.ReroutingImpossibleStrategy.PAUSE_IMMEDIATELY` (opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/dispatching/DefaultDispatcherConfiguration.java:204)
+- `enum:DestinationState.State.FAILED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:136)
+- `enum:DestinationState.State.FINISHED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:132)
+- `enum:DestinationState.State.OPERATING` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:128)
+- `enum:DestinationState.State.PRISTINE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:119)
+- `enum:DestinationState.State.TRAVELLING` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:123)
+- `enum:DriveOrder.State.FAILED` (opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:368)
+- `enum:DriveOrder.State.FINISHED` (opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:364)
+- `enum:DriveOrder.State.OPERATING` (opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:360)
+- `enum:DriveOrder.State.PRISTINE` (opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:352)
+- `enum:DriveOrder.State.TRAVELLING` (opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:356)
+- `enum:EnvironmentalEntity.IntegrationLevel.TO_BE_IGNORED` (opentcs-api-base/src/main/java/org/opentcs/data/model/EnvironmentalEntity.java:462)
+- `enum:EnvironmentalEntity.IntegrationLevel.TO_BE_NOTICED` (opentcs-api-base/src/main/java/org/opentcs/data/model/EnvironmentalEntity.java:466)
+- `enum:EnvironmentalEntity.IntegrationLevel.TO_BE_RESPECTED` (opentcs-api-base/src/main/java/org/opentcs/data/model/EnvironmentalEntity.java:470)
+- `enum:EnvironmentalEntityEventTO.IntegrationLevelTO.TO_BE_IGNORED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/EnvironmentalEntityEventTO.java:105)
+- `enum:EnvironmentalEntityEventTO.IntegrationLevelTO.TO_BE_NOTICED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/EnvironmentalEntityEventTO.java:106)
+- `enum:EnvironmentalEntityEventTO.IntegrationLevelTO.TO_BE_RESPECTED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/EnvironmentalEntityEventTO.java:107)
+- `enum:EnvironmentalEntityEventTO.TypeTO.OBJECT` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/EnvironmentalEntityEventTO.java:100)
+- `enum:EnvironmentalEntityEventTO.TypeTO.ZONE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/EnvironmentalEntityEventTO.java:101)
+- `enum:Kernel.State.MODELLING` (opentcs-api-base/src/main/java/org/opentcs/access/Kernel.java:49)
+- `enum:Kernel.State.OPERATING` (opentcs-api-base/src/main/java/org/opentcs/access/Kernel.java:54)
+- `enum:Kernel.State.SHUTDOWN` (opentcs-api-base/src/main/java/org/opentcs/access/Kernel.java:58)
+- `enum:KernelControlCenterApplication.ConnectionState.CONNECTING` (opentcs-kernelcontrolcenter/src/main/java/org/opentcs/kernelcontrolcenter/KernelControlCenterApplication.java:180)
+- `enum:KernelControlCenterApplication.ConnectionState.OFFLINE` (opentcs-kernelcontrolcenter/src/main/java/org/opentcs/kernelcontrolcenter/KernelControlCenterApplication.java:176)
+- `enum:KernelControlCenterApplication.ConnectionState.ONLINE` (opentcs-kernelcontrolcenter/src/main/java/org/opentcs/kernelcontrolcenter/KernelControlCenterApplication.java:184)
+- `enum:KernelStateChangeEvent.State.DISCONNECTED` (opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/event/KernelStateChangeEvent.java:86)
+- `enum:KernelStateChangeEvent.State.LOGGED_IN` (opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/event/KernelStateChangeEvent.java:82)
+- `enum:KernelStateChangeEvent.State.MODELLING` (opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/event/KernelStateChangeEvent.java:70)
+- `enum:KernelStateChangeEvent.State.OPERATING` (opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/event/KernelStateChangeEvent.java:74)
+- `enum:KernelStateChangeEvent.State.SHUTDOWN` (opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/event/KernelStateChangeEvent.java:78)
+- `enum:LengthProperty.Unit.CM` (opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/LengthProperty.java:66)
+- `enum:LengthProperty.Unit.KM` (opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/LengthProperty.java:74)
+- `enum:LengthProperty.Unit.M` (opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/LengthProperty.java:70)
+- `enum:LengthProperty.Unit.MM` (opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/LengthProperty.java:62)
+- `enum:LocalVehicleEntry.Attribute.ATTACHMENT_INFORMATION` (opentcs-kernelcontrolcenter/src/main/java/org/opentcs/kernelcontrolcenter/vehicles/LocalVehicleEntry.java:115)
+- `enum:LocalVehicleEntry.Attribute.PROCESS_MODEL` (opentcs-kernelcontrolcenter/src/main/java/org/opentcs/kernelcontrolcenter/vehicles/LocalVehicleEntry.java:111)
+- `enum:ModelRestorationProgressStatus.CLEANUP` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:18)
+- `enum:ModelRestorationProgressStatus.LOADING_BLOCKS` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:42)
+- `enum:ModelRestorationProgressStatus.LOADING_LOCATIONS` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:34)
+- `enum:ModelRestorationProgressStatus.LOADING_PATHS` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:30)
+- `enum:ModelRestorationProgressStatus.LOADING_POINTS` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:26)
+- `enum:ModelRestorationProgressStatus.LOADING_VEHICLES` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:38)
+- `enum:ModelRestorationProgressStatus.SET_UP_DIRECTORY_TREE` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:50)
+- `enum:ModelRestorationProgressStatus.SET_UP_MODEL_VIEW` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:46)
+- `enum:ModelRestorationProgressStatus.SET_UP_WORKING_AREA` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:54)
+- `enum:ModelRestorationProgressStatus.START_LOADING_MODEL` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/ModelRestorationProgressStatus.java:22)
+- `enum:OperationMode.MODELLING` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/OperationMode.java:20)
+- `enum:OperationMode.OPERATING` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/OperationMode.java:24)
+- `enum:OperationMode.UNDEFINED` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/application/OperationMode.java:16)
+- `enum:OperationsDeskApplication.ConnectionState.CONNECTING` (opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/application/OperationsDeskApplication.java:170)
+- `enum:OperationsDeskApplication.ConnectionState.OFFLINE` (opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/application/OperationsDeskApplication.java:166)
+- `enum:OperationsDeskApplication.ConnectionState.ONLINE` (opentcs-operationsdesk/src/main/java/org/opentcs/operationsdesk/application/OperationsDeskApplication.java:174)
+- `enum:OrderStatusMessage.OrderState.ACTIVE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:159)
+- `enum:OrderStatusMessage.OrderState.BEING_PROCESSED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:167)
+- `enum:OrderStatusMessage.OrderState.DISPATCHABLE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:163)
+- `enum:OrderStatusMessage.OrderState.FAILED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:180)
+- `enum:OrderStatusMessage.OrderState.FINISHED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:176)
+- `enum:OrderStatusMessage.OrderState.RAW` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:154)
+- `enum:OrderStatusMessage.OrderState.UNROUTABLE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:184)
+- `enum:OrderStatusMessage.OrderState.WITHDRAWN` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:172)
+- `enum:PercentProperty.Unit.PERCENT` (opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/PercentProperty.java:66)
+- `enum:PeripheralJob.State.BEING_PROCESSED` (opentcs-api-base/src/main/java/org/opentcs/data/peripherals/PeripheralJob.java:428)
+- `enum:PeripheralJob.State.FAILED` (opentcs-api-base/src/main/java/org/opentcs/data/peripherals/PeripheralJob.java:436)
+- `enum:PeripheralJob.State.FINISHED` (opentcs-api-base/src/main/java/org/opentcs/data/peripherals/PeripheralJob.java:432)
+- `enum:PeripheralJob.State.TO_BE_PROCESSED` (opentcs-api-base/src/main/java/org/opentcs/data/peripherals/PeripheralJob.java:424)
+- `enum:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.ExecutionTriggerTO.AFTER_ALLOCATION` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:72)
+- `enum:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.ExecutionTriggerTO.AFTER_MOVEMENT` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:73)
+- `enum:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.ExecutionTriggerTO.IMMEDIATE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:71)
+- `enum:PeripheralJobEventTO.PeripheralJobTO.StateTO.BEING_PROCESSED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:79)
+- `enum:PeripheralJobEventTO.PeripheralJobTO.StateTO.FAILED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:81)
+- `enum:PeripheralJobEventTO.PeripheralJobTO.StateTO.FINISHED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:80)
+- `enum:PeripheralJobEventTO.PeripheralJobTO.StateTO.TO_BE_PROCESSED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:78)
+- `enum:PeripheralJobStateTO.BEING_PROCESSED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralJobStateTO.java:8)
+- `enum:PeripheralJobStateTO.FAILED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralJobStateTO.java:10)
+- `enum:PeripheralJobStateTO.FINISHED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralJobStateTO.java:9)
+- `enum:PeripheralJobStateTO.TO_BE_PROCESSED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralJobStateTO.java:7)
+- `enum:PeripheralOperationTO.ExecutionTrigger.AFTER_ALLOCATION` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralOperationTO.java:85)
+- `enum:PeripheralOperationTO.ExecutionTrigger.AFTER_MOVEMENT` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralOperationTO.java:86)
+- `enum:PeripheralOperationTO.ExecutionTrigger.IMMEDIATE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralOperationTO.java:84)
+- `enum:PeripheralProcessModel.Attribute.COMM_ADAPTER_CONNECTED` (opentcs-api-base/src/main/java/org/opentcs/drivers/peripherals/PeripheralProcessModel.java:155)
+- `enum:PeripheralProcessModel.Attribute.COMM_ADAPTER_ENABLED` (opentcs-api-base/src/main/java/org/opentcs/drivers/peripherals/PeripheralProcessModel.java:151)
+- `enum:PeripheralProcessModel.Attribute.LOCATION` (opentcs-api-base/src/main/java/org/opentcs/drivers/peripherals/PeripheralProcessModel.java:147)
+- `enum:PeripheralProcessModel.Attribute.STATE` (opentcs-api-base/src/main/java/org/opentcs/drivers/peripherals/PeripheralProcessModel.java:159)
+- `enum:PortalManager.ConnectionMode.AUTO` (opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:94)
+- `enum:PortalManager.ConnectionMode.MANUAL` (opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:98)
+- `enum:PortalManager.ConnectionMode.RECONNECT` (opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:102)
+- `enum:PortalManager.ConnectionState.CONNECTED` (opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:73)
+- `enum:PortalManager.ConnectionState.CONNECTING` (opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:69)
+- `enum:PortalManager.ConnectionState.DISCONNECTED` (opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:83)
+- `enum:PortalManager.ConnectionState.DISCONNECTING` (opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:77)
+- `enum:ReroutingType.FORCED` (opentcs-api-base/src/main/java/org/opentcs/data/order/ReroutingType.java:20)
+- `enum:ReroutingType.REGULAR` (opentcs-api-base/src/main/java/org/opentcs/data/order/ReroutingType.java:15)
+- `enum:SpeedProperty.Unit.KM_H` (opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/SpeedProperty.java:62)
+- `enum:SpeedProperty.Unit.MM_S` (opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/SpeedProperty.java:70)
+- `enum:SpeedProperty.Unit.M_S` (opentcs-plantoverview-base/src/main/java/org/opentcs/guing/base/components/properties/type/SpeedProperty.java:66)
+- `enum:SystemModel.FolderKey.BLOCKS` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:282)
+- `enum:SystemModel.FolderKey.LAYOUT` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:258)
+- `enum:SystemModel.FolderKey.LINKS` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:274)
+- `enum:SystemModel.FolderKey.LOCATIONS` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:266)
+- `enum:SystemModel.FolderKey.LOCATION_TYPES` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:278)
+- `enum:SystemModel.FolderKey.OTHER_GRAPHICAL_ELEMENTS` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:286)
+- `enum:SystemModel.FolderKey.PATHS` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:270)
+- `enum:SystemModel.FolderKey.POINTS` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:262)
+- `enum:SystemModel.FolderKey.VEHICLES` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:254)
+- `enum:SystemModelTransitionEvent.Stage.LOADED` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/event/SystemModelTransitionEvent.java:89)
+- `enum:SystemModelTransitionEvent.Stage.LOADING` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/event/SystemModelTransitionEvent.java:85)
+- `enum:SystemModelTransitionEvent.Stage.UNLOADED` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/event/SystemModelTransitionEvent.java:81)
+- `enum:SystemModelTransitionEvent.Stage.UNLOADING` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/event/SystemModelTransitionEvent.java:77)
+- `enum:TCSObjectEvent.Type.OBJECT_CREATED` (opentcs-api-base/src/main/java/org/opentcs/data/TCSObjectEvent.java:125)
+- `enum:TCSObjectEvent.Type.OBJECT_MODIFIED` (opentcs-api-base/src/main/java/org/opentcs/data/TCSObjectEvent.java:129)
+- `enum:TCSObjectEvent.Type.OBJECT_REMOVED` (opentcs-api-base/src/main/java/org/opentcs/data/TCSObjectEvent.java:133)
+- `enum:TransportOrder.State.ACTIVE` (opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1002)
+- `enum:TransportOrder.State.BEING_PROCESSED` (opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1011)
+- `enum:TransportOrder.State.DISPATCHABLE` (opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1007)
+- `enum:TransportOrder.State.FAILED` (opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1025)
+- `enum:TransportOrder.State.FINISHED` (opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1021)
+- `enum:TransportOrder.State.RAW` (opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:997)
+- `enum:TransportOrder.State.UNROUTABLE` (opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1031)
+- `enum:TransportOrder.State.WITHDRAWN` (opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1017)
+- `enum:TransportOrderEventTO.DriveOrderTO.RouteTO.ReroutingTypeTO.FORCED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:124)
+- `enum:TransportOrderEventTO.DriveOrderTO.RouteTO.ReroutingTypeTO.REGULAR` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:123)
+- `enum:TransportOrderEventTO.DriveOrderTO.RouteTO.VehicleOrientationTO.BACKWARD` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:118)
+- `enum:TransportOrderEventTO.DriveOrderTO.RouteTO.VehicleOrientationTO.FORWARD` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:117)
+- `enum:TransportOrderEventTO.DriveOrderTO.RouteTO.VehicleOrientationTO.UNDEFINED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:119)
+- `enum:TransportOrderEventTO.DriveOrderTO.StateTO.FAILED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:133)
+- `enum:TransportOrderEventTO.DriveOrderTO.StateTO.FINISHED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:132)
+- `enum:TransportOrderEventTO.DriveOrderTO.StateTO.OPERATING` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:131)
+- `enum:TransportOrderEventTO.DriveOrderTO.StateTO.PRISTINE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:129)
+- `enum:TransportOrderEventTO.DriveOrderTO.StateTO.TRAVELLING` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:130)
+- `enum:TransportOrderEventTO.StateTO.ACTIVE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:139)
+- `enum:TransportOrderEventTO.StateTO.BEING_PROCESSED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:141)
+- `enum:TransportOrderEventTO.StateTO.DISPATCHABLE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:140)
+- `enum:TransportOrderEventTO.StateTO.FAILED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:144)
+- `enum:TransportOrderEventTO.StateTO.FINISHED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:143)
+- `enum:TransportOrderEventTO.StateTO.RAW` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:138)
+- `enum:TransportOrderEventTO.StateTO.UNROUTABLE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:145)
+- `enum:TransportOrderEventTO.StateTO.WITHDRAWN` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/TransportOrderEventTO.java:142)
+- `enum:UserMessageHelper.Type.ERROR` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/util/UserMessageHelper.java:161)
+- `enum:UserMessageHelper.Type.INFO` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/util/UserMessageHelper.java:157)
+- `enum:UserMessageHelper.Type.PLAIN` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/util/UserMessageHelper.java:153)
+- `enum:UserMessageHelper.Type.QUESTION` (opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/util/UserMessageHelper.java:165)
+- `enum:UserNotification.Level.IMPORTANT` (opentcs-api-base/src/main/java/org/opentcs/data/notification/UserNotification.java:146)
+- `enum:UserNotification.Level.INFORMATIONAL` (opentcs-api-base/src/main/java/org/opentcs/data/notification/UserNotification.java:138)
+- `enum:UserNotification.Level.NOTEWORTHY` (opentcs-api-base/src/main/java/org/opentcs/data/notification/UserNotification.java:142)
+- `enum:Vehicle.IntegrationLevel.TO_BE_IGNORED` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1401)
+- `enum:Vehicle.IntegrationLevel.TO_BE_NOTICED` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1406)
+- `enum:Vehicle.IntegrationLevel.TO_BE_RESPECTED` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1410)
+- `enum:Vehicle.IntegrationLevel.TO_BE_UTILIZED` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1414)
+- `enum:Vehicle.Orientation.BACKWARD` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1452)
+- `enum:Vehicle.Orientation.FORWARD` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1447)
+- `enum:Vehicle.Orientation.UNDEFINED` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1456)
+- `enum:Vehicle.ProcState.AWAITING_ORDER` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1430)
+- `enum:Vehicle.ProcState.IDLE` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1425)
+- `enum:Vehicle.ProcState.PROCESSING_ORDER` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1434)
+- `enum:Vehicle.State.CHARGING` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1390)
+- `enum:Vehicle.State.ERROR` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1378)
+- `enum:Vehicle.State.EXECUTING` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1386)
+- `enum:Vehicle.State.IDLE` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1382)
+- `enum:Vehicle.State.UNAVAILABLE` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1374)
+- `enum:Vehicle.State.UNKNOWN` (opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1369)
+- `enum:VehicleEntry.Attribute.COMM_ADAPTER` (opentcs-kernel/src/main/java/org/opentcs/kernel/extensions/controlcenter/vehicles/VehicleEntry.java:191)
+- `enum:VehicleEntry.Attribute.COMM_ADAPTER_FACTORY` (opentcs-kernel/src/main/java/org/opentcs/kernel/extensions/controlcenter/vehicles/VehicleEntry.java:187)
+- `enum:VehicleEntry.Attribute.PROCESS_MODEL` (opentcs-kernel/src/main/java/org/opentcs/kernel/extensions/controlcenter/vehicles/VehicleEntry.java:183)
+- `enum:VehicleEventTO.IntegrationLevelTO.TO_BE_IGNORED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:139)
+- `enum:VehicleEventTO.IntegrationLevelTO.TO_BE_NOTICED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:140)
+- `enum:VehicleEventTO.IntegrationLevelTO.TO_BE_RESPECTED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:141)
+- `enum:VehicleEventTO.IntegrationLevelTO.TO_BE_UTILIZED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:142)
+- `enum:VehicleEventTO.ProcStateTO.AWAITING_ORDER` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:156)
+- `enum:VehicleEventTO.ProcStateTO.IDLE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:155)
+- `enum:VehicleEventTO.ProcStateTO.PROCESSING_ORDER` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:157)
+- `enum:VehicleEventTO.StateTO.CHARGING` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:151)
+- `enum:VehicleEventTO.StateTO.ERROR` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:148)
+- `enum:VehicleEventTO.StateTO.EXECUTING` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:150)
+- `enum:VehicleEventTO.StateTO.IDLE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:149)
+- `enum:VehicleEventTO.StateTO.UNAVAILABLE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:147)
+- `enum:VehicleEventTO.StateTO.UNKNOWN` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:146)
+- `enum:VehicleProcessModel.Attribute.BOUNDING_BOX` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:723)
+- `enum:VehicleProcessModel.Attribute.COMMAND_ENQUEUED` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:735)
+- `enum:VehicleProcessModel.Attribute.COMMAND_EXECUTED` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:743)
+- `enum:VehicleProcessModel.Attribute.COMMAND_FAILED` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:747)
+- `enum:VehicleProcessModel.Attribute.COMMAND_SENT` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:739)
+- `enum:VehicleProcessModel.Attribute.COMM_ADAPTER_CONNECTED` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:699)
+- `enum:VehicleProcessModel.Attribute.COMM_ADAPTER_ENABLED` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:695)
+- `enum:VehicleProcessModel.Attribute.COMM_ADAPTER_EVENT` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:731)
+- `enum:VehicleProcessModel.Attribute.ENERGY_LEVEL` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:711)
+- `enum:VehicleProcessModel.Attribute.INTEGRATION_LEVEL_CHANGE_REQUESTED` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:759)
+- `enum:VehicleProcessModel.Attribute.LOAD_HANDLING_DEVICES` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:715)
+- `enum:VehicleProcessModel.Attribute.POSE` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:707)
+- `enum:VehicleProcessModel.Attribute.POSITION` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:703)
+- `enum:VehicleProcessModel.Attribute.POSITION_RESOLUTION_REQUESTED` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:768)
+- `enum:VehicleProcessModel.Attribute.STATE` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:719)
+- `enum:VehicleProcessModel.Attribute.TRANSPORT_ORDER_PROPERTY` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:755)
+- `enum:VehicleProcessModel.Attribute.TRANSPORT_ORDER_WITHDRAWAL_REQUESTED` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:763)
+- `enum:VehicleProcessModel.Attribute.USER_NOTIFICATION` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:727)
+- `enum:VehicleProcessModel.Attribute.VEHICLE_PROPERTY` (opentcs-api-base/src/main/java/org/opentcs/drivers/vehicle/VehicleProcessModel.java:751)
+- `enum:VehicleTO.IntegrationLevel.TO_BE_IGNORED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:200)
+- `enum:VehicleTO.IntegrationLevel.TO_BE_NOTICED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:201)
+- `enum:VehicleTO.IntegrationLevel.TO_BE_RESPECTED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:202)
+- `enum:VehicleTO.IntegrationLevel.TO_BE_UTILIZED` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:203)
+- `enum:VehicleTO.ProcState.AWAITING_ORDER` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:211)
+- `enum:VehicleTO.ProcState.IDLE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:210)
+- `enum:VehicleTO.ProcState.PROCESSING_ORDER` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:212)
+- `enum:VehicleTO.State.CHARGING` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:193)
+- `enum:VehicleTO.State.ERROR` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:190)
+- `enum:VehicleTO.State.EXECUTING` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:192)
+- `enum:VehicleTO.State.IDLE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:191)
+- `enum:VehicleTO.State.UNAVAILABLE` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:189)
+- `enum:VehicleTO.State.UNKNOWN` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:188)
+- `error:IllegalArgumentException:%s: Cannot change integration level to %s while processing orders.` (opentcs-kernel/src/main/java/org/opentcs/kernel/services/StandardVehicleService.java:353)
+- `error:IllegalArgumentException:Could not parse JSON input` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/JsonBinder.java:47)
+- `error:IllegalArgumentException:Malformed maxRoutesPerDestinationPoint: ` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:788)
+- `error:IllegalArgumentException:No vehicle entry found for` (opentcs-kernel/src/main/java/org/opentcs/kernel/services/StandardVehicleService.java:274)
+- `error:IllegalArgumentException:No vehicle entry found for ` (opentcs-kernel/src/main/java/org/opentcs/kernel/services/StandardVehicleService.java:289)
+- `error:IllegalArgumentException:Resources for the vehicle's current position may not be allocated now.` (opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/DefaultVehicleController.java:393)
+- `error:IllegalArgumentException:String.format(
+              String.valueOf(messageTemplate)` (opentcs-api-base/src/main/java/org/opentcs/util/Assertions.java:46)
+- `error:IllegalArgumentException:The vehicle's current position is unknown.` (opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/DefaultVehicleController.java:380)
+- `error:IllegalArgumentException:Unable to allocate resources for the vehicle's current position.` (opentcs-kernel/src/main/java/org/opentcs/kernel/vehicles/DefaultVehicleController.java:411)
+- `error:IllegalArgumentException:Unknown vehicle driver class name: ` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/VehicleHandler.java:207)
+- `error:IllegalArgumentException:Unknown vehicle position: ` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/VehicleHandler.java:301)
+- `error:IllegalArgumentException:Updating a vehicle's envelope key while the vehicle is processing an order or ` (opentcs-kernel/src/main/java/org/opentcs/kernel/services/StandardVehicleService.java:420)
+- `error:IllegalStateException:Could not get path from '%s' to '%s'` (opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/routing/jgrapht/ShortestPathPointRouter.java:120)
+- `error:IllegalStateException:Could not produce JSON output` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/JsonBinder.java:67)
+- `error:IllegalStateException:Unexpectedly interrupted` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/KernelExecutorWrapper.java:56)
+- `error:KernelRuntimeException:exc.getCause()` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/KernelExecutorWrapper.java:62)
+- `error:ObjectUnknownException:Unknown destination point: ` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/VehicleHandler.java:320)
+- `error:ObjectUnknownException:Unknown resource: ` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/VehicleHandler.java:348)
+- `error:ObjectUnknownException:Unknown source point: ` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/VehicleHandler.java:308)
+- `error:ObjectUnknownException:Unknown vehicle: ` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/TransportOrderDispatcherHandler.java:84)
+- `error:ResourceAllocationException:%s: Requested resources not available for allocation: %s` (opentcs-strategies-default/src/main/java/org/opentcs/strategies/basic/scheduling/DefaultScheduler.java:234)
+- `param:path:NAME` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:291)
+- `param:query:disableVehicle` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:832)
+- `param:query:forced` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:836)
+- `param:query:immediate` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:828)
+- `param:query:maxRoutesPerDestinationPoint` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:782)
+- `param:query:newValue` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:291)
+- `param:query:procState` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:609)
+- `status:IllegalArgumentException->400` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:175)
+- `status:IllegalStateException->500` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:180)
+- `status:KernelRuntimeException->500` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:197)
+- `status:ObjectExistsException->409` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:192)
+- `status:ObjectUnknownException->404` (opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:187)
+
+## 5. Facts ignored as non-behavior (check the reasons)
+
+- `field:AcceptableOrderTypeTO.name`: Restatement of the type system without behavior.
+- `field:AcceptableOrderTypeTO.priority`: Restatement of the type system without behavior.
+- `field:BoundingBoxTO.height`: Restatement of the type system without behavior.
+- `field:BoundingBoxTO.length`: Restatement of the type system without behavior.
+- `field:BoundingBoxTO.referenceOffset`: Restatement of the type system without behavior.
+- `field:BoundingBoxTO.width`: Restatement of the type system without behavior.
+- `field:CoupleTO.x`: Restatement of the type system without behavior.
+- `field:CoupleTO.y`: Restatement of the type system without behavior.
+- `field:DestinationState.locationName`: Restatement of the type system without behavior.
+- `field:DestinationState.operation`: Restatement of the type system without behavior.
+- `field:DestinationState.properties`: Restatement of the type system without behavior.
+- `field:DestinationState.state`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.CoupleTO.x`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.CoupleTO.y`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.EnvelopeTO.vertices`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.createdTime`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.envelope`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.history`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.integrationLevel`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.layout`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.name`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.pose`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.properties`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.retiredTime`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.EnvironmentalEntityTO.type`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.LayoutTO.layerId`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.PoseTO.orientationAngle`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.PoseTO.position`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.TripleTO.x`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.TripleTO.y`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.TripleTO.z`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.currentObjectState`: Restatement of the type system without behavior.
+- `field:EnvironmentalEntityEventTO.previousObjectState`: Restatement of the type system without behavior.
+- `field:GetVehicleAttachmentInfoResponseTO.attachedCommAdapter`: Restatement of the type system without behavior.
+- `field:GetVehicleAttachmentInfoResponseTO.availableCommAdapters`: Restatement of the type system without behavior.
+- `field:GetVehicleAttachmentInfoResponseTO.vehicleName`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.PrecisePosition.x`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.PrecisePosition.y`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.PrecisePosition.z`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.acceptableOrderTypes`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.allocatedResources`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.boundingBox`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.claimedResources`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.currentPosition`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.energyLevel`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.energyLevelCritical`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.energyLevelFullyRecharged`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.energyLevelGood`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.energyLevelSufficientlyRecharged`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.envelopeKey`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.integrationLevel`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.name`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.orientationAngle`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.paused`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.precisePosition`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.procState`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.procStateTimestamp`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.properties`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.state`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.stateTimestamp`: Restatement of the type system without behavior.
+- `field:GetVehicleResponseTO.transportOrder`: Restatement of the type system without behavior.
+- `field:ObjectHistoryTO.ObjectHistoryEntryTO.eventCode`: Restatement of the type system without behavior.
+- `field:ObjectHistoryTO.ObjectHistoryEntryTO.supplements`: Restatement of the type system without behavior.
+- `field:ObjectHistoryTO.ObjectHistoryEntryTO.timestamp`: Restatement of the type system without behavior.
+- `field:ObjectHistoryTO.entries`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.complete`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.creationTime`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.failureFatal`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.finished`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.finishedIndex`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.finishedTime`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.history`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.intendedVehicle`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.name`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.orderTypes`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.orders`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.processingVehicle`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.properties`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.OrderSequenceTO.type`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.currentObjectState`: Restatement of the type system without behavior.
+- `field:OrderSequenceEventTO.previousObjectState`: Restatement of the type system without behavior.
+- `field:OrderStatusMessage.destinations`: Restatement of the type system without behavior.
+- `field:OrderStatusMessage.dispensable`: Restatement of the type system without behavior.
+- `field:OrderStatusMessage.intendedVehicle`: Restatement of the type system without behavior.
+- `field:OrderStatusMessage.orderName`: Restatement of the type system without behavior.
+- `field:OrderStatusMessage.orderState`: Restatement of the type system without behavior.
+- `field:OrderStatusMessage.orderType`: Restatement of the type system without behavior.
+- `field:OrderStatusMessage.peripheralReservationToken`: Restatement of the type system without behavior.
+- `field:OrderStatusMessage.processingVehicleName`: Restatement of the type system without behavior.
+- `field:OrderStatusMessage.properties`: Restatement of the type system without behavior.
+- `field:OrderStatusMessage.wrappingSequence`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.completionRequired`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.executionTrigger`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.location`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.operation`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.creationTime`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.finishedTime`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.history`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.name`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.peripheralOperation`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.properties`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.relatedTransportOrder`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.relatedVehicle`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.reservationToken`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.PeripheralJobTO.state`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.currentObjectState`: Restatement of the type system without behavior.
+- `field:PeripheralJobEventTO.previousObjectState`: Restatement of the type system without behavior.
+- `field:PeripheralJobStatusMessage.creationTime`: Restatement of the type system without behavior.
+- `field:PeripheralJobStatusMessage.finishedTime`: Restatement of the type system without behavior.
+- `field:PeripheralJobStatusMessage.name`: Restatement of the type system without behavior.
+- `field:PeripheralJobStatusMessage.peripheralOperation`: Restatement of the type system without behavior.
+- `field:PeripheralJobStatusMessage.properties`: Restatement of the type system without behavior.
+- `field:PeripheralJobStatusMessage.relatedTransportOrder`: Restatement of the type system without behavior.
+- `field:PeripheralJobStatusMessage.relatedVehicle`: Restatement of the type system without behavior.
+- `field:PeripheralJobStatusMessage.reservationToken`: Restatement of the type system without behavior.
+- `field:PeripheralJobStatusMessage.state`: Restatement of the type system without behavior.
+- `field:PeripheralOperationDescription.completionRequired`: Restatement of the type system without behavior.
+- `field:PeripheralOperationDescription.executionTrigger`: Restatement of the type system without behavior.
+- `field:PeripheralOperationDescription.locationName`: Restatement of the type system without behavior.
+- `field:PeripheralOperationDescription.operation`: Restatement of the type system without behavior.
+- `field:PostVehicleCommAdapterMessageRequestTO.parameters`: Restatement of the type system without behavior.
+- `field:PostVehicleCommAdapterMessageRequestTO.type`: Restatement of the type system without behavior.
+- `field:PostVehicleRoutesRequestTO.destinationPoints`: Restatement of the type system without behavior.
+- `field:PostVehicleRoutesRequestTO.resourcesToAvoid`: Restatement of the type system without behavior.
+- `field:PostVehicleRoutesRequestTO.sourcePoint`: Restatement of the type system without behavior.
+- `field:PostVehicleRoutesResponseTO.routes`: Restatement of the type system without behavior.
+- `field:Property.key`: Restatement of the type system without behavior.
+- `field:Property.value`: Restatement of the type system without behavior.
+- `field:PutVehicleAcceptableOrderTypesTO.acceptableOrderTypes`: Restatement of the type system without behavior.
+- `field:PutVehicleAllowedOrderTypesTO.orderTypes`: Restatement of the type system without behavior.
+- `field:PutVehicleEnergyLevelThresholdSetTO.energyLevelCritical`: Restatement of the type system without behavior.
+- `field:PutVehicleEnergyLevelThresholdSetTO.energyLevelFullyRecharged`: Restatement of the type system without behavior.
+- `field:PutVehicleEnergyLevelThresholdSetTO.energyLevelGood`: Restatement of the type system without behavior.
+- `field:PutVehicleEnergyLevelThresholdSetTO.energyLevelSufficientlyRecharged`: Restatement of the type system without behavior.
+- `field:RouteTO.Step.destinationPoint`: Restatement of the type system without behavior.
+- `field:RouteTO.Step.path`: Restatement of the type system without behavior.
+- `field:RouteTO.Step.sourcePoint`: Restatement of the type system without behavior.
+- `field:RouteTO.Step.vehicleOrientation`: Restatement of the type system without behavior.
+- `field:RouteTO.costs`: Restatement of the type system without behavior.
+- `field:RouteTO.destinationPoint`: Restatement of the type system without behavior.
+- `field:RouteTO.steps`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.DestinationTO.destination`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.DestinationTO.operation`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.DestinationTO.properties`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.costs`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.destinationPoint`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.executionAllowed`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.path`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.reroutingType`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.routeIndex`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.sourcePoint`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.RouteTO.StepTO.vehicleOrientation`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.RouteTO.costs`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.RouteTO.steps`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.destination`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.name`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.route`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.state`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.DriveOrderTO.transportOrder`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.creationTime`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.currentDriveOrderIndex`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.currentRouteStepIndex`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.deadline`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.dependencies`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.dispensable`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.driveOrders`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.finishedTime`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.history`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.intendedVehicle`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.name`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.peripheralReservationToken`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.processingVehicle`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.properties`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.state`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.type`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.TransportOrderTO.wrappingSequence`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.currentObjectState`: Restatement of the type system without behavior.
+- `field:TransportOrderEventTO.previousObjectState`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.AcceptableOrderTypeTO.name`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.AcceptableOrderTypeTO.priority`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.BoundingBoxTO.height`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.BoundingBoxTO.length`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.BoundingBoxTO.referenceOffset`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.BoundingBoxTO.width`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.CoupleTO.x`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.CoupleTO.y`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.EnergyLevelThresholdSetTO.energyLevelCritical`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.EnergyLevelThresholdSetTO.energyLevelFullyRecharged`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.EnergyLevelThresholdSetTO.energyLevelGood`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.EnergyLevelThresholdSetTO.energyLevelSufficientlyRecharged`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.LayoutTO.ColorTO.blue`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.LayoutTO.ColorTO.green`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.LayoutTO.ColorTO.red`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.LayoutTO.routeColor`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.LoadHandlingDeviceTO.full`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.LoadHandlingDeviceTO.label`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.PoseTO.orientationAngle`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.PoseTO.position`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.TimestampedVehicleProcStateTO.procState`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.TimestampedVehicleProcStateTO.timestamp`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.TimestampedVehicleStateTO.state`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.TimestampedVehicleStateTO.timestamp`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.TripleTO.x`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.TripleTO.y`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.TripleTO.z`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.acceptableOrderTypes`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.allocatedResources`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.boundingBox`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.claimedResources`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.currentPosition`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.energyLevel`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.energyLevelThresholdSet`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.envelopeKey`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.history`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.integrationLevel`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.layout`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.loadHandlingDevices`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.maxReverseVelocity`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.maxVelocity`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.name`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.orderSequence`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.paused`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.pose`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.procState`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.properties`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.rechargeOperation`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.state`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.VehicleTO.transportOrder`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.currentObjectState`: Restatement of the type system without behavior.
+- `field:VehicleEventTO.previousObjectState`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.PrecisePosition.x`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.PrecisePosition.y`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.PrecisePosition.z`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.acceptableOrderTypes`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.allocatedResources`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.boundingBox`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.claimedResources`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.energyLevel`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.energyLevelCritical`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.energyLevelFullyRecharged`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.energyLevelGood`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.energyLevelSufficientlyRecharged`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.envelopeKey`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.integrationLevel`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.orientationAngle`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.paused`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.position`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.precisePosition`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.procState`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.procStateTimestamp`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.properties`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.state`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.stateTimestamp`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.transportOrderName`: Restatement of the type system without behavior.
+- `field:VehicleStatusMessage.vehicleName`: Restatement of the type system without behavior.
+- `const:Dispatcher.PROPKEY_PARKING_POSITION_PRIORITY`: Dispatcher internals (parking priority property) beyond the boundary of triggering the dispatcher.
+- `const:DriveOrder.Destination.OP_MOVE`: Dispatcher internals beyond the boundary of triggering the dispatcher.
+- `const:DriveOrder.Destination.OP_NOP`: Dispatcher internals beyond the boundary of triggering the dispatcher.
+- `const:OrderConstants.TYPE_CHARGE`: Dispatcher internals (charge order creation) beyond the boundary of triggering the dispatcher.
+- `const:OrderConstantsTO.TYPE_NONE`: Dispatcher internals (transport order creation defaults) beyond the boundary of triggering the dispatcher.
+- `error:IllegalArgumentException:: Not part of a sequence`: Dispatcher internals (sequence error) beyond the boundary of triggering the dispatcher.
+- `const:DriveOrder.Destination.OP_PARK`: Used in transport order routing logic, which is not executed by this point-to-point route query endpoint.
+- `const:ObjectPropConstants.TRANSPORT_ORDER_RESOURCES_TO_AVOID`: Used to extract resources to avoid from a transport order, which is not applicable to this point-to-point route query.
+- `const:CloseFileAction.ID`: GUI application action ID is not server API product behavior.
+- `const:CloseFileAction.ID_MODEL_CLOSING`: GUI application action ID is not server API product behavior.
+- `const:I18nPlantOverview.MENU_PATH`: GUI application menu path is not server API product behavior.
+- `const:OpenTCSView.NAME`: GUI application view name is not server API product behavior.
+- `error:IllegalArgumentException:: Could not allocate now although permission previously granted: `: Internal scheduler assertion error that may never happen, not observable endpoint behavior.
+- `error:IllegalArgumentException:String.format(String.valueOf(messageTemplate)`: Internal utility method assertion error, not specific product behavior.
+- `error:IllegalArgumentException:Unhandled model class: `: GUI application model mapping error, not server API product behavior.
+- `error:IllegalArgumentException:Unhandled state: `: GUI application state mapping error, not server API product behavior.
+- `error:IllegalArgumentException:currentObjectState == null but eventType != OBJECT_REMOVED`: Internal event creation validation error.
+- `error:IllegalArgumentException:previousObjectState == null but eventType != OBJECT_CREATED`: Internal event creation validation error.
+- `error:ServiceUnavailableException:Could not connect to portal`: GUI application portal connection error, not server API product behavior.
+- `const:OrderConstants.TYPE_ANY`: This constant is used in the default Vehicle constructor, which is not called during a paused state update.
+- `error:ObjectUnknownException:name`: Internal data consistency exception for unknown objects by name, overridden by application-level checks.
+- `error:ObjectUnknownException:ref`: Internal data consistency exception for unknown objects by reference, overridden by application-level checks.

@@ -1,0 +1,410 @@
+{"claim": "C-0005", "statement": "D-1200", "verdict": "CONFIRMED", "note": "Both the plant model Block type schema (D-1200, D-2223) and reference documentation (D-0449, D-0156) confirm that a block type is restricted to SINGLE_VEHICLE_ONLY or SAME_DIRECTION_ONLY."}
+{"claim": "C-0008", "statement": "D-2392", "verdict": "CONFIRMED", "note": "DriveOrderState enum values PRISTINE, TRAVELLING, OPERATING, FINISHED, and FAILED match the lifecycle progression in D-2392, D-1369, and D-1497."}
+{"claim": "C-0009", "statement": "D-0870", "verdict": "CONFIRMED", "note": "Environmental entity integration levels TO_BE_IGNORED, TO_BE_NOTICED, and TO_BE_RESPECTED agree with OpenAPI schemas D-0870, D-1752, and D-2260 as well as the User's Guide (D-0498, D-0499)."}
+{"claim": "C-0010", "statement": "D-0868", "verdict": "CONFIRMED", "note": "Environmental entity type enum values OBJECT and ZONE match OpenAPI schemas D-0868, D-1750, and D-2258."}
+{"claim": "C-0011", "statement": null, "verdict": "UNDOCUMENTED", "note": "Kernel states MODELLING, OPERATING, and SHUTDOWN along with client connection states (KernelStateChangeEvent / ConnectionState) are internal kernel/client state enums not documented in the public reference docs or API specs."}
+{"claim": "C-0015", "statement": "D-1467", "verdict": "CONFIRMED", "note": "Transport order lifecycle states (RAW, ACTIVE, DISPATCHABLE, BEING_PROCESSED, WITHDRAWN, FINISHED, FAILED, UNROUTABLE) match D-1467, D-0906, and D-2391."}
+{"claim": "C-0016", "statement": "D-1665", "verdict": "CONFIRMED", "note": "PeripheralJobState enum values TO_BE_PROCESSED, BEING_PROCESSED, FINISHED, and FAILED agree with D-1665, D-2339, and D-1402."}
+{"claim": "C-0021", "statement": "D-0104", "verdict": "CONFIRMED", "note": "Changelog and route schemas (D-0104, sse:RouteStep.reroutingType) confirm the rerouting types REGULAR and FORCED."}
+{"claim": "C-0025", "statement": "D-1504", "verdict": "CONFIRMED", "note": "Vehicle driving orientation enum FORWARD, BACKWARD, UNDEFINED matches RouteStep vehicleOrientation in D-1504, D-1362, and D-2385."}
+{"claim": "C-0029", "statement": "D-2433", "verdict": "CONFIRMED", "note": "TimestampedVehicleProcState in D-2433 and D-1323 lists IDLE, AWAITING_ORDER, and PROCESSING_ORDER."}
+{"claim": "C-0033", "statement": "D-0441", "verdict": "CONFIRMED", "note": "Acceptable transport order types consisting of a type name and priority are confirmed by D-0441 and D-0030."}
+{"claim": "C-0034", "statement": "D-0397", "verdict": "CONFIRMED", "note": "Users guide section on bounding boxes (D-0397, D-0398) confirms bounding box dimensions (length, width, height) and reference offset (x, y)."}
+{"claim": "C-0035", "statement": null, "verdict": "UNDOCUMENTED", "note": "The schema/structure of a destination state describing target location name, operation, associated properties, and execution state is not documented in the provided candidate texts."}
+{"claim": "C-0036", "statement": null, "verdict": "UNDOCUMENTED", "note": "No candidate document specifies the complete environmental entity event model containing previous and current entity state, created/retired timestamps, type, integration level, layout, envelope polygon vertices, 3D pose, history, and properties."}
+{"claim": "C-0037", "statement": "D-0107", "verdict": "CONFIRMED", "note": "Confirmed by changelog entry D-0107 and API schema definitions for AttachmentInformation (D-1630 / D-2192), which state that information about a vehicle's available and currently attached drivers can be retrieved."}
+{"claim": "C-0038", "statement": null, "verdict": "UNDOCUMENTED", "note": "While individual attributes are mentioned across various guides and changelogs, the comprehensive vehicle response object containing all these attributes is not documented in the candidates."}
+{"claim": "C-0039", "statement": "D-1685", "verdict": "CONFIRMED", "note": "ObjectHistory and ObjectHistoryEntry definitions confirm that an object history contains entries recording timestamp and supplemental details."}
+{"claim": "C-0040", "statement": null, "verdict": "UNDOCUMENTED", "note": "The full structure of the order sequence event reporting both previous and current sequence state with all listed properties is not documented in the candidates."}
+{"claim": "C-0042", "statement": null, "verdict": "UNDOCUMENTED", "note": "The peripheral job event reporting previous and current job states with all specified fields is not described in the candidate documentation."}
+{"claim": "C-0043", "statement": null, "verdict": "UNDOCUMENTED", "note": "The peripheral job status message structure is not defined in the candidate documentation statements."}
+{"claim": "C-0044", "statement": "D-1644", "verdict": "CONFIRMED", "note": "VehicleCommAdapterMessage schema definitions confirm that the message specifies a message type (D-1643) and parameters (D-1644)."}
+{"claim": "C-0045", "statement": null, "verdict": "UNDOCUMENTED", "note": "The specific vehicle route calculation request/response structure (computing routes avoiding specified resources, returning total costs, destination point, route steps with orientation) is not documented in the candidate sections."}
+{"claim": "C-0046", "statement": "D-1645", "verdict": "CONFIRMED", "note": "Confirmed by Property schemas (D-1645, D-1646, D-0999, D-1000) where a Property consists of a string key and string value."}
+{"claim": "C-0048", "statement": "D-0102", "verdict": "CONFIRMED", "note": "Confirmed by changelog entry D-0102 noting support for updating and retrieving a vehicle's allowed order types via the web API as a list of order type names."}
+{"claim": "C-0049", "statement": "D-0433", "verdict": "CONFIRMED", "note": "Documentation reference confirms vehicle energy level thresholds configure recharging levels including fully recharged."}
+{"claim": "C-0050", "statement": null, "verdict": "UNDOCUMENTED", "note": "The detailed fields of the transport order SSE event (previous and current order states with name, type, state, deadline, timestamps, intended/processing vehicles, wrapping sequence, peripheral reservation token, dependencies, drive orders with route steps, history, properties) are not documented in the provided candidate statements."}
+{"claim": "C-0051", "statement": null, "verdict": "UNDOCUMENTED", "note": "The specific payload format and fields reported in the vehicle SSE event are not documented in the candidate statements."}
+{"claim": "C-0052", "statement": null, "verdict": "UNDOCUMENTED", "note": "The comprehensive schema of the vehicle status message payload (current state, procState, timestamps, coordinates, orientation, energy levels, resources, bounding box, paused flag, order types, assigned order name) is not detailed in the candidate statements."}
+{"claim": "C-0053", "statement": null, "verdict": "UNDOCUMENTED", "note": "General Web API error mapping of IllegalArgumentException to HTTP 400 with JSON error details is not documented in the candidate statements."}
+{"claim": "C-0054", "statement": null, "verdict": "UNDOCUMENTED", "note": "General Web API error handling mapping IllegalStateException to HTTP 500 JSON error responses is not documented in the candidate statements."}
+{"claim": "C-0055", "statement": null, "verdict": "UNDOCUMENTED", "note": "General Web API mapping of ObjectUnknownException to HTTP 404 with JSON error details across all endpoints is not documented as a general mechanism in the candidate statements."}
+{"claim": "C-0056", "statement": null, "verdict": "UNDOCUMENTED", "note": "General Web API mapping of ObjectExistsException to HTTP 409 Conflict with JSON details is not documented as a general rule in the candidate statements."}
+{"claim": "C-0057", "statement": null, "verdict": "UNDOCUMENTED", "note": "General Web API mapping of KernelRuntimeException to HTTP 500 with JSON error details is not documented in the candidate statements."}
+{"claim": "C-0100", "statement": "D-1590", "verdict": "CONFIRMED", "note": "OpenAPI documentation specifies POST /vehicles/dispatcher/trigger explicitly triggers dispatching and returns 200."}
+{"claim": "C-0101", "statement": null, "verdict": "UNDOCUMENTED", "note": "Returning HTTP 500 when interrupted waiting for the dispatch task to finish is not documented."}
+{"claim": "C-0102", "statement": null, "verdict": "UNDOCUMENTED", "note": "Returning HTTP 500 when an unexpected checked exception is wrapped in KernelRuntimeException during dispatcher trigger is not documented."}
+{"claim": "C-0200", "statement": "D-1578", "verdict": "CONFIRMED", "note": "Statement D-1578 directly documents that POST /vehicles/{NAME}/routeComputationQuery computes routes for the named vehicle to the given destination points."}
+{"claim": "C-0201", "statement": "D-1580", "verdict": "CONFIRMED", "note": "Statement D-1580 explicitly specifies query parameter 'maxRoutesPerDestinationPoint' has default value 1."}
+{"claim": "C-0202", "statement": null, "verdict": "UNDOCUMENTED", "note": "OpenAPI documentation does not document HTTP 400 when maxRoutesPerDestinationPoint cannot be parsed as an integer."}
+{"claim": "C-0203", "statement": null, "verdict": "UNDOCUMENTED", "note": "No statement documents HTTP 400 when JSON request body cannot be parsed for this route."}
+{"claim": "C-0205", "statement": null, "verdict": "UNDOCUMENTED", "note": "Documentation for routeComputationQuery does not document HTTP 404 response when vehicle is not found."}
+{"claim": "C-0206", "statement": null, "verdict": "UNDOCUMENTED", "note": "The default behavior of using the vehicle's current position when sourcePoint is omitted is not documented in the API specification."}
+{"claim": "C-0207", "statement": null, "verdict": "UNDOCUMENTED", "note": "HTTP 400 error when sourcePoint is omitted and vehicle position is unknown is not documented in the API specification."}
+{"claim": "C-0208", "statement": null, "verdict": "UNDOCUMENTED", "note": "HTTP 404 when specified sourcePoint is not found is not documented in the API specification."}
+{"claim": "C-0209", "statement": null, "verdict": "UNDOCUMENTED", "note": "HTTP 404 when any point in destinationPoints is not found is not documented in the API specification."}
+{"claim": "C-0210", "statement": null, "verdict": "UNDOCUMENTED", "note": "HTTP 404 when resourcesToAvoid contains an unrecognized point, path, or location is not documented in the API specification."}
+{"claim": "C-0300", "statement": "D-1564", "verdict": "CONFIRMED", "note": "Matches D-1564 (and D-2154 in v8) documenting PUT /vehicles/{NAME}/commAdapter/attachment with query parameter 'newValue' describing the class name of the vehicle driver to be attached."}
+{"claim": "C-0301", "statement": null, "verdict": "UNDOCUMENTED", "note": "404 response when vehicle with NAME does not exist for PUT /vehicles/{NAME}/commAdapter/attachment is not documented in the candidates."}
+{"claim": "C-0302", "statement": null, "verdict": "UNDOCUMENTED", "note": "400 response when newValue does not match any available communication adapter description is not documented in the API specification."}
+{"claim": "C-0303", "statement": null, "verdict": "UNDOCUMENTED", "note": "Behavior of disabling/terminating previously attached adapter prior to initializing the new one is not documented in user/developer guides."}
+{"claim": "C-0304", "statement": null, "verdict": "UNDOCUMENTED", "note": "Updating the vehicle's preferred adapter property with the factory class name upon attachment is not explicitly documented as an automatic side-effect in the API documentation."}
+{"claim": "C-0400", "statement": "D-1558", "verdict": "CONFIRMED", "note": "Matches D-1558 GET /vehicles/{NAME}/commAdapter/attachmentInformation retrieving driver attachment information for the vehicle."}
+{"claim": "C-0401", "statement": null, "verdict": "UNDOCUMENTED", "note": "404 response when vehicle NAME does not exist on GET commAdapter/attachmentInformation is not documented in candidates."}
+{"claim": "C-0500", "statement": "D-1569", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/commAdapter/enabled enables/disables the vehicle commAdapter via path parameter NAME."}
+{"claim": "C-0501", "statement": "D-1046", "verdict": "UNDOCUMENTED", "note": "Candidate D-1046 is for peripherals; candidate D-2160/D-1570 documents newValue boolean for vehicle driver enabled state, but the boolean parsing behavior itself is undocumented or standard OpenAPI type handling."}
+{"claim": "C-0502", "statement": null, "verdict": "UNDOCUMENTED", "note": "404 response when vehicle with specified NAME does not exist for PUT commAdapter/enabled is not documented."}
+{"claim": "C-0503", "statement": null, "verdict": "UNDOCUMENTED", "note": "400 response when enabling adapter without finding vehicle entry is not documented in the API spec."}
+{"claim": "C-0504", "statement": null, "verdict": "UNDOCUMENTED", "note": "400 response when disabling adapter without finding vehicle entry is not documented in the API spec."}
+{"claim": "C-0600", "statement": "D-1573", "verdict": "CONFIRMED", "note": "Statement D-1573 describes POST /vehicles/{NAME}/commAdapter/message as sending a message to the named vehicle's driver/communication adapter."}
+{"claim": "C-0601", "statement": "D-1574", "verdict": "CONFIRMED", "note": "Statement D-1574 defines NAME path parameter on POST /vehicles/{NAME}/commAdapter/message as the name of the vehicle."}
+{"claim": "C-0602", "statement": null, "verdict": "UNDOCUMENTED", "note": "None of the candidate statements describe the JSON request body schema (message type and key-value parameters) for this endpoint."}
+{"claim": "C-0603", "statement": null, "verdict": "UNDOCUMENTED", "note": "None of the candidate statements document the HTTP 404 response when no vehicle with the specified name exists."}
+{"claim": "C-0700", "statement": "D-1536", "verdict": "CONFIRMED", "note": "Statement D-1536 confirms PUT /vehicles/{NAME}/paused accepts required boolean query parameter newValue representing the vehicle's new paused state."}
+{"claim": "C-0701", "statement": null, "verdict": "UNDOCUMENTED", "note": "None of the candidate statements document the HTTP 404 response for non-existent vehicle on PUT /vehicles/{NAME}/paused."}
+{"claim": "C-0800", "statement": "D-1531", "verdict": "CONFIRMED", "note": "Statement D-1531 confirms PUT /vehicles/{NAME}/integrationLevel with string query parameter newValue."}
+{"claim": "C-0801", "statement": null, "verdict": "UNDOCUMENTED", "note": "None of the candidate statements document HTTP 404 for non-existent vehicle on PUT /vehicles/{NAME}/integrationLevel."}
+{"claim": "C-0802", "statement": null, "verdict": "UNDOCUMENTED", "note": "None of the candidate statements document HTTP 400 when setting integrationLevel to TO_BE_IGNORED/TO_BE_NOTICED while processing an order."}
+{"claim": "C-0900", "statement": "D-1518", "verdict": "CONFIRMED", "note": "Statement D-1518 confirms POST /vehicles/{NAME}/withdrawal withdraws a transport order processed by the vehicle with the given name."}
+{"claim": "C-0901", "statement": "D-1445", "verdict": "CONFIRMED", "note": "Documentation confirms the immediate parameter is optional boolean defaulting to false."}
+{"claim": "C-0902", "statement": "D-1521", "verdict": "CONFIRMED", "note": "Documentation specifies disableVehicle is an optional boolean query parameter defaulting to false; the code updates vehicle integration level to TO_BE_RESPECTED when true."}
+{"claim": "C-0903", "statement": null, "verdict": "UNDOCUMENTED", "note": "The OpenAPI/Asciidoc candidate statements do not document the HTTP 404 response on ObjectUnknownException when no vehicle exists with the specified NAME."}
+{"claim": "C-1000", "statement": "D-1525", "verdict": "CONFIRMED", "note": "Documentation specifies POST /vehicles/{NAME}/rerouteRequest takes path parameter NAME for the vehicle to be rerouted."}
+{"claim": "C-1001", "statement": "D-1526", "verdict": "CONFIRMED", "note": "Documentation specifies the 'forced' query parameter is optional, boolean, and defaults to false."}
+{"claim": "C-1002", "statement": null, "verdict": "UNDOCUMENTED", "note": "The candidates do not document the 404 status code when the vehicle name does not exist for rerouteRequest."}
+{"claim": "C-1003", "statement": null, "verdict": "UNDOCUMENTED", "note": "Documentation does not mention HTTP 400 being returned when forced rerouting is applied and the vehicle's position is unknown."}
+{"claim": "C-1004", "statement": null, "verdict": "UNDOCUMENTED", "note": "Documentation does not mention HTTP 400 being returned when resources cannot be allocated immediately during forced rerouting."}
+{"claim": "C-1005", "statement": null, "verdict": "UNDOCUMENTED", "note": "Documentation does not state HTTP 400 on error during forced rerouting resource allocation."}
+{"claim": "C-1100", "statement": "D-1545", "verdict": "CONFIRMED", "note": "The PUT /vehicles/{NAME}/allowedOrderTypes endpoint takes the list of order types in the request body to update vehicle allowed order types."}
+{"claim": "C-1101", "statement": null, "verdict": "UNDOCUMENTED", "note": "None of the provided candidates document the HTTP 404 response when no vehicle exists for allowedOrderTypes."}
+{"claim": "C-1200", "statement": "D-1551", "verdict": "CONFIRMED", "note": "Matches D-1551 and D-1546 for PUT /vehicles/{NAME}/acceptableOrderTypes updating the acceptable order types with priorities."}
+{"claim": "C-1201", "statement": null, "verdict": "UNDOCUMENTED", "note": "Documentation does not mention HTTP 404 response when vehicle NAME is not found."}
+{"claim": "C-1300", "statement": "D-1552", "verdict": "CONFIRMED", "note": "Agrees with PUT /vehicles/{NAME}/energyLevelThresholdSet endpoint description for updating threshold values."}
+{"claim": "C-1301", "statement": null, "verdict": "UNDOCUMENTED", "note": "Documentation does not document 404 response for unknown vehicle NAME on this endpoint."}
+{"claim": "C-1302", "statement": null, "verdict": "UNDOCUMENTED", "note": "Documentation does not specify the HTTP 400 validation rule requiring threshold values to be between 0 and 100 inclusive."}
+{"claim": "C-1400", "statement": "D-1587", "verdict": "CONFIRMED", "note": "Matches PUT /vehicles/{NAME}/envelopeKey query parameter newValue."}
+{"claim": "C-1401", "statement": null, "verdict": "UNDOCUMENTED", "note": "Documentation does not mention HTTP 404 response when the vehicle is not found."}
+{"claim": "C-1402", "statement": null, "verdict": "UNDOCUMENTED", "note": "Documentation does not specify returning HTTP 400 when the vehicle is processing an order, claiming resources, or allocating resources."}
+{"claim": "C-1500", "statement": "D-1514", "verdict": "CONFIRMED", "note": "Matches GET /vehicles/{NAME} which retrieves the vehicle with the given name."}
+{"claim": "C-1501", "statement": "D-1517", "verdict": "CONFIRMED", "note": "Matches GET /vehicles/{NAME} 404 response when vehicle is not found."}
+{"claim": "C-1600", "statement": "D-1510", "verdict": "CONFIRMED", "note": "Matches GET /vehicles endpoint description."}
+{"claim": "C-1601", "statement": "D-1511", "verdict": "CONFIRMED", "note": "Matches GET /vehicles procState query parameter description."}
+{"claim": "C-1602", "statement": null, "verdict": "UNDOCUMENTED", "note": "Documentation does not mention HTTP 400 response when procState is not a valid vehicle processing state."}
+{"claim": "C-0036", "statement": "D-0872", "verdict": "CONFIRMED", "note": "Claim C-0036 supports that environmental entity layout contains layout information such as layerId."}
+{"claim": "C-0036", "statement": "D-0887", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms that environmental entity envelopes contain polygon vertices."}
+{"claim": "C-0036", "statement": "D-0888", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms that environmental entity pose includes position coordinates."}
+{"claim": "C-0036", "statement": "D-0889", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms that environmental entity pose includes orientation angle."}
+{"claim": "C-0050", "statement": "D-0903", "verdict": "CONFIRMED", "note": "Claim C-0050 confirms transport order status events include order name."}
+{"claim": "C-0050", "statement": "D-0904", "verdict": "CONFIRMED", "note": "Claim C-0050 confirms transport order status events report order type."}
+{"claim": "C-0050", "statement": "D-0905", "verdict": "CONFIRMED", "note": "Claim C-0050 confirms transport order status events report the order state."}
+{"claim": "C-0050", "statement": "D-0907", "verdict": "CONFIRMED", "note": "Claim C-0050 confirms transport order status events report the intended vehicle name."}
+{"claim": "C-0050", "statement": "D-0908", "verdict": "CONFIRMED", "note": "Supported by C-0050 which includes intended/processing vehicles in transport order SSE events."}
+{"claim": "C-0050", "statement": "D-0909", "verdict": "CONFIRMED", "note": "Supported by C-0050 which reports peripheral reservation token in transport order events."}
+{"claim": "C-0050", "statement": "D-0910", "verdict": "CONFIRMED", "note": "Supported by C-0050 which includes wrapping sequence in transport order events."}
+{"claim": "C-0050", "statement": "D-0911", "verdict": "CONFIRMED", "note": "Supported by C-0050 (and C-0035) which includes drive orders/destinations."}
+{"claim": "C-0050", "statement": "D-0912", "verdict": "CONFIRMED", "note": "Supported by C-0050 and C-0046 which reports transport order properties."}
+{"claim": "C-0052", "statement": "D-0916", "verdict": "CONFIRMED", "note": "Supported by C-0052 and C-0038 which provide vehicle status messages containing vehicle name."}
+{"claim": "C-0052", "statement": "D-0917", "verdict": "CONFIRMED", "note": "Supported by C-0052 which confirms vehicle status messages contain vehicle properties."}
+{"claim": "C-0052", "statement": "D-0918", "verdict": "CONFIRMED", "note": "Supported by C-0052 and C-0034 which describe bounding box in vehicle status message."}
+{"claim": "C-0052", "statement": "D-0919", "verdict": "CONFIRMED", "note": "Supported by C-0052 and C-0049 reporting energy levels (good threshold) in vehicle status messages."}
+{"claim": "C-0052", "statement": "D-0920", "verdict": "CONFIRMED", "note": "Supported by C-0052 and C-0049 reporting energy levels (critical threshold) in vehicle status messages."}
+{"claim": "C-0052", "statement": "D-0921", "verdict": "CONFIRMED", "note": "Claim C-0052 and C-0038/C-0049 confirm that VehicleStatusMessage reports vehicle energy level attributes including energyLevelSufficientlyRecharged as an integer percentage."}
+{"claim": "C-0052", "statement": "D-0923", "verdict": "CONFIRMED", "note": "Claim C-0052 and C-0038 confirm that VehicleStatusMessage includes remaining energyLevel (in %)."}
+{"claim": "C-0051", "statement": "D-0924", "verdict": "CONFIRMED", "note": "Vehicle state and status reporting includes integrationLevel as a string attribute (claims C-0051, C-0038, C-0800)."}
+{"claim": "C-0009", "statement": "D-0925", "verdict": "CONFIRMED", "note": "Claims C-0009 and C-0802 confirm integration levels TO_BE_IGNORED, TO_BE_NOTICED, TO_BE_RESPECTED, and TO_BE_UTILIZED."}
+{"claim": "C-0052", "statement": "D-0926", "verdict": "CONFIRMED", "note": "Claim C-0052 confirms that VehicleStatusMessage reports the vehicle's paused flag as boolean."}
+{"claim": "C-0052", "statement": "D-0927", "verdict": "CONFIRMED", "note": "Claim C-0052 confirms that VehicleStatusMessage reports the vehicle's current procState."}
+{"claim": "C-0052", "statement": "D-0929", "verdict": "CONFIRMED", "note": "Claim C-0052 and C-0038 confirm VehicleStatusMessage contains timestamps for procState."}
+{"claim": "C-0052", "statement": "D-0930", "verdict": "CONFIRMED", "note": "Claim C-0052 confirms VehicleStatusMessage reports the assigned transport order name (transportOrderName)."}
+{"claim": "C-0052", "statement": "D-0931", "verdict": "CONFIRMED", "note": "Claim C-0052 confirms VehicleStatusMessage reports the current position of the vehicle."}
+{"claim": "C-0052", "statement": "D-0932", "verdict": "CONFIRMED", "note": "Claim C-0052 confirms VehicleStatusMessage reports precise coordinates."}
+{"claim": "C-0052", "statement": "D-0933", "verdict": "CONFIRMED", "note": "Claim C-0052 and C-0038 confirm VehicleStatusMessage reports the vehicle orientation angle."}
+{"claim": "C-0052", "statement": "D-0934", "verdict": "CONFIRMED", "note": "Claim C-0052 confirms VehicleStatusMessage reports the vehicle's current state."}
+{"claim": "C-0052", "statement": "D-0935", "verdict": "CONFIRMED", "note": "Supported by C-0052 which verifies vehicle status message contains vehicle state and its values/timestamps."}
+{"claim": "C-0052", "statement": "D-0936", "verdict": "CONFIRMED", "note": "Supported by C-0052 which confirms vehicle status message contains stateTimestamp."}
+{"claim": "C-0052", "statement": "D-0937", "verdict": "CONFIRMED", "note": "Supported by C-0052 which confirms vehicle status message contains allocated resources."}
+{"claim": "C-0052", "statement": "D-0938", "verdict": "CONFIRMED", "note": "Supported by C-0052 which confirms vehicle status message contains claimed resources."}
+{"claim": "C-0052", "statement": "D-0939", "verdict": "CONFIRMED", "note": "Supported by C-0052 which confirms vehicle status message contains acceptable order types."}
+{"claim": "C-0038", "statement": "D-0940", "verdict": "CONFIRMED", "note": "Supported by C-0038 (and C-0051) which confirm envelopeKey attribute for vehicles."}
+{"claim": "C-0033", "statement": "D-0941", "verdict": "CONFIRMED", "note": "Supported by C-0033 and C-1200 describing acceptable order types array structure."}
+{"claim": "C-0033", "statement": "D-0942", "verdict": "CONFIRMED", "note": "Supported by C-0033 which states an acceptable order type specifies the transport order type name."}
+{"claim": "C-0033", "statement": "D-0943", "verdict": "CONFIRMED", "note": "Supported by C-0033 which defines dispatching priority for acceptable order types."}
+{"claim": "C-0040", "statement": "D-0980", "verdict": "CONFIRMED", "note": "Supported by C-0040 which states order sequence state contains name."}
+{"claim": "C-0040", "statement": "D-0981", "verdict": "CONFIRMED", "note": "Supported by C-0040 which notes order sequence state contains type."}
+{"claim": "C-0040", "statement": "D-0982", "verdict": "CONFIRMED", "note": "Supported by C-0040 which states order sequence state contains orderTypes."}
+{"claim": "C-0040", "statement": "D-0983", "verdict": "CONFIRMED", "note": "C-0040 confirms the order sequence state includes orders array."}
+{"claim": "C-0040", "statement": "D-0988", "verdict": "CONFIRMED", "note": "C-0040 confirms that order sequence reports finished status flag."}
+{"claim": "C-0040", "statement": "D-0991", "verdict": "CONFIRMED", "note": "C-0040 confirms processingVehicle is included in order sequence state."}
+{"claim": "C-0040", "statement": "D-0992", "verdict": "CONFIRMED", "note": "C-0040 confirms properties are included in order sequence state."}
+{"claim": "C-0043", "statement": "D-1126", "verdict": "CONFIRMED", "note": "C-0043 confirms the peripheral operation description execution trigger."}
+{"claim": "C-0051", "statement": "D-1223", "verdict": "CONFIRMED", "note": "C-0051 confirms vehicle layout route color."}
+{"claim": "C-0051", "statement": "D-1279", "verdict": "CONFIRMED", "note": "C-0051 describes vehicle SSE events reporting current and previous vehicle states."}
+{"claim": "C-0051", "statement": "D-1280", "verdict": "CONFIRMED", "note": "C-0051 describes vehicle SSE events reporting current and previous vehicle states."}
+{"claim": "C-0051", "statement": "D-1281", "verdict": "CONFIRMED", "note": "C-0051 confirms vehicle name is reported in vehicle state in SSE events."}
+{"claim": "C-0051", "statement": "D-1284", "verdict": "CONFIRMED", "note": "C-0051 confirms bounding box is part of the vehicle state reported in SSE events."}
+{"claim": "C-0051", "statement": "D-1285", "verdict": "CONFIRMED", "note": "C-0051 confirms energy levels/thresholds are reported in vehicle SSE events."}
+{"claim": "C-0051", "statement": "D-1286", "verdict": "CONFIRMED", "note": "C-0051 confirms vehicle energy level integer is reported in vehicle SSE events."}
+{"claim": "C-0051", "statement": "D-1287", "verdict": "CONFIRMED", "note": "C-0051 confirms velocities including maxVelocity are reported in vehicle SSE events."}
+{"claim": "C-0051", "statement": "D-1288", "verdict": "CONFIRMED", "note": "C-0051 confirms velocities including maxReverseVelocity are reported in vehicle SSE events."}
+{"claim": "C-0051", "statement": "D-1290", "verdict": "CONFIRMED", "note": "C-0051 confirms load handling devices array is reported in vehicle SSE events."}
+{"claim": "C-0051", "statement": "D-1291", "verdict": "CONFIRMED", "note": "Supported by C-0051 (sse:Vehicle includes timestamped states/state)."}
+{"claim": "C-0051", "statement": "D-1292", "verdict": "CONFIRMED", "note": "Supported by C-0051 (sse:Vehicle includes timestamped states/procState)."}
+{"claim": "C-0051", "statement": "D-1293", "verdict": "CONFIRMED", "note": "Supported by C-0051 (sse:Vehicle includes integration level/states)."}
+{"claim": "C-0051", "statement": "D-1294", "verdict": "CONFIRMED", "note": "Supported by C-0051 (sse:Vehicle includes paused status)."}
+{"claim": "C-0051", "statement": "D-1295", "verdict": "CONFIRMED", "note": "Supported by C-0051 (sse:Vehicle includes assigned orders / transportOrder)."}
+{"claim": "C-0051", "statement": "D-1296", "verdict": "CONFIRMED", "note": "Supported by C-0051 (sse:Vehicle includes assigned orders / orderSequence)."}
+{"claim": "C-0038", "statement": "D-1297", "verdict": "CONFIRMED", "note": "Supported by C-0038/C-0051 (acceptableOrderTypes array on vehicle)."}
+{"claim": "C-0038", "statement": "D-1298", "verdict": "CONFIRMED", "note": "Supported by C-0038 (Vehicle claimed resources array)."}
+{"claim": "C-0038", "statement": "D-1299", "verdict": "CONFIRMED", "note": "Supported by C-0038 (Vehicle allocated resources array)."}
+{"claim": "C-0051", "statement": "D-1300", "verdict": "CONFIRMED", "note": "Supported by C-0038/C-0051 (Vehicle current position string/nullable)."}
+{"claim": "C-0051", "statement": "D-1301", "verdict": "CONFIRMED", "note": "Supported by C-0051 (sse:Vehicle includes pose)."}
+{"claim": "C-0051", "statement": "D-1302", "verdict": "CONFIRMED", "note": "Supported by C-0051 (sse:Vehicle includes envelopeKey)."}
+{"claim": "C-0051", "statement": "D-1303", "verdict": "CONFIRMED", "note": "Layout property of vehicle event is supported by C-0051."}
+{"claim": "C-0034", "statement": "D-1304", "verdict": "CONFIRMED", "note": "BoundingBox length integer field is supported by C-0034."}
+{"claim": "C-0034", "statement": "D-1305", "verdict": "CONFIRMED", "note": "BoundingBox width integer field is supported by C-0034."}
+{"claim": "C-0034", "statement": "D-1306", "verdict": "CONFIRMED", "note": "BoundingBox height integer field is supported by C-0034."}
+{"claim": "C-0034", "statement": "D-1307", "verdict": "CONFIRMED", "note": "BoundingBox referenceOffset field is supported by C-0034."}
+{"claim": "C-0049", "statement": "D-1308", "verdict": "CONFIRMED", "note": "EnergyLevelThresholdSet energyLevelCritical field is supported by C-0049."}
+{"claim": "C-0049", "statement": "D-1309", "verdict": "CONFIRMED", "note": "EnergyLevelThresholdSet energyLevelGood field is supported by C-0049."}
+{"claim": "C-0049", "statement": "D-1310", "verdict": "CONFIRMED", "note": "EnergyLevelThresholdSet energyLevelFullyRecharged field is supported by C-0049."}
+{"claim": "C-0049", "statement": "D-1311", "verdict": "CONFIRMED", "note": "EnergyLevelThresholdSet energyLevelSufficientlyRecharged field is supported by C-0049."}
+{"claim": "C-0051", "statement": "D-1312", "verdict": "CONFIRMED", "note": "LoadHandlingDevice label string field is supported by C-0051."}
+{"claim": "C-0051", "statement": "D-1313", "verdict": "CONFIRMED", "note": "LoadHandlingDevice full boolean field is supported by C-0051."}
+{"claim": "C-0051", "statement": "D-1318", "verdict": "CONFIRMED", "note": "TimestampedVehicleState state string field is supported by C-0051."}
+{"claim": "C-0038", "statement": "D-1319", "verdict": "CONFIRMED", "note": "TimestampedVehicleState.state enumeration corresponds to Vehicle.State in the vehicle status model."}
+{"claim": "C-0051", "statement": "D-1326", "verdict": "CONFIRMED", "note": "Color.red integer property is confirmed as part of the vehicle layout route color."}
+{"claim": "C-0051", "statement": "D-1327", "verdict": "CONFIRMED", "note": "Color.green integer property is confirmed as part of the vehicle layout route color."}
+{"claim": "C-0051", "statement": "D-1328", "verdict": "CONFIRMED", "note": "Color.blue integer property is confirmed as part of the vehicle layout route color."}
+{"claim": "C-0050", "statement": "D-1331", "verdict": "CONFIRMED", "note": "TransportOrder.name is confirmed by C-0050 describing transport order SSE event fields."}
+{"claim": "C-0050", "statement": "D-1332", "verdict": "CONFIRMED", "note": "TransportOrder.properties is confirmed by C-0050 describing transport order SSE event fields."}
+{"claim": "C-0050", "statement": "D-1333", "verdict": "CONFIRMED", "note": "TransportOrder.history is confirmed by C-0050 describing transport order SSE event fields."}
+{"claim": "C-0050", "statement": "D-1334", "verdict": "CONFIRMED", "note": "TransportOrder.type is confirmed by C-0050 describing transport order SSE event fields."}
+{"claim": "C-0050", "statement": "D-1335", "verdict": "CONFIRMED", "note": "TransportOrder.dependencies is confirmed by C-0050 describing transport order SSE event fields."}
+{"claim": "C-0050", "statement": "D-1336", "verdict": "CONFIRMED", "note": "TransportOrder.driveOrders is confirmed by C-0050 describing transport order SSE event fields."}
+{"claim": "C-0050", "statement": "D-1337", "verdict": "CONFIRMED", "note": "TransportOrder.peripheralReservationToken is confirmed by C-0050 describing transport order SSE event fields."}
+{"claim": "C-0050", "statement": "D-1338", "verdict": "CONFIRMED", "note": "TransportOrder.currentDriveOrderIndex is confirmed by C-0050 describing transport order SSE event fields."}
+{"claim": "C-0050", "statement": "D-1339", "verdict": "CONFIRMED", "note": "Supported by C-0050 covering transport order SSE event fields including route steps."}
+{"claim": "C-0050", "statement": "D-1340", "verdict": "CONFIRMED", "note": "Supported by C-0050 describing transport order SSE event state field."}
+{"claim": "C-0050", "statement": "D-1341", "verdict": "CONFIRMED", "note": "Supported by C-0050 describing creation timestamp in transport order SSE event."}
+{"claim": "C-0050", "statement": "D-1342", "verdict": "CONFIRMED", "note": "Supported by C-0050 describing deadline in transport order SSE event."}
+{"claim": "C-0050", "statement": "D-1343", "verdict": "CONFIRMED", "note": "Supported by C-0050 describing finished timestamp in transport order SSE event."}
+{"claim": "C-0050", "statement": "D-1344", "verdict": "CONFIRMED", "note": "Supported by C-0050 describing intendedVehicle in transport order SSE event."}
+{"claim": "C-0050", "statement": "D-1345", "verdict": "CONFIRMED", "note": "Supported by C-0050 describing processingVehicle in transport order SSE event."}
+{"claim": "C-0050", "statement": "D-1346", "verdict": "CONFIRMED", "note": "Supported by C-0050 describing wrappingSequence in transport order SSE event."}
+{"claim": "C-0050", "statement": "D-1347", "verdict": "CONFIRMED", "note": "Supported by C-0050 describing transport order properties/state."}
+{"claim": "C-0050", "statement": "D-1348", "verdict": "CONFIRMED", "note": "Supported by C-0050 describing drive orders within transport order SSE event."}
+{"claim": "C-0050", "statement": "D-1349", "verdict": "CONFIRMED", "note": "Supported by C-0050 and C-0035 describing drive order destination state within transport order SSE event."}
+{"claim": "C-0050", "statement": "D-1350", "verdict": "CONFIRMED", "note": "Supported by C-0050 describing drive orders and transport order reference in SSE event."}
+{"claim": "C-0050", "statement": "D-1351", "verdict": "CONFIRMED", "note": "C-0050 confirms DriveOrder includes route as part of transport order SSE events."}
+{"claim": "C-0050", "statement": "D-1352", "verdict": "CONFIRMED", "note": "C-0008 and C-0050 confirm DriveOrder includes state."}
+{"claim": "C-0035", "statement": "D-1353", "verdict": "CONFIRMED", "note": "C-0035 confirms DriveOrder destination target location name."}
+{"claim": "C-0035", "statement": "D-1354", "verdict": "CONFIRMED", "note": "C-0035 confirms DriveOrder destination operation."}
+{"claim": "C-0035", "statement": "D-1355", "verdict": "CONFIRMED", "note": "C-0035 confirms DriveOrder destination properties."}
+{"claim": "C-0045", "statement": "D-1356", "verdict": "CONFIRMED", "note": "C-0045 and C-0050 confirm Route contains steps."}
+{"claim": "C-0045", "statement": "D-1357", "verdict": "CONFIRMED", "note": "C-0045 confirms Route contains total costs."}
+{"claim": "C-0045", "statement": "D-1358", "verdict": "CONFIRMED", "note": "C-0045 confirms RouteStep contains path."}
+{"claim": "C-0045", "statement": "D-1359", "verdict": "CONFIRMED", "note": "C-0045 confirms RouteStep contains sourcePoint."}
+{"claim": "C-0045", "statement": "D-1360", "verdict": "CONFIRMED", "note": "C-0045 confirms RouteStep contains destinationPoint."}
+{"claim": "C-0045", "statement": "D-1361", "verdict": "CONFIRMED", "note": "C-0045 confirms RouteStep contains vehicleOrientation."}
+{"claim": "C-0050", "statement": "D-1364", "verdict": "CONFIRMED", "note": "Field type and structure of RouteStep.costs in transport order SSE event route steps matches C-0050."}
+{"claim": "C-0050", "statement": "D-1365", "verdict": "CONFIRMED", "note": "RouteStep.executionAllowed matches transport order drive orders route steps in C-0050."}
+{"claim": "C-0021", "statement": "D-1366", "verdict": "CONFIRMED", "note": "RouteStep.reroutingType field presence and nullable nature aligns with vehicle route rerouting specifications."}
+{"claim": "C-0021", "statement": "D-1367", "verdict": "CONFIRMED", "note": "Enumeration values REGULAR and FORCED match C-0021."}
+{"claim": "C-0042", "statement": "D-1387", "verdict": "CONFIRMED", "note": "PeripheralJob.name matches peripheral job event attributes described in C-0042."}
+{"claim": "C-0042", "statement": "D-1388", "verdict": "CONFIRMED", "note": "PeripheralJob.properties matches peripheral job event properties in C-0042."}
+{"claim": "C-0042", "statement": "D-1389", "verdict": "CONFIRMED", "note": "PeripheralJob.history matches peripheral job event history attribute in C-0042."}
+{"claim": "C-0042", "statement": "D-1390", "verdict": "CONFIRMED", "note": "PeripheralJob.reservationToken matches reservation token attribute in C-0042."}
+{"claim": "C-0042", "statement": "D-1391", "verdict": "CONFIRMED", "note": "PeripheralJob.relatedVehicle matches related vehicle attribute in C-0042."}
+{"claim": "C-0042", "statement": "D-1392", "verdict": "CONFIRMED", "note": "PeripheralJob.relatedTransportOrder matches related transport order attribute in C-0042."}
+{"claim": "C-0042", "statement": "D-1393", "verdict": "CONFIRMED", "note": "PeripheralJob.peripheralOperation matches peripheral operation attribute in C-0042."}
+{"claim": "C-0042", "statement": "D-1394", "verdict": "CONFIRMED", "note": "PeripheralJob.state matches state attribute in C-0042."}
+{"claim": "C-0042", "statement": "D-1395", "verdict": "CONFIRMED", "note": "Claim C-0042 verifies that a peripheral job event reports creationTime and finishedTime."}
+{"claim": "C-0042", "statement": "D-1396", "verdict": "CONFIRMED", "note": "Claim C-0042 verifies that a peripheral job event reports creationTime and finishedTime."}
+{"claim": "C-0043", "statement": "D-1397", "verdict": "CONFIRMED", "note": "Claim C-0043 verifies that peripheral operation describes the location name."}
+{"claim": "C-0043", "statement": "D-1398", "verdict": "CONFIRMED", "note": "Claim C-0043 verifies that peripheral operation describes the operation."}
+{"claim": "C-0043", "statement": "D-1399", "verdict": "CONFIRMED", "note": "Claim C-0043 verifies that peripheral operation describes the execution trigger."}
+{"claim": "C-0043", "statement": "D-1400", "verdict": "CONFIRMED", "note": "Claim C-0043 verifies that peripheral operation describes completionRequired."}
+{"claim": "C-0036", "statement": "D-1405", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms that EnvironmentalEntity reports entity name."}
+{"claim": "C-0036", "statement": "D-1406", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms that EnvironmentalEntity reports properties."}
+{"claim": "C-0036", "statement": "D-1407", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms that EnvironmentalEntity reports history."}
+{"claim": "C-0036", "statement": "D-1408", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms that EnvironmentalEntity reports envelope polygon vertices."}
+{"claim": "C-0036", "statement": "D-1409", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms that EnvironmentalEntity reports 3D pose."}
+{"claim": "C-0036", "statement": "D-1410", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms that environmental entity event contains the entity type (along with C-0010)."}
+{"claim": "C-0036", "statement": "D-1412", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms that environmental entity event contains the integration level (along with C-0009)."}
+{"claim": "C-0036", "statement": "D-1414", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms that environmental entity event contains the layout object."}
+{"claim": "C-0036", "statement": "D-1416", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms created timestamps in environmental entity events."}
+{"claim": "C-0036", "statement": "D-1417", "verdict": "CONFIRMED", "note": "Claim C-0036 confirms retired timestamps in environmental entity events."}
+{"claim": "C-1600", "statement": "D-1512", "verdict": "CONFIRMED", "note": "Claim C-1600 confirms GET /vehicles returns 200 with vehicle list as JSON."}
+{"claim": "C-1602", "statement": "D-1513", "verdict": "CONFIRMED", "note": "Claims C-0053 and C-1602 confirm GET /vehicles returns 400 when invalid query parameters are submitted."}
+{"claim": "C-1500", "statement": "D-1516", "verdict": "CONFIRMED", "note": "Claim C-1500 confirms GET /vehicles/{NAME} returns 200 with vehicle details as JSON."}
+{"claim": "C-0900", "statement": "D-1522", "verdict": "CONFIRMED", "note": "Claim C-0900 confirms POST /vehicles/{NAME}/withdrawal returns 200 upon withdrawing order."}
+{"claim": "C-0903", "statement": "D-1523", "verdict": "CONFIRMED", "note": "Claim C-0903 confirms POST /vehicles/{NAME}/withdrawal returns 404 when vehicle is not found."}
+{"claim": "C-1000", "statement": "D-1524", "verdict": "CONFIRMED", "note": "Claim C-1000 confirms POST /vehicles/{NAME}/rerouteRequest reroutes the specified vehicle."}
+{"claim": "C-1000", "statement": "D-1527", "verdict": "CONFIRMED", "note": "C-1000 confirms that POST /vehicles/{NAME}/rerouteRequest returns 200 on success."}
+{"claim": "C-1002", "statement": "D-1528", "verdict": "CONFIRMED", "note": "C-1002 confirms that POST /vehicles/{NAME}/rerouteRequest returns 404 when no vehicle with the specified name exists."}
+{"claim": "C-0800", "statement": "D-1529", "verdict": "CONFIRMED", "note": "C-0800 confirms that PUT /vehicles/{NAME}/integrationLevel updates the integration level of the named vehicle."}
+{"claim": "C-0800", "statement": "D-1532", "verdict": "CONFIRMED", "note": "C-0800 confirms that PUT /vehicles/{NAME}/integrationLevel returns 200 on success."}
+{"claim": "C-0801", "statement": "D-1533", "verdict": "CONFIRMED", "note": "C-0801 confirms that PUT /vehicles/{NAME}/integrationLevel returns 404 when no vehicle matches the specified name."}
+{"claim": "C-0700", "statement": "D-1534", "verdict": "CONFIRMED", "note": "C-0700 confirms that PUT /vehicles/{NAME}/paused sets the paused state for the named vehicle."}
+{"claim": "C-0700", "statement": "D-1537", "verdict": "CONFIRMED", "note": "C-0700 confirms that PUT /vehicles/{NAME}/paused returns 200 on success."}
+{"claim": "C-0701", "statement": "D-1538", "verdict": "CONFIRMED", "note": "C-0701 confirms that PUT /vehicles/{NAME}/paused returns 404 when no vehicle exists with the specified name."}
+{"claim": "C-1100", "statement": "D-1539", "verdict": "CONFIRMED", "note": "C-1100 confirms that PUT /vehicles/{NAME}/allowedOrderTypes updates the allowed order types for the named vehicle."}
+{"claim": "C-1100", "statement": "D-1542", "verdict": "CONFIRMED", "note": "C-1100 confirms that PUT /vehicles/{NAME}/allowedOrderTypes returns 200 on success."}
+{"claim": "C-0053", "statement": "D-1543", "verdict": "CONFIRMED", "note": "C-0053 confirms that submitting invalid data such as unparseable JSON returns HTTP 400 Bad Request."}
+{"claim": "C-1101", "statement": "D-1544", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/allowedOrderTypes returns 404 if the vehicle does not exist."}
+{"claim": "C-1200", "statement": "D-1548", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/acceptableOrderTypes returns 200 on success."}
+{"claim": "C-0053", "statement": "D-1549", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/acceptableOrderTypes returns 400 for invalid submitted data/JSON."}
+{"claim": "C-1201", "statement": "D-1550", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/acceptableOrderTypes returns 404 if the vehicle is not found."}
+{"claim": "C-1300", "statement": "D-1553", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/energyLevelThresholdSet takes vehicle name as path parameter."}
+{"claim": "C-1300", "statement": "D-1554", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/energyLevelThresholdSet returns 200 on success."}
+{"claim": "C-1302", "statement": "D-1555", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/energyLevelThresholdSet returns 400 if submitted data is invalid."}
+{"claim": "C-1301", "statement": "D-1556", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/energyLevelThresholdSet returns 404 if the vehicle is not found."}
+{"claim": "C-0400", "statement": "D-1560", "verdict": "CONFIRMED", "note": "GET /vehicles/{NAME}/commAdapter/attachmentInformation returns 200 on success."}
+{"claim": "C-0401", "statement": "D-1561", "verdict": "CONFIRMED", "note": "GET /vehicles/{NAME}/commAdapter/attachmentInformation returns 404 if the vehicle is not found."}
+{"claim": "C-0300", "statement": "D-1562", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/commAdapter/attachment attaches the given vehicle driver to the vehicle."}
+{"claim": "C-0300", "statement": "D-1565", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/commAdapter/attachment returns 200 on success."}
+{"claim": "C-0301", "statement": "D-1566", "verdict": "CONFIRMED", "note": "Supported by C-0301 (HTTP 404 when vehicle NAME does not exist)."}
+{"claim": "C-0302", "statement": "D-1567", "verdict": "CONFIRMED", "note": "Supported by C-0302 (HTTP 400 when newValue does not match available driver class names)."}
+{"claim": "C-0500", "statement": "D-1568", "verdict": "CONFIRMED", "note": "Supported by C-0500 (sets communication adapter enabled state for vehicle NAME)."}
+{"claim": "C-0500", "statement": "D-1571", "verdict": "CONFIRMED", "note": "Supported by C-0500 (returns 200 on success)."}
+{"claim": "C-0502", "statement": "D-1572", "verdict": "CONFIRMED", "note": "Supported by C-0502 (HTTP 404 if no vehicle with specified name exists)."}
+{"claim": "C-0600", "statement": "D-1575", "verdict": "CONFIRMED", "note": "Supported by C-0600 (returns 200 on success)."}
+{"claim": "C-0603", "statement": "D-1576", "verdict": "CONFIRMED", "note": "Supported by C-0603 (HTTP 404 when vehicle NAME does not exist)."}
+{"claim": "C-0602", "statement": "D-1577", "verdict": "CONFIRMED", "note": "Supported by C-0602 (accepts VehicleCommAdapterMessage request body)."}
+{"claim": "C-0200", "statement": "D-1581", "verdict": "CONFIRMED", "note": "Supported by C-0200 (returns 200 with computed routes)."}
+{"claim": "C-0208", "statement": "D-1583", "verdict": "CONFIRMED", "note": "Supported by C-0208 (HTTP 404 when specified source point cannot be found)."}
+{"claim": "C-1400", "statement": "D-1585", "verdict": "CONFIRMED", "note": "Supported by C-1400 (updates vehicle envelope key)."}
+{"claim": "C-1400", "statement": "D-1588", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/envelopeKey successfully updates the vehicle's envelope key and returns HTTP 200."}
+{"claim": "C-1401", "statement": "D-1589", "verdict": "CONFIRMED", "note": "PUT /vehicles/{NAME}/envelopeKey returns 404 when the vehicle is not found."}
+{"claim": "C-0038", "statement": "D-1593", "verdict": "CONFIRMED", "note": "VehicleState.name is a required string representing the vehicle name."}
+{"claim": "C-0038", "statement": "D-1594", "verdict": "CONFIRMED", "note": "VehicleState.properties is a required map/object of key-value property pairs."}
+{"claim": "C-0038", "statement": "D-1595", "verdict": "CONFIRMED", "note": "VehicleState.length represents the vehicle length in millimeters."}
+{"claim": "C-0034", "statement": "D-1596", "verdict": "CONFIRMED", "note": "VehicleState includes required boundingBox information."}
+{"claim": "C-0049", "statement": "D-1597", "verdict": "CONFIRMED", "note": "VehicleState.energyLevelGood indicates the percentage threshold above which the vehicle's energy level is considered good."}
+{"claim": "C-0049", "statement": "D-1598", "verdict": "CONFIRMED", "note": "VehicleState.energyLevelCritical indicates the percentage threshold at/below which the vehicle's energy level is critical."}
+{"claim": "C-0049", "statement": "D-1599", "verdict": "CONFIRMED", "note": "VehicleState.energyLevelSufficientlyRecharged indicates the percentage threshold at/below which the vehicle's energy level is sufficiently recharged."}
+{"claim": "C-0038", "statement": "D-1601", "verdict": "CONFIRMED", "note": "VehicleState.energyLevel reports the remaining energy percentage."}
+{"claim": "C-0038", "statement": "D-1602", "verdict": "CONFIRMED", "note": "VehicleState.integrationLevel represents the vehicle's integration level."}
+{"claim": "C-0009", "statement": "D-1603", "verdict": "CONFIRMED", "note": "Vehicle integration level values include TO_BE_IGNORED, TO_BE_NOTICED, TO_BE_RESPECTED, and TO_BE_UTILIZED."}
+{"claim": "C-0052", "statement": "D-1604", "verdict": "CONFIRMED", "note": "Supported by C-0052 and C-0038, which verify that VehicleState/vehicle status includes the paused boolean flag."}
+{"claim": "C-0029", "statement": "D-1605", "verdict": "CONFIRMED", "note": "Supported by C-0029, C-0038, and C-0052, which specify vehicle procState."}
+{"claim": "C-0052", "statement": "D-1607", "verdict": "CONFIRMED", "note": "Supported by C-0038 and C-0052, which verify procState timestamp reporting."}
+{"claim": "C-0052", "statement": "D-1608", "verdict": "CONFIRMED", "note": "Supported by C-0038 and C-0052, which confirm transportOrder is reported for the vehicle."}
+{"claim": "C-0052", "statement": "D-1609", "verdict": "CONFIRMED", "note": "Supported by C-0038 and C-0052, which confirm currentPosition is reported."}
+{"claim": "C-0052", "statement": "D-1610", "verdict": "CONFIRMED", "note": "Supported by C-0038 and C-0052, which confirm precisePosition coordinates."}
+{"claim": "C-0052", "statement": "D-1611", "verdict": "CONFIRMED", "note": "Supported by C-0038 and C-0052, which confirm vehicle orientation angle reporting."}
+{"claim": "C-0052", "statement": "D-1612", "verdict": "CONFIRMED", "note": "Supported by C-0038 and C-0052, which describe the vehicle's current state attribute."}
+{"claim": "C-0052", "statement": "D-1614", "verdict": "CONFIRMED", "note": "Supported by C-0038 and C-0052, which verify stateTimestamp in VehicleState."}
+{"claim": "C-0052", "statement": "D-1615", "verdict": "CONFIRMED", "note": "Supported by C-0038 and C-0052, which describe allocatedResources in vehicle status."}
+{"claim": "C-0052", "statement": "D-1616", "verdict": "CONFIRMED", "note": "Supported by C-0038 and C-0052, which describe claimedResources in vehicle status."}
+{"claim": "C-0038", "statement": "D-1617", "verdict": "CONFIRMED", "note": "Vehicles include allowedOrderTypes (deprecated in favor of acceptableOrderTypes)."}
+{"claim": "C-0038", "statement": "D-1618", "verdict": "CONFIRMED", "note": "Vehicles include acceptableOrderTypes with priorities as confirmed by C-0038 and C-0033."}
+{"claim": "C-0038", "statement": "D-1619", "verdict": "CONFIRMED", "note": "Vehicle state includes envelopeKey as confirmed by C-0038."}
+{"claim": "C-0048", "statement": "D-1620", "verdict": "CONFIRMED", "note": "AllowedOrderTypes request contains orderTypes as an array of strings as confirmed by C-0048 and C-1100."}
+{"claim": "C-0037", "statement": "D-1628", "verdict": "CONFIRMED", "note": "AttachmentInformation contains vehicleName as confirmed by C-0037."}
+{"claim": "C-0037", "statement": "D-1629", "verdict": "CONFIRMED", "note": "AttachmentInformation contains availableCommAdapters as confirmed by C-0037."}
+{"claim": "C-0206", "statement": "D-1631", "verdict": "CONFIRMED", "note": "RoutesRequest.sourcePoint is optional and defaults to the vehicle's current position if null/omitted as confirmed by C-0206."}
+{"claim": "C-0045", "statement": "D-1632", "verdict": "CONFIRMED", "note": "RoutesRequest requires destinationPoints array as confirmed by C-0045 and C-0200."}
+{"claim": "C-0045", "statement": "D-1633", "verdict": "CONFIRMED", "note": "RoutesRequest accepts optional resourcesToAvoid as confirmed by C-0045 and C-0210."}
+{"claim": "C-0045", "statement": "D-1634", "verdict": "CONFIRMED", "note": "RoutesResponse returns a list of computed routes as confirmed by C-0045."}
+{"claim": "C-0045", "statement": "D-1635", "verdict": "CONFIRMED", "note": "Route contains destinationPoint as confirmed by C-0045."}
+{"claim": "C-0045", "statement": "D-1636", "verdict": "CONFIRMED", "note": "Route contains costs integer (-1 if uncomputable) as confirmed by C-0045."}
+{"claim": "C-0045", "statement": "D-1637", "verdict": "CONFIRMED", "note": "Supported by C-0045: Route response includes steps."}
+{"claim": "C-0045", "statement": "D-1638", "verdict": "CONFIRMED", "note": "Supported by C-0045: Step defines path."}
+{"claim": "C-0045", "statement": "D-1639", "verdict": "CONFIRMED", "note": "Supported by C-0045: Step defines source point."}
+{"claim": "C-0045", "statement": "D-1640", "verdict": "CONFIRMED", "note": "Supported by C-0045: Step defines destination point."}
+{"claim": "C-0045", "statement": "D-1641", "verdict": "CONFIRMED", "note": "Supported by C-0025 and C-0045: Step defines vehicle orientation defaulting to UNDEFINED."}
+{"claim": "C-0038", "statement": "D-1651", "verdict": "CONFIRMED", "note": "Supported by C-0038 and C-0052: Precise coordinates include x coordinate."}
+{"claim": "C-0038", "statement": "D-1652", "verdict": "CONFIRMED", "note": "Supported by C-0038 and C-0052: Precise coordinates include y coordinate."}
+{"claim": "C-0038", "statement": "D-1653", "verdict": "CONFIRMED", "note": "Supported by C-0038 and C-0052: Precise coordinates include z coordinate."}
+{"claim": "C-0035", "statement": "D-1654", "verdict": "CONFIRMED", "note": "Supported by C-0035: Destination state describes location name."}
+{"claim": "C-0035", "statement": "D-1655", "verdict": "CONFIRMED", "note": "Supported by C-0035: Destination state describes operation."}
+{"claim": "C-0035", "statement": "D-1656", "verdict": "CONFIRMED", "note": "Supported by C-0008 and C-0035: Destination state describes drive order state."}
+{"claim": "C-0035", "statement": "D-1658", "verdict": "CONFIRMED", "note": "Supported by C-0035: Destination state describes associated properties."}
+{"claim": "C-0042", "statement": "D-1659", "verdict": "CONFIRMED", "note": "Supported by C-0042 and C-0043 which confirm peripheral job state includes name."}
+{"claim": "C-0042", "statement": "D-1660", "verdict": "CONFIRMED", "note": "Supported by C-0042 and C-0043 which confirm peripheral job state includes reservation token."}
+{"claim": "C-0042", "statement": "D-1661", "verdict": "CONFIRMED", "note": "Supported by C-0042 and C-0043 which confirm peripheral job state includes related vehicle."}
+{"claim": "C-0042", "statement": "D-1662", "verdict": "CONFIRMED", "note": "Supported by C-0042 and C-0043 which confirm peripheral job state includes related transport order."}
+{"claim": "C-0042", "statement": "D-1663", "verdict": "CONFIRMED", "note": "Supported by C-0042 and C-0043 which confirm peripheral job state includes peripheral operation."}
+{"claim": "C-0016", "statement": "D-1664", "verdict": "CONFIRMED", "note": "Supported by C-0016, C-0042, and C-0043 which confirm peripheral job state attribute."}
+{"claim": "C-0042", "statement": "D-1666", "verdict": "CONFIRMED", "note": "Supported by C-0042 and C-0043 which confirm peripheral job creation time."}
+{"claim": "C-0042", "statement": "D-1667", "verdict": "CONFIRMED", "note": "Supported by C-0042 and C-0043 which confirm peripheral job finished time."}
+{"claim": "C-0042", "statement": "D-1668", "verdict": "CONFIRMED", "note": "Supported by C-0042 and C-0043 which confirm peripheral job properties."}
+{"claim": "C-0034", "statement": "D-1679", "verdict": "CONFIRMED", "note": "Supported by C-0034 which defines 2D reference offset coordinates x and y."}
+{"claim": "C-0034", "statement": "D-1680", "verdict": "CONFIRMED", "note": "Supported by C-0034 which defines 2D reference offset coordinates x and y."}
+{"claim": "C-0039", "statement": "D-1686", "verdict": "CONFIRMED", "note": "Supported by C-0039 which confirms history entries record event code."}
+{"claim": "C-0039", "statement": "D-1687", "verdict": "CONFIRMED", "note": "C-0039 confirms that ObjectHistoryEntry contains supplemental details."}
+{"claim": "C-0036", "statement": "D-1754", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntity reports layout attributes."}
+{"claim": "C-0036", "statement": "D-1755", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntityEnvelope includes polygon vertices."}
+{"claim": "C-0036", "statement": "D-1756", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntityPose specifies position coordinates."}
+{"claim": "C-0036", "statement": "D-1757", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntityPose includes orientation angle."}
+{"claim": "C-0043", "statement": "D-1914", "verdict": "CONFIRMED", "note": "C-0043 confirms peripheral operation description contains operation."}
+{"claim": "C-0043", "statement": "D-1915", "verdict": "CONFIRMED", "note": "C-0043 confirms peripheral operation description contains locationName."}
+{"claim": "C-0043", "statement": "D-1916", "verdict": "CONFIRMED", "note": "C-0043 confirms peripheral operation description contains execution trigger."}
+{"claim": "C-0043", "statement": "D-1917", "verdict": "CONFIRMED", "note": "C-0043 confirms peripheral operation description specifies execution trigger values."}
+{"claim": "C-0043", "statement": "D-1918", "verdict": "CONFIRMED", "note": "C-0043 confirms peripheral operation description contains completionRequired flag."}
+{"claim": "C-0051", "statement": "D-1964", "verdict": "CONFIRMED", "note": "C-0051 confirms vehicle layout route color property."}
+{"claim": "C-0051", "statement": "D-2027", "verdict": "CONFIRMED", "note": "C-0051 confirms vehicle event reports previous and current vehicle states."}
+{"claim": "C-0051", "statement": "D-2028", "verdict": "CONFIRMED", "note": "C-0051 describes vehicle SSE events reporting previous and current vehicle states (where previous state is optional/nullable)."}
+{"claim": "C-0036", "statement": "D-2041", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntity reports entity name."}
+{"claim": "C-0036", "statement": "D-2042", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntity contains properties."}
+{"claim": "C-0036", "statement": "D-2043", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntity contains history."}
+{"claim": "C-0036", "statement": "D-2044", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntity contains envelope polygon vertices."}
+{"claim": "C-0036", "statement": "D-2045", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntity contains 3D pose."}
+{"claim": "C-0036", "statement": "D-2046", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntity contains type."}
+{"claim": "C-0036", "statement": "D-2048", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntity contains integration level."}
+{"claim": "C-0036", "statement": "D-2050", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntity contains layout."}
+{"claim": "C-0036", "statement": "D-2051", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntity contains layout information."}
+{"claim": "C-0036", "statement": "D-2052", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntity contains created timestamp."}
+{"claim": "C-0036", "statement": "D-2053", "verdict": "CONFIRMED", "note": "C-0036 confirms EnvironmentalEntity contains retired timestamp."}
+{"claim": "C-0037", "statement": "D-2190", "verdict": "CONFIRMED", "note": "C-0037 confirms that AttachmentInformation response provides the vehicle name."}
+{"claim": "C-0037", "statement": "D-2191", "verdict": "CONFIRMED", "note": "C-0037 confirms AttachmentInformation provides the list of available communication adapters."}
+{"claim": "C-0206", "statement": "D-2193", "verdict": "CONFIRMED", "note": "C-0206 and C-0045 confirm that sourcePoint is optional and falls back to the vehicle's current position."}
+{"claim": "C-0045", "statement": "D-2194", "verdict": "CONFIRMED", "note": "C-0045 and C-0200 confirm route calculation accepts destination points."}
+{"claim": "C-0045", "statement": "D-2195", "verdict": "CONFIRMED", "note": "C-0045 and C-0210 confirm resourcesToAvoid specifies resources to be avoided."}
+{"claim": "C-0045", "statement": "D-2196", "verdict": "CONFIRMED", "note": "C-0045 confirms the response contains computed routes."}
+{"claim": "C-0045", "statement": "D-2197", "verdict": "CONFIRMED", "note": "C-0045 confirms each computed route contains the destination point."}
+{"claim": "C-0045", "statement": "D-2198", "verdict": "CONFIRMED", "note": "C-0045 confirms route contains total costs (or -1 if no route)."}
+{"claim": "C-0045", "statement": "D-2199", "verdict": "CONFIRMED", "note": "C-0045 confirms route contains route steps (or null if no route)."}
+{"claim": "C-0045", "statement": "D-2200", "verdict": "CONFIRMED", "note": "C-0045 confirms each route step specifies the path."}
+{"claim": "C-0045", "statement": "D-2201", "verdict": "CONFIRMED", "note": "C-0045 confirms each route step specifies the source point."}
+{"claim": "C-0045", "statement": "D-2202", "verdict": "CONFIRMED", "note": "C-0045 confirms each route step specifies the destination point."}
+{"claim": "C-0025", "statement": "D-2203", "verdict": "CONFIRMED", "note": "Vehicles Step vehicleOrientation property corresponds to vehicle orientation on route steps, with default UNDEFINED."}
+{"claim": "C-0044", "statement": "D-2205", "verdict": "CONFIRMED", "note": "VehicleCommAdapterMessage requires a message type string, confirmed by C-0044/C-0602."}
+{"claim": "C-0034", "statement": "D-2234", "verdict": "CONFIRMED", "note": "Couple x integer coordinate corresponds to 2D reference offset x in bounding box / coordinate representations."}
+{"claim": "C-0034", "statement": "D-2235", "verdict": "CONFIRMED", "note": "Couple y integer coordinate corresponds to 2D reference offset y in bounding box / coordinate representations."}
+{"claim": "C-0039", "statement": "D-2238", "verdict": "CONFIRMED", "note": "ObjectHistoryEntry eventCode required string corresponds to object history entry event code confirmed in C-0039."}
+{"claim": "C-0039", "statement": "D-2239", "verdict": "CONFIRMED", "note": "ObjectHistoryEntry supplements required array corresponds to supplemental details in history entries confirmed in C-0039."}
+{"claim": null, "statement": "D-2397", "verdict": "DOC_ONLY", "note": "UserNotificationLevel enum values (INFORMATIONAL, NOTEWORTHY, IMPORTANT) describe schema values not covered by verified claims."}
+{"claim": null, "statement": "D-0093", "verdict": "DOC_ONLY", "note": "Changelog entry regarding clearing vehicle order reservations when integration level changes to non-TO_BE_UTILIZED is not verified by current claims."}
+{"claim": null, "statement": "D-0144", "verdict": "DOC_ONLY", "note": "Historical changelog note regarding vehicle processing state and integration level TO_BE_UTILIZED."}
+{"claim": null, "statement": "D-0158", "verdict": "DOC_ONLY", "note": "Changelog note regarding removal of reset position function in Kernel Control Center."}
+{"claim": null, "statement": "D-0159", "verdict": "DOC_ONLY", "note": "Changelog note on introduction of vehicle integration level property in version 4.10."}
+{"claim": null, "statement": "D-0187", "verdict": "DOC_ONLY", "note": "Changelog note on initial processing state in version 2.4."}
+{"claim": "C-0015", "statement": "D-0277", "verdict": "CONFIRMED", "note": "Both statement D-0277 and claim C-0015 confirm that transport orders conclude/terminate in state FINISHED upon successful processing."}
+{"claim": "C-0043", "statement": "D-0316", "verdict": "CONFIRMED", "note": "Claim C-0043 supports peripheral operations with execution trigger descriptions including AFTER_ALLOCATION."}
+{"claim": "C-0043", "statement": "D-0317", "verdict": "CONFIRMED", "note": "Claim C-0043 supports peripheral operations with execution trigger descriptions including AFTER_MOVEMENT."}
+{"claim": "C-0043", "statement": "D-0417", "verdict": "CONFIRMED", "note": "Claim C-0043 verifies peripheral operation execution triggers such as AFTER_ALLOCATION."}
+{"claim": "C-0043", "statement": "D-0418", "verdict": "CONFIRMED", "note": "Claim C-0043 verifies peripheral operation execution triggers such as AFTER_MOVEMENT."}
+{"claim": "C-0015", "statement": "D-0545", "verdict": "CONFIRMED", "note": "Confirmed by claim C-0015, which specifies that a transport order is DISPATCHABLE when ready to be dispatched/assigned."}
+{"claim": null, "statement": "D-0550", "verdict": "CONFIRMED", "note": "Documented requirement for immediate transport order assignment matching DefaultDispatcher implementation."}
+{"claim": null, "statement": "D-0551", "verdict": "CONFIRMED", "note": "Documented requirement for immediate transport order assignment matching DefaultDispatcher implementation."}
+{"claim": "C-0005", "statement": "D-0571", "verdict": "CONFIRMED", "note": "Aligns with C-0005 and the DefaultScheduler resource allocation logic for blocks with type SINGLE_VEHICLE_ONLY."}
+{"claim": null, "statement": "D-0588", "verdict": "CONFIRMED", "note": "Documented requirement for peripheral device dispatching matching DefaultPeripheralJobDispatcher."}
+{"claim": null, "statement": "D-0589", "verdict": "CONFIRMED", "note": "Documented requirement for peripheral device processingState matching DefaultPeripheralJobDispatcher."}
+{"claim": null, "statement": "D-0691", "verdict": "CONFIRMED", "note": "Implemented in VDA 5050 adapter state mapping logic where info messages are concatenated into the vda5050:information.info vehicle property."}
+{"claim": null, "statement": "D-0694", "verdict": "CONFIRMED", "note": "Implemented in VDA 5050 vehicle state mapping when fatal errors are reported."}
+{"claim": null, "statement": "D-0695", "verdict": "CONFIRMED", "note": "Implemented in VDA 5050 vehicle state mapping when operatingMode is not AUTOMATIC or SEMIAUTOMATIC."}
+{"claim": null, "statement": "D-0696", "verdict": "CONFIRMED", "note": "Implemented in VDA 5050 vehicle state mapping when charging flag is true."}
+{"claim": null, "statement": "D-0698", "verdict": "CONFIRMED", "note": "Implemented in VDA 5050 vehicle state mapping as default fallback state IDLE."}
+{"claim": "C-0015", "statement": "D-0707", "verdict": "CONFIRMED", "note": "Aligns with transport order validation and UNROUTABLE state assignment when a destination operation is unsupported by the location type."}
+{"claim": null, "statement": "D-0729", "verdict": "CONFIRMED", "note": "Specifies expected vehicle protocol behavior for instant actions handled by the VDA 5050 comm adapter."}
+{"claim": null, "statement": "D-0733", "verdict": "DOC_ONLY", "note": "Documentation describes VDA 5050 driver runtime behavior for instantActions cancelOrder, which is not verified by any kernel Web API feature claims in scope."}
+{"claim": null, "statement": "D-0776", "verdict": "DOC_ONLY", "note": "Documentation specifies mapping of VDA 5050 state info elements to vehicle property vda5050:information.info, not covered by any verified claims."}
+{"claim": null, "statement": "D-0779", "verdict": "DOC_ONLY", "note": "Documentation specifies VDA 5050 vehicle state mapping to ERROR on FATAL errorLevel, not covered by any verified claims."}
+{"claim": null, "statement": "D-0780", "verdict": "DOC_ONLY", "note": "Documentation specifies VDA 5050 vehicle state mapping to UNAVAILABLE when operatingMode is not AUTOMATIC or SEMIAUTOMATIC, not covered by verified claims."}
+{"claim": null, "statement": "D-0781", "verdict": "DOC_ONLY", "note": "Documentation specifies VDA 5050 vehicle state mapping to CHARGING when charging is true, not covered by verified claims."}
+{"claim": null, "statement": "D-0783", "verdict": "DOC_ONLY", "note": "Documentation specifies VDA 5050 vehicle state mapping to IDLE in all other cases, not covered by verified claims."}
+{"claim": "C-0015", "statement": "D-0792", "verdict": "CONFIRMED", "note": "Claim C-0015 confirms that transport orders terminate with state UNROUTABLE (among others) when invalid/unroutable."}
+{"claim": null, "statement": "D-0814", "verdict": "DOC_ONLY", "note": "Documentation specifies VDA 5050 vehicle protocol requirements for reflecting instant actions in actionStates, which is driver/protocol behavior not verified by kernel Web API claims."}
+{"claim": null, "statement": "D-0818", "verdict": "DOC_ONLY", "note": "Documentation describes VDA 5050 v2.0 driver runtime behavior for cancelOrder instant actions, not covered by verified claims."}

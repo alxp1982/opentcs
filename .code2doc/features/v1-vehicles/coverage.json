@@ -1,0 +1,523 @@
+{
+ "feature": "v1-vehicles",
+ "coverage": 0.8588,
+ "explained": 456,
+ "total": 531,
+ "ignored": [
+  {
+   "fact": "const:CloseFileAction.ID",
+   "reason": "Desktop GUI action identifier in operationsdesk, unrelated to vehicle comm adapter attachment."
+  },
+  {
+   "fact": "const:CloseFileAction.ID_MODEL_CLOSING",
+   "reason": "Desktop GUI action identifier in operationsdesk, unrelated to vehicle comm adapter attachment."
+  },
+  {
+   "fact": "const:Dispatcher.PROPKEY_PARKING_POSITION_PRIORITY",
+   "reason": "Internal dispatcher strategy constant for parking position priority property, deep inside dispatcher internals."
+  },
+  {
+   "fact": "const:DriveOrder.Destination.OP_MOVE",
+   "reason": "Internal dispatcher operation constant used in deep drive order routability heuristics."
+  },
+  {
+   "fact": "const:DriveOrder.Destination.OP_NOP",
+   "reason": "Internal dispatcher operation constant used in deep drive order routability heuristics."
+  },
+  {
+   "fact": "const:DriveOrder.Destination.OP_PARK",
+   "reason": "Transport order destination operation constant used in DefaultRouter for order routing, not relevant to route computation query."
+  },
+  {
+   "fact": "const:I18nPlantOverview.MENU_PATH",
+   "reason": "Desktop GUI menu path constant, unrelated to vehicle comm adapter attachment."
+  },
+  {
+   "fact": "const:LoopbackAdapterConstants.PROPKEY_INITIAL_POSITION",
+   "reason": "Property key constant used during loopback adapter initialization, not part of attachment endpoint behavior."
+  },
+  {
+   "fact": "const:ObjectPropConstants.TRANSPORT_ORDER_RESOURCES_TO_AVOID",
+   "reason": "Transport order property key constant for avoiding resources, not used in the route computation query call path."
+  },
+  {
+   "fact": "const:OpenTCSView.NAME",
+   "reason": "Desktop GUI view name constant, unrelated to vehicle comm adapter attachment."
+  },
+  {
+   "fact": "const:OrderConstants.TYPE_ANY",
+   "reason": "Default acceptable order type constant in Vehicle constructor, not related to setting the vehicle paused state."
+  },
+  {
+   "fact": "const:OrderConstants.TYPE_CHARGE",
+   "reason": "Internal transport order type constant set when creating automatic recharge orders during dispatching."
+  },
+  {
+   "fact": "const:OrderConstantsTO.TYPE_NONE",
+   "reason": "Default type constant for TransportOrderCreationTO, not configurable or observable through this endpoint."
+  },
+  {
+   "fact": "const:ResourceAvoidanceExtractor.ResourcesToAvoid.EMPTY",
+   "reason": "Internal sentinel instance indicating no resources to avoid in router helper."
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_ENVIRONMENTAL_ENTITIES",
+   "reason": "SSE event type constant for environmental entities, unrelated to vehicle comm adapter attachment."
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_LOCATIONS",
+   "reason": "SSE event type constant for locations, unrelated to vehicle comm adapter attachment."
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_ORDER_SEQUENCES",
+   "reason": "SSE event type constant for order sequences, unrelated to vehicle comm adapter attachment."
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_PATHS",
+   "reason": "SSE event type constant for paths, unrelated to vehicle comm adapter attachment."
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_PERIPHERAL_JOBS",
+   "reason": "SSE event type constant for peripheral jobs, unrelated to vehicle comm adapter attachment."
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_TRANSPORT_ORDERS",
+   "reason": "SSE event type constant for transport orders, unrelated to vehicle comm adapter attachment."
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_USER_NOTIFICATIONS",
+   "reason": "SSE event type constant for user notifications, unrelated to vehicle comm adapter attachment."
+  },
+  {
+   "fact": "const:SseConstants.EVENT_TYPE_VEHICLES",
+   "reason": "SSE event type constant for vehicles, unrelated to vehicle comm adapter attachment."
+  },
+  {
+   "fact": "error:IllegalArgumentException:: Could not allocate now although permission previously granted: ",
+   "reason": "Internal vehicle controller resource allocation error message, unrelated to comm adapter attachment."
+  },
+  {
+   "fact": "error:IllegalArgumentException:: Not part of a sequence",
+   "reason": "Internal exception thrown in private TransportOrderUtil.skipOrderInSequence, unreachable as an observable API error for this trigger endpoint."
+  },
+  {
+   "fact": "error:IllegalArgumentException:Unhandled model class: ",
+   "reason": "Desktop plant overview GUI model adapter error message, unrelated to comm adapter attachment."
+  },
+  {
+   "fact": "error:IllegalArgumentException:Unhandled state: ",
+   "reason": "Desktop operations desk GUI state change event error message, unrelated to comm adapter attachment."
+  },
+  {
+   "fact": "error:IllegalArgumentException:currentObjectState == null but eventType != OBJECT_REMOVED",
+   "reason": "Internal TCSObjectEvent constructor invariant check."
+  },
+  {
+   "fact": "error:IllegalArgumentException:previousObjectState == null but eventType != OBJECT_CREATED",
+   "reason": "Internal TCSObjectEvent constructor invariant check."
+  },
+  {
+   "fact": "error:ObjectUnknownException:Unknown vehicle: ",
+   "reason": "Error message thrown in transport order dispatcher handler, not this unit's handler."
+  },
+  {
+   "fact": "error:ObjectUnknownException:name",
+   "reason": "Internal repository lookup error not reachable from this vehicle withdrawal path"
+  },
+  {
+   "fact": "error:ObjectUnknownException:ref",
+   "reason": "Internal repository lookup error for object references not reachable as an independent product failure"
+  },
+  {
+   "fact": "error:ServiceUnavailableException:Could not connect to portal",
+   "reason": "Desktop plant overview client connection error, unrelated to comm adapter attachment."
+  }
+ ],
+ "by_kind": {
+  "body": "5/5",
+  "const": "5/5",
+  "endpoint": "16/16",
+  "enum": "156/218",
+  "error": "18/20",
+  "field": "244/255",
+  "param": "7/7",
+  "status": "5/5"
+ },
+ "unexplained": [
+  {
+   "fact": "enum:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.ExecutionTriggerTO.AFTER_ALLOCATION",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:72",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.ExecutionTriggerTO.AFTER_MOVEMENT",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:73",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralJobEventTO.PeripheralJobTO.PeripheralOperationTO.ExecutionTriggerTO.IMMEDIATE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/PeripheralJobEventTO.java:71",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralOperationTO.ExecutionTrigger.AFTER_ALLOCATION",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralOperationTO.java:85",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralOperationTO.ExecutionTrigger.AFTER_MOVEMENT",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralOperationTO.java:86",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PeripheralOperationTO.ExecutionTrigger.IMMEDIATE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/PeripheralOperationTO.java:84",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionMode.AUTO",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:94",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionMode.MANUAL",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:98",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionMode.RECONNECT",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:102",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionState.CONNECTED",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:73",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionState.CONNECTING",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:69",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionState.DISCONNECTED",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:83",
+   "symbol": null
+  },
+  {
+   "fact": "enum:PortalManager.ConnectionState.DISCONNECTING",
+   "src": "opentcs-common/src/main/java/org/opentcs/common/PortalManager.java:77",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.BLOCKS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:282",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.LAYOUT",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:258",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.LINKS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:274",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.LOCATIONS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:266",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.LOCATION_TYPES",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:278",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.OTHER_GRAPHICAL_ELEMENTS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:286",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.PATHS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:270",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.POINTS",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:262",
+   "symbol": null
+  },
+  {
+   "fact": "enum:SystemModel.FolderKey.VEHICLES",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/model/SystemModel.java:254",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TCSObjectEvent.Type.OBJECT_CREATED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/TCSObjectEvent.java:125",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TCSObjectEvent.Type.OBJECT_MODIFIED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/TCSObjectEvent.java:129",
+   "symbol": null
+  },
+  {
+   "fact": "enum:TCSObjectEvent.Type.OBJECT_REMOVED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/TCSObjectEvent.java:133",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserMessageHelper.Type.ERROR",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/util/UserMessageHelper.java:161",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserMessageHelper.Type.INFO",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/util/UserMessageHelper.java:157",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserMessageHelper.Type.PLAIN",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/util/UserMessageHelper.java:153",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserMessageHelper.Type.QUESTION",
+   "src": "opentcs-plantoverview-common/src/main/java/org/opentcs/guing/common/util/UserMessageHelper.java:165",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserNotification.Level.IMPORTANT",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/notification/UserNotification.java:146",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserNotification.Level.INFORMATIONAL",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/notification/UserNotification.java:138",
+   "symbol": null
+  },
+  {
+   "fact": "enum:UserNotification.Level.NOTEWORTHY",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/notification/UserNotification.java:142",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.IntegrationLevel.TO_BE_IGNORED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1401",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.IntegrationLevel.TO_BE_NOTICED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1406",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.IntegrationLevel.TO_BE_RESPECTED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1410",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.IntegrationLevel.TO_BE_UTILIZED",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1414",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.State.CHARGING",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1390",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.State.ERROR",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1378",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.State.EXECUTING",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1386",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.State.IDLE",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1382",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.State.UNAVAILABLE",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1374",
+   "symbol": null
+  },
+  {
+   "fact": "enum:Vehicle.State.UNKNOWN",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1369",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.IntegrationLevelTO.TO_BE_IGNORED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:139",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.IntegrationLevelTO.TO_BE_NOTICED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:140",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.IntegrationLevelTO.TO_BE_RESPECTED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:141",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.IntegrationLevelTO.TO_BE_UTILIZED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:142",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.StateTO.CHARGING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:151",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.StateTO.ERROR",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:148",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.StateTO.EXECUTING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:150",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.StateTO.IDLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:149",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.StateTO.UNAVAILABLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:147",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleEventTO.StateTO.UNKNOWN",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/sse/VehicleEventTO.java:146",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.IntegrationLevel.TO_BE_IGNORED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:200",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.IntegrationLevel.TO_BE_NOTICED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:201",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.IntegrationLevel.TO_BE_RESPECTED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:202",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.IntegrationLevel.TO_BE_UTILIZED",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:203",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.State.CHARGING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:193",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.State.ERROR",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:190",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.State.EXECUTING",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:192",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.State.IDLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:191",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.State.UNAVAILABLE",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:189",
+   "symbol": null
+  },
+  {
+   "fact": "enum:VehicleTO.State.UNKNOWN",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/plantmodel/VehicleTO.java:188",
+   "symbol": null
+  },
+  {
+   "fact": "error:IllegalArgumentException:String.format(\n              String.valueOf(messageTemplate)",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/util/Assertions.java:46",
+   "symbol": "org.opentcs.util.Assertions#checkArgument"
+  },
+  {
+   "fact": "error:IllegalArgumentException:Updating a vehicle's envelope key while the vehicle is processing an order or ",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/services/StandardVehicleService.java:420",
+   "symbol": "org.opentcs.kernel.services.StandardVehicleService#updateVehicleEnvelopeKey"
+  },
+  {
+   "fact": "field:OrderStatusMessage.destinations",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:15",
+   "symbol": null
+  },
+  {
+   "fact": "field:OrderStatusMessage.dispensable",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:15",
+   "symbol": null
+  },
+  {
+   "fact": "field:OrderStatusMessage.intendedVehicle",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:15",
+   "symbol": null
+  },
+  {
+   "fact": "field:OrderStatusMessage.orderName",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:15",
+   "symbol": null
+  },
+  {
+   "fact": "field:OrderStatusMessage.orderState",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:15",
+   "symbol": null
+  },
+  {
+   "fact": "field:OrderStatusMessage.orderType",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:15",
+   "symbol": null
+  },
+  {
+   "fact": "field:OrderStatusMessage.peripheralReservationToken",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:15",
+   "symbol": null
+  },
+  {
+   "fact": "field:OrderStatusMessage.processingVehicleName",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:15",
+   "symbol": null
+  },
+  {
+   "fact": "field:OrderStatusMessage.properties",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:15",
+   "symbol": null
+  },
+  {
+   "fact": "field:OrderStatusMessage.wrappingSequence",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/getevents/OrderStatusMessage.java:15",
+   "symbol": null
+  },
+  {
+   "fact": "field:PutVehicleAcceptableOrderTypesTO.acceptableOrderTypes",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/PutVehicleAcceptableOrderTypesTO.java:16",
+   "symbol": null
+  }
+ ]
+}

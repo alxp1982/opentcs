@@ -1,0 +1,138 @@
+{
+ "endpoints": {
+  "matched": [
+   "GET /v1/transportOrders",
+   "GET /v1/transportOrders/{NAME}",
+   "POST /v1/transportOrders/dispatcher/trigger",
+   "POST /v1/transportOrders/{NAME}",
+   "POST /v1/transportOrders/{NAME}/immediateAssignment",
+   "POST /v1/transportOrders/{NAME}/withdrawal",
+   "PUT /v1/transportOrders/{NAME}/intendedVehicle"
+  ],
+  "code_only": [],
+  "doc_only": []
+ },
+ "parameters": [],
+ "matched_schemas": [
+  "transport-orders:DestinationOrder",
+  "common:DestinationState",
+  "sse:DriveOrder",
+  "sse:DriveOrderDestination",
+  "transport-orders:TransportOrderState",
+  "common:ObjectHistory",
+  "common:ObjectHistoryEntry",
+  "transport-orders:TransportOrder",
+  "order-sequences:Property",
+  "sse:Route",
+  "sse:RouteStep",
+  "sse:DriveOrderState",
+  "sse:DriveOrderState",
+  "events:OrderStatusMessage.orderState",
+  "sse:RouteStep.reroutingType",
+  "sse:RouteStep.vehicleOrientation",
+  "events:OrderStatusMessage.orderState",
+  "events:VehicleStatusMessage.integrationLevel"
+ ],
+ "fields": [],
+ "enums": [
+  {
+   "code_enum": "TCSObjectEvent.Type",
+   "doc_enum": null,
+   "finding": "values not documented as an enum",
+   "values": [
+    "OBJECT_CREATED",
+    "OBJECT_MODIFIED",
+    "OBJECT_REMOVED"
+   ]
+  }
+ ],
+ "statuses": [
+  {
+   "endpoint": "POST /v1/transportOrders/dispatcher/trigger",
+   "documented": [
+    200
+   ],
+   "raised_in_unit": [
+    500
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "POST /v1/transportOrders/{NAME}/immediateAssignment",
+   "documented": [
+    200,
+    400,
+    404
+   ],
+   "raised_in_unit": [
+    404
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "POST /v1/transportOrders/{NAME}/withdrawal",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    400,
+    404
+   ],
+   "undocumented": [
+    400
+   ]
+  },
+  {
+   "endpoint": "POST /v1/transportOrders/{NAME}",
+   "documented": [
+    200,
+    400,
+    404,
+    409
+   ],
+   "raised_in_unit": [
+    400,
+    404,
+    500
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "PUT /v1/transportOrders/{NAME}/intendedVehicle",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    400,
+    404
+   ],
+   "undocumented": [
+    400
+   ]
+  },
+  {
+   "endpoint": "GET /v1/transportOrders/{NAME}",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    404
+   ],
+   "undocumented": []
+  },
+  {
+   "endpoint": "GET /v1/transportOrders",
+   "documented": [
+    200,
+    404
+   ],
+   "raised_in_unit": [
+    404
+   ],
+   "undocumented": []
+  }
+ ]
+}

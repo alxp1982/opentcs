@@ -1,0 +1,35 @@
+{
+ "feature": "v1-transport-orders",
+ "coverage": 1.0,
+ "explained": 132,
+ "total": 132,
+ "ignored": [
+  {
+   "fact": "error:IllegalArgumentException:%s: Cannot change integration level to %s while processing orders.",
+   "reason": "Unreachable from this endpoint because the vehicle is updated to TO_BE_RESPECTED, whereas the exception is only thrown for TO_BE_IGNORED or TO_BE_NOTICED."
+  },
+  {
+   "fact": "error:ObjectUnknownException:Unknown transport order: ",
+   "reason": "Anchored in TransportOrderDispatcherHandler.java:54 which belongs to immediate assignment rather than this unit's call path"
+  },
+  {
+   "fact": "error:ObjectUnknownException:name",
+   "reason": "Unused internal repository lookup error not reachable from this call path."
+  },
+  {
+   "fact": "error:ObjectUnknownException:ref",
+   "reason": "Internal repository error for missing reference when order was already verified to exist."
+  }
+ ],
+ "by_kind": {
+  "body": "1/1",
+  "const": "8/8",
+  "endpoint": "7/7",
+  "enum": "38/38",
+  "error": "9/9",
+  "field": "59/59",
+  "param": "5/5",
+  "status": "5/5"
+ },
+ "unexplained": []
+}

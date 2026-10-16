@@ -1,0 +1,6 @@
+{
+ "error:ObjectUnknownException:name": "Unused internal repository lookup error not reachable from this call path.",
+ "error:ObjectUnknownException:ref": "Internal repository error for missing reference when order was already verified to exist.",
+ "error:IllegalArgumentException:%s: Cannot change integration level to %s while processing orders.": "Unreachable from this endpoint because the vehicle is updated to TO_BE_RESPECTED, whereas the exception is only thrown for TO_BE_IGNORED or TO_BE_NOTICED.",
+ "error:ObjectUnknownException:Unknown transport order: ": "Anchored in TransportOrderDispatcherHandler.java:54 which belongs to immediate assignment rather than this unit's call path"
+}

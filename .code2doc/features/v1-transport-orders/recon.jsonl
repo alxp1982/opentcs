@@ -1,0 +1,99 @@
+{"claim": "C-0001", "statement": "D-1045", "verdict": "AMBIGUOUS", "note": "Candidate statements document HTTP 400 for specific endpoints when input is invalid, but do not document the global Web API exception handler behavior mapping any IllegalArgumentException to HTTP 400."}
+{"claim": "C-0002", "statement": null, "verdict": "UNDOCUMENTED", "note": "Web API response mapping HTTP 500 for IllegalStateException is not documented."}
+{"claim": "C-0003", "statement": "D-0436", "verdict": "AMBIGUOUS", "note": "Endpoints individually document HTTP 404 when referenced entities are not found, but a general exception mapping rule for ObjectUnknownException across the Web API is not explicitly stated."}
+{"claim": "C-0004", "statement": "D-0899", "verdict": "CONFIRMED", "note": "Endpoint specs (including POST /transportOrders/{NAME}) confirm that when an object already exists in the model (ObjectExistsException), the API returns HTTP 409."}
+{"claim": "C-0005", "statement": null, "verdict": "UNDOCUMENTED", "note": "Web API response mapping HTTP 500 for KernelRuntimeException is not documented."}
+{"claim": "C-0006", "statement": "D-1109", "verdict": "CONTRADICTION", "note": "Code states property value is optional, whereas OpenAPI schema specifies Property.value as required ('common:Property.value; required; type string.')."}
+{"claim": "C-0007", "statement": "D-0084", "verdict": "CONFIRMED", "note": "Documentation confirms that a transport order destination is defined by the destination location name and an operation, with optional properties."}
+{"claim": "C-0008", "statement": "D-0939", "verdict": "CONFIRMED", "note": "Transport order schema confirms destinations is required, while incompleteName, dispensable, deadline, dependencies, and other fields are optional."}
+{"claim": "C-0009", "statement": null, "verdict": "UNDOCUMENTED", "note": "DestinationState describing a drive order destination by its location name, operation, properties list, and execution state is not fully covered in candidates."}
+{"claim": "C-0010", "statement": "D-1120", "verdict": "CONTRADICTION", "note": "Code specifies destination state can be PRISTINE, TRAVELLING, OPERATING, FINISHED, FAILED; documentation includes ACTIVE in DestinationState ('PRISTINE, ACTIVE, TRAVELLING, OPERATING, FINISHED, FAILED')."}
+{"claim": "C-0011", "statement": "D-0961", "verdict": "CONFIRMED", "note": "Transport order OpenAPI spec confirms Route contains required costs (int64) and required steps array."}
+{"claim": "C-0012", "statement": null, "verdict": "UNDOCUMENTED", "note": "Full RouteStep schema including sourcePoint, destinationPoint, path, vehicleOrientation, routeIndex, costs, executionAllowed, and reroutingType is not fully covered across the candidates."}
+{"claim": "C-0013", "statement": "D-0967", "verdict": "CONFIRMED", "note": "Documented in transport-orders.yaml (D-0967), sse.yaml (D-0825), and vehicles.yaml (D-1105) with values FORWARD, BACKWARD, UNDEFINED."}
+{"claim": "C-0014", "statement": "D-0972", "verdict": "CONFIRMED", "note": "Documented in transport-orders.yaml (D-0972) and sse.yaml (D-0830) with values REGULAR, FORCED."}
+{"claim": "C-0015", "statement": "D-0084", "verdict": "CONFIRMED", "note": "Confirmed by how-to guides and user reference defining a transport order destination by destination point/location name, operation, and properties."}
+{"claim": "C-0016", "statement": "D-0952", "verdict": "CONFIRMED", "note": "DriveOrder schema in transport-orders.yaml defines name and route/destination/state details."}
+{"claim": "C-0017", "statement": "D-0960", "verdict": "CONFIRMED", "note": "DriveOrderState in transport-orders.yaml (D-0960) and sse.yaml (D-0832) lists PRISTINE, TRAVELLING, OPERATING, FINISHED, FAILED."}
+{"claim": "C-0018", "statement": "D-1148", "verdict": "CONFIRMED", "note": "ObjectHistoryEntry in common.yaml specifies timestamp, eventCode, and supplements."}
+{"claim": "C-0019", "statement": "D-1147", "verdict": "CONFIRMED", "note": "ObjectHistory in common.yaml defines entries as an array of history entries."}
+{"claim": "C-0020", "statement": "D-0928", "verdict": "CONFIRMED", "note": "TransportOrderState response schema in transport-orders.yaml documents all transport order fields."}
+{"claim": "C-0021", "statement": "D-0930", "verdict": "CONFIRMED", "note": "TransportOrderState.state in transport-orders.yaml documents RAW, ACTIVE, DISPATCHABLE, BEING_PROCESSED, WITHDRAWN, FINISHED, FAILED, UNROUTABLE."}
+{"claim": "C-0100", "statement": "D-0918", "verdict": "CONFIRMED", "note": "POST /transportOrders/dispatcher/trigger is documented to trigger kernel dispatching and return 200 OK."}
+{"claim": "C-0200", "statement": "D-0901", "verdict": "CONFIRMED", "note": "Endpoint POST /transportOrders/{NAME}/immediateAssignment is documented to immediately assign the transport order to its intended vehicle."}
+{"claim": "C-0201", "statement": null, "verdict": "UNDOCUMENTED", "note": "HTTP 404 response when the transport order name does not exist is not documented in OpenAPI/Web API docs for immediateAssignment."}
+{"claim": "C-0300", "statement": "D-0906", "verdict": "CONFIRMED", "note": "Endpoint POST /transportOrders/{NAME}/withdrawal withdraws the transport order with the given name."}
+{"claim": "C-0301", "statement": null, "verdict": "UNDOCUMENTED", "note": "HTTP 404 response when no transport order exists with NAME on POST /transportOrders/{NAME}/withdrawal is undocumented in the Web API spec."}
+{"claim": "C-0302", "statement": "D-0908", "verdict": "CONFIRMED", "note": "Documented query parameter 'immediate' with default false, controlling whether the transport order is aborted as quickly as possible."}
+{"claim": "C-0303", "statement": "D-0909", "verdict": "CONFIRMED", "note": "Query parameter 'disableVehicle' is documented for withdrawal; behavior updates vehicle integration level to TO_BE_RESPECTED (documented as deprecated in favor of setting integration level directly)."}
+{"claim": "C-0400", "statement": "D-0894", "verdict": "CONFIRMED", "note": "POST /transportOrders/{NAME} creates a new transport order with the given name and request body details, returning created order details."}
+{"claim": "C-0401", "statement": null, "verdict": "UNDOCUMENTED", "note": "HTTP 400 Bad Request error for malformed JSON request body on POST /transportOrders/{NAME} is not explicitly documented."}
+{"claim": "C-0403", "statement": null, "verdict": "UNDOCUMENTED", "note": "Default transport order type '-' when omitted is not documented in the Web API specifications."}
+{"claim": "C-0404", "statement": null, "verdict": "UNDOCUMENTED", "note": "Returning HTTP 404 when a destination refers to a nonexistent point/location is not documented for POST /transportOrders/{NAME}."}
+{"claim": "C-0405", "statement": null, "verdict": "UNDOCUMENTED", "note": "Returning HTTP 400 when point destination specifies an operation other than MOVE or PARK is not documented."}
+{"claim": "C-0406", "statement": null, "verdict": "UNDOCUMENTED", "note": "None of the candidates document that the web API returns HTTP status 400 Bad Request when a location destination specifies an operation not permitted by the location type and at least one attached link (or NOP)."}
+{"claim": "C-0407", "statement": null, "verdict": "UNDOCUMENTED", "note": "Changelog mentions allowing types, but the web API rejection with HTTP 400 Bad Request when adding an order with mismatched type to a wrapping sequence is not documented in the API docs."}
+{"claim": "C-0500", "statement": "D-0912", "verdict": "CONFIRMED", "note": "Statement D-0912 specifies PUT /transportOrders/{NAME}/intendedVehicle updates the transport order's intended vehicle."}
+{"claim": "C-0501", "statement": "D-0914", "verdict": "CONFIRMED", "note": "Statement D-0914 documents the query parameter 'vehicle' as optional for PUT /transportOrders/{NAME}/intendedVehicle to assign the vehicle."}
+{"claim": "C-0502", "statement": null, "verdict": "UNDOCUMENTED", "note": "None of the candidates document the HTTP 404 response when the transport order specified by NAME does not exist for PUT intendedVehicle."}
+{"claim": "C-0503", "statement": null, "verdict": "UNDOCUMENTED", "note": "No statement documents HTTP 404 when the vehicle specified in the vehicle query parameter does not exist."}
+{"claim": "C-0504", "statement": null, "verdict": "UNDOCUMENTED", "note": "No candidate statement covers HTTP 400 being returned when updating intendedVehicle if the transport order is not in RAW, ACTIVE, or DISPATCHABLE state."}
+{"claim": "C-0600", "statement": "D-0891", "verdict": "CONFIRMED", "note": "Statement D-0891 documents GET /transportOrders/{NAME} using the NAME path parameter to retrieve the transport order."}
+{"claim": "C-0601", "statement": null, "verdict": "UNDOCUMENTED", "note": "None of the candidate statements document the HTTP 404 response when retrieving a transport order that does not exist."}
+{"claim": "C-0700", "statement": null, "verdict": "UNDOCUMENTED", "note": "The sorting of returned transport orders ascending by name on GET /transportOrders is not documented in the candidate statements."}
+{"claim": "C-0701", "statement": "D-0887", "verdict": "CONFIRMED", "note": "Statement D-0887 specifies GET /transportOrders with optional query parameter intendedVehicle to filter retrieved transport orders by the intended vehicle."}
+{"claim": "C-0702", "statement": null, "verdict": "UNDOCUMENTED", "note": "No candidate statement documents that GET /transportOrders returns HTTP 404 if the vehicle specified by intendedVehicle does not exist."}
+{"claim": "C-0016", "statement": "D-0811", "verdict": "CONFIRMED", "note": "DriveOrder name is reported in the drive order representation per C-0016."}
+{"claim": "C-0016", "statement": "D-0812", "verdict": "CONFIRMED", "note": "DriveOrder destination details are reported in the drive order representation per C-0016."}
+{"claim": "C-0016", "statement": "D-0813", "verdict": "CONFIRMED", "note": "DriveOrder parent transport order name is reported per C-0016."}
+{"claim": "C-0016", "statement": "D-0814", "verdict": "CONFIRMED", "note": "DriveOrder planned route is reported per C-0016."}
+{"claim": "C-0016", "statement": "D-0815", "verdict": "CONFIRMED", "note": "DriveOrder execution state is reported per C-0016."}
+{"claim": "C-0015", "statement": "D-0816", "verdict": "CONFIRMED", "note": "Drive order destination specifies destination point/location name per C-0015."}
+{"claim": "C-0015", "statement": "D-0817", "verdict": "CONFIRMED", "note": "Drive order destination specifies operation per C-0015."}
+{"claim": "C-0015", "statement": "D-0818", "verdict": "CONFIRMED", "note": "Drive order destination specifies a list/map of properties per C-0015."}
+{"claim": "C-0012", "statement": "D-0821", "verdict": "CONFIRMED", "note": "RouteStep specifies connecting path per C-0012."}
+{"claim": "C-0012", "statement": "D-0822", "verdict": "CONFIRMED", "note": "RouteStep specifies source point per C-0012."}
+{"claim": "C-0012", "statement": "D-0823", "verdict": "CONFIRMED", "note": "RouteStep specifies destination point per C-0012."}
+{"claim": "C-0012", "statement": "D-0824", "verdict": "CONFIRMED", "note": "RouteStep specifies vehicle orientation per C-0012."}
+{"claim": "C-0012", "statement": "D-0826", "verdict": "CONFIRMED", "note": "Supported by C-0012 (specifies routeIndex as part of route step)."}
+{"claim": "C-0012", "statement": "D-0828", "verdict": "CONFIRMED", "note": "Supported by C-0012 (specifies whether execution is allowed as part of route step)."}
+{"claim": "C-0012", "statement": "D-0829", "verdict": "CONFIRMED", "note": "Supported by C-0012 and C-0014 (specifies optional rerouting type as part of route step)."}
+{"claim": "C-0700", "statement": "D-0886", "verdict": "CONFIRMED", "note": "Supported by C-0700 (retrieves transport orders)."}
+{"claim": "C-0700", "statement": "D-0888", "verdict": "CONFIRMED", "note": "Supported by C-0700 (returns transport orders on success with 200)."}
+{"claim": "C-0702", "statement": "D-0889", "verdict": "CONFIRMED", "note": "Supported by C-0702 (fails with HTTP 404 when intendedVehicle does not exist)."}
+{"claim": "C-0600", "statement": "D-0890", "verdict": "CONFIRMED", "note": "Supported by C-0600 (retrieves transport order by NAME)."}
+{"claim": "C-0600", "statement": "D-0892", "verdict": "CONFIRMED", "note": "Supported by C-0600 (returns 200 on successful retrieval)."}
+{"claim": "C-0601", "statement": "D-0893", "verdict": "CONFIRMED", "note": "Supported by C-0601 (returns HTTP 404 when no transport order exists with requested name)."}
+{"claim": "C-0400", "statement": "D-0896", "verdict": "CONFIRMED", "note": "Supported by C-0400 (POST /transportOrders/{NAME} returns created order details with HTTP 200)."}
+{"claim": "C-0401", "statement": "D-0897", "verdict": "CONFIRMED", "note": "Supported by C-0401 (POST /transportOrders/{NAME} rejects malformed JSON with HTTP 400)."}
+{"claim": "C-0404", "statement": "D-0898", "verdict": "CONFIRMED", "note": "Supported by C-0404 (POST /transportOrders/{NAME} returns HTTP 404 if destination location does not exist)."}
+{"claim": "C-0200", "statement": "D-0903", "verdict": "CONFIRMED", "note": "Supported by C-0200 which handles the successful immediate assignment request."}
+{"claim": "C-0001", "statement": "D-0904", "verdict": "CONFIRMED", "note": "Supported by C-0001 where invalid state / illegal argument returns HTTP 400."}
+{"claim": "C-0201", "statement": "D-0905", "verdict": "CONFIRMED", "note": "Supported by C-0201 (and C-0003) where non-existent transport order yields HTTP 404."}
+{"claim": "C-0300", "statement": "D-0910", "verdict": "CONFIRMED", "note": "Supported by C-0300 which handles successful withdrawal."}
+{"claim": "C-0301", "statement": "D-0911", "verdict": "CONFIRMED", "note": "Supported by C-0301 which specifies HTTP 404 if no transport order exists with the given name."}
+{"claim": "C-0500", "statement": "D-0915", "verdict": "CONFIRMED", "note": "Supported by C-0500 which updates the intended vehicle returning a successful response."}
+{"claim": "C-0502", "statement": "D-0916", "verdict": "CONFIRMED", "note": "Supported by C-0502 which returns HTTP 404 if no transport order exists with NAME."}
+{"claim": "C-0020", "statement": "D-0925", "verdict": "CONFIRMED", "note": "Supported by C-0020 which includes drive orders in the transport order response."}
+{"claim": "C-0020", "statement": "D-0927", "verdict": "CONFIRMED", "note": "Supported by C-0020 which includes the current drive order index in the transport order response."}
+{"claim": "C-0020", "statement": "D-0929", "verdict": "CONFIRMED", "note": "Supported by C-0020 and C-0021 which specify the transport order state in the API response."}
+{"claim": "C-0020", "statement": "D-0931", "verdict": "CONFIRMED", "note": "Supported by C-0020 which includes creation timestamp in the transport order response."}
+{"claim": "C-0020", "statement": "D-0932", "verdict": "CONFIRMED", "note": "Supported by C-0020 which includes deadline timestamp in the transport order response."}
+{"claim": "C-0020", "statement": "D-0933", "verdict": "CONFIRMED", "note": "Supported by C-0020 which includes finished timestamp in the transport order response."}
+{"claim": "C-0020", "statement": "D-0935", "verdict": "CONFIRMED", "note": "Supported by C-0020 which includes the processing vehicle in the transport order response."}
+{"claim": "C-0020", "statement": "D-0936", "verdict": "CONFIRMED", "note": "Supported by C-0020 which includes the wrapping sequence in the transport order response."}
+{"claim": "C-0020", "statement": "D-0937", "verdict": "CONFIRMED", "note": "Supported by C-0020 which includes the dispensability flag in the transport order response."}
+{"claim": "C-0020", "statement": "D-0942", "verdict": "CONFIRMED", "note": "Supported by C-0020 and C-0008 which confirm intended vehicle is optional on the transport order representation and request."}
+{"claim": "C-0020", "statement": "D-0944", "verdict": "CONFIRMED", "note": "Supported by C-0020 and C-0008 which confirm wrapping sequence is optional on the transport order representation and request."}
+{"claim": "C-0020", "statement": "D-0945", "verdict": "CONFIRMED", "note": "Supported by C-0020, C-0008, and C-0403 which confirm type is optional on the transport order."}
+{"claim": "C-0008", "statement": "D-0946", "verdict": "CONFIRMED", "note": "Supported by C-0008 (destinations is required in TransportOrder creation)."}
+{"claim": "C-0008", "statement": "D-0947", "verdict": "CONFIRMED", "note": "Supported by C-0008 (properties is optional in TransportOrder creation)."}
+{"claim": "C-0007", "statement": "D-0949", "verdict": "CONFIRMED", "note": "Supported by C-0007 (DestinationOrder locationName is required)."}
+{"claim": "C-0007", "statement": "D-0950", "verdict": "CONFIRMED", "note": "Supported by C-0007 (DestinationOrder operation is required)."}
+{"claim": "C-0007", "statement": "D-0951", "verdict": "CONFIRMED", "note": "Supported by C-0007 (DestinationOrder properties is optional)."}
+{"claim": "C-0009", "statement": "D-1117", "verdict": "CONFIRMED", "note": "Supported by C-0009 (DestinationState locationName describes drive order destination)."}
+{"claim": "C-0009", "statement": "D-1118", "verdict": "CONFIRMED", "note": "Supported by C-0009 (DestinationState operation describes drive order destination)."}
+{"claim": "C-0009", "statement": "D-1119", "verdict": "CONFIRMED", "note": "Supported by C-0009 and C-0010 (DestinationState state reports drive order state)."}
+{"claim": "C-0009", "statement": "D-1121", "verdict": "CONFIRMED", "note": "Supported by C-0009 (DestinationState properties describes drive order destination properties)."}
+{"claim": "C-0021", "statement": "D-0114", "verdict": "CONFIRMED", "note": "Supported by C-0021 (RAW is the initial state in the transport order lifecycle)."}
+{"claim": "C-0021", "statement": "D-0122", "verdict": "CONFIRMED", "note": "Supported by C-0021 (FINISHED is a transport order lifecycle state)."}

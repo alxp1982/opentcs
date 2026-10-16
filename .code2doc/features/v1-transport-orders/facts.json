@@ -1,0 +1,1226 @@
+{
+ "feature": "v1-transport-orders",
+ "count": 136,
+ "by_kind": {
+  "body": 1,
+  "const": 8,
+  "endpoint": 7,
+  "enum": 38,
+  "error": 13,
+  "field": 59,
+  "param": 5,
+  "status": 5
+ },
+ "facts": [
+  {
+   "key": "body:PostTransportOrderRequestTO",
+   "kind": "body",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:356",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostTransportOrder",
+   "type": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.PostTransportOrderRequestTO",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostTransportOrder"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "const:DriveOrder.Destination.OP_MOVE",
+   "kind": "const",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/workingset/TransportOrderPoolManager.java:846",
+   "symbol": "org.opentcs.kernel.workingset.TransportOrderPoolManager#isValidOperationOnPoint",
+   "value": "\"MOVE\"",
+   "defined_at": "opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:218",
+   "symbols": [
+    "org.opentcs.kernel.workingset.TransportOrderPoolManager#isValidOperationOnPoint"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "const:DriveOrder.Destination.OP_NOP",
+   "kind": "const",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/workingset/TransportOrderPoolManager.java:863",
+   "symbol": "org.opentcs.kernel.workingset.TransportOrderPoolManager#isValidOperationOnLink",
+   "value": "\"NOP\"",
+   "defined_at": "opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:210",
+   "symbols": [
+    "org.opentcs.kernel.workingset.TransportOrderPoolManager#isValidOperationOnLink"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "const:DriveOrder.Destination.OP_PARK",
+   "kind": "const",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/workingset/TransportOrderPoolManager.java:847",
+   "symbol": "org.opentcs.kernel.workingset.TransportOrderPoolManager#isValidOperationOnPoint",
+   "value": "\"PARK\"",
+   "defined_at": "opentcs-api-base/src/main/java/org/opentcs/data/order/DriveOrder.java:214",
+   "symbols": [
+    "org.opentcs.kernel.workingset.TransportOrderPoolManager#isValidOperationOnPoint"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "const:HttpConstants.CONTENT_TYPE_APPLICATION_JSON_UTF8",
+   "kind": "const",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:350",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostTransportOrder",
+   "value": "\"application/json",
+   "defined_at": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/HttpConstants.java:21",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostTransportOrder"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "const:HttpConstants.CONTENT_TYPE_TEXT_PLAIN_UTF8",
+   "kind": "const",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:272",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostDispatcherTrigger",
+   "value": "\"text/plain",
+   "defined_at": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/HttpConstants.java:17",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostDispatcherTrigger"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "const:OrderConstants.TYPE_ANY",
+   "kind": "const",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/workingset/TransportOrderPoolManager.java:877",
+   "symbol": "org.opentcs.kernel.workingset.TransportOrderPoolManager#typeAllowedBySequence",
+   "value": "\"*\"",
+   "defined_at": "opentcs-api-base/src/main/java/org/opentcs/data/order/OrderConstants.java:15",
+   "symbols": [
+    "org.opentcs.kernel.workingset.TransportOrderPoolManager#typeAllowedBySequence"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "const:OrderConstants.TYPE_NONE",
+   "kind": "const",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/TransportOrderHandler.java:90",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.TransportOrderHandler#createOrder",
+   "value": "\"-\"",
+   "defined_at": "opentcs-api-base/src/main/java/org/opentcs/data/order/OrderConstants.java:19",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.v1.TransportOrderHandler#createOrder"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "const:OrderConstantsTO.TYPE_NONE",
+   "kind": "const",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/access/to/order/TransportOrderCreationTO.java:91",
+   "symbol": "org.opentcs.access.to.order.TransportOrderCreationTO#<init>",
+   "value": "\"-\"",
+   "defined_at": "opentcs-api-base/src/main/java/org/opentcs/access/to/order/OrderConstantsTO.java:34",
+   "symbols": [
+    "org.opentcs.access.to.order.TransportOrderCreationTO#<init>"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "endpoint:GET /v1/transportOrders",
+   "kind": "endpoint",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:209",
+   "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetTransportOrders",
+   "permission": null,
+   "term_index_match": "endpoint:GET /v1/transportOrders"
+  },
+  {
+   "key": "endpoint:GET /v1/transportOrders/{NAME}",
+   "kind": "endpoint",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:208",
+   "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetTransportOrderByName",
+   "permission": null,
+   "term_index_match": "endpoint:GET /v1/transportOrders/{NAME}"
+  },
+  {
+   "key": "endpoint:POST /v1/transportOrders/dispatcher/trigger",
+   "kind": "endpoint",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:197",
+   "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostDispatcherTrigger",
+   "permission": null,
+   "term_index_match": "endpoint:POST /v1/transportOrders/dispatcher/trigger"
+  },
+  {
+   "key": "endpoint:POST /v1/transportOrders/{NAME}",
+   "kind": "endpoint",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:203",
+   "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostTransportOrder",
+   "permission": null,
+   "term_index_match": "endpoint:POST /v1/transportOrders/{NAME}"
+  },
+  {
+   "key": "endpoint:POST /v1/transportOrders/{NAME}/immediateAssignment",
+   "kind": "endpoint",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:198",
+   "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostImmediateAssignment",
+   "permission": null,
+   "term_index_match": "endpoint:POST /v1/transportOrders/{NAME}/immediateAssignment"
+  },
+  {
+   "key": "endpoint:POST /v1/transportOrders/{NAME}/withdrawal",
+   "kind": "endpoint",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:202",
+   "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostWithdrawalByOrder",
+   "permission": null,
+   "term_index_match": "endpoint:POST /v1/transportOrders/{NAME}/withdrawal"
+  },
+  {
+   "key": "endpoint:PUT /v1/transportOrders/{NAME}/intendedVehicle",
+   "kind": "endpoint",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:204",
+   "handler": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutTransportOrderIntendedVehicle",
+   "permission": null,
+   "term_index_match": "endpoint:PUT /v1/transportOrders/{NAME}/intendedVehicle"
+  },
+  {
+   "key": "enum:DestinationState.State.FAILED",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:136",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DestinationState.State",
+   "term_index_match": "enum:FAILED"
+  },
+  {
+   "key": "enum:DestinationState.State.FINISHED",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:132",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DestinationState.State",
+   "term_index_match": "enum:FINISHED"
+  },
+  {
+   "key": "enum:DestinationState.State.OPERATING",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:128",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DestinationState.State",
+   "term_index_match": "enum:OPERATING"
+  },
+  {
+   "key": "enum:DestinationState.State.PRISTINE",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:119",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DestinationState.State",
+   "term_index_match": "enum:PRISTINE"
+  },
+  {
+   "key": "enum:DestinationState.State.TRAVELLING",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:123",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DestinationState.State",
+   "term_index_match": "enum:TRAVELLING"
+  },
+  {
+   "key": "enum:DriveOrderTO.StateTO.FAILED",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:127",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO.StateTO",
+   "term_index_match": "enum:FAILED"
+  },
+  {
+   "key": "enum:DriveOrderTO.StateTO.FINISHED",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:126",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO.StateTO",
+   "term_index_match": "enum:FINISHED"
+  },
+  {
+   "key": "enum:DriveOrderTO.StateTO.OPERATING",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:125",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO.StateTO",
+   "term_index_match": "enum:OPERATING"
+  },
+  {
+   "key": "enum:DriveOrderTO.StateTO.PRISTINE",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:123",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO.StateTO",
+   "term_index_match": "enum:PRISTINE"
+  },
+  {
+   "key": "enum:DriveOrderTO.StateTO.TRAVELLING",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:124",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO.StateTO",
+   "term_index_match": "enum:TRAVELLING"
+  },
+  {
+   "key": "enum:GetTransportOrderResponseTO.State.ACTIVE",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:241",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO.State",
+   "term_index_match": "enum:ACTIVE"
+  },
+  {
+   "key": "enum:GetTransportOrderResponseTO.State.BEING_PROCESSED",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:243",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO.State",
+   "term_index_match": "enum:BEING_PROCESSED"
+  },
+  {
+   "key": "enum:GetTransportOrderResponseTO.State.DISPATCHABLE",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:242",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO.State",
+   "term_index_match": "enum:DISPATCHABLE"
+  },
+  {
+   "key": "enum:GetTransportOrderResponseTO.State.FAILED",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:246",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO.State",
+   "term_index_match": "enum:FAILED"
+  },
+  {
+   "key": "enum:GetTransportOrderResponseTO.State.FINISHED",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:245",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO.State",
+   "term_index_match": "enum:FINISHED"
+  },
+  {
+   "key": "enum:GetTransportOrderResponseTO.State.RAW",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:240",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO.State",
+   "term_index_match": "enum:RAW"
+  },
+  {
+   "key": "enum:GetTransportOrderResponseTO.State.UNROUTABLE",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:247",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO.State",
+   "term_index_match": "enum:UNROUTABLE"
+  },
+  {
+   "key": "enum:GetTransportOrderResponseTO.State.WITHDRAWN",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:244",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO.State",
+   "term_index_match": "enum:WITHDRAWN"
+  },
+  {
+   "key": "enum:RouteTO.Step.ReroutingTypeTO.FORCED",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:163",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step.ReroutingTypeTO",
+   "term_index_match": "enum:FORCED"
+  },
+  {
+   "key": "enum:RouteTO.Step.ReroutingTypeTO.REGULAR",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:162",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step.ReroutingTypeTO",
+   "term_index_match": "enum:REGULAR"
+  },
+  {
+   "key": "enum:RouteTO.Step.VehicleOrientationTO.BACKWARD",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:157",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step.VehicleOrientationTO",
+   "term_index_match": "enum:BACKWARD"
+  },
+  {
+   "key": "enum:RouteTO.Step.VehicleOrientationTO.FORWARD",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:156",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step.VehicleOrientationTO",
+   "term_index_match": "enum:FORWARD"
+  },
+  {
+   "key": "enum:RouteTO.Step.VehicleOrientationTO.UNDEFINED",
+   "kind": "enum",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:158",
+   "enum": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step.VehicleOrientationTO",
+   "term_index_match": "enum:UNDEFINED"
+  },
+  {
+   "key": "enum:TCSObjectEvent.Type.OBJECT_CREATED",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/TCSObjectEvent.java:125",
+   "enum": "org.opentcs.data.TCSObjectEvent.Type",
+   "term_index_match": null
+  },
+  {
+   "key": "enum:TCSObjectEvent.Type.OBJECT_MODIFIED",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/TCSObjectEvent.java:129",
+   "enum": "org.opentcs.data.TCSObjectEvent.Type",
+   "term_index_match": null
+  },
+  {
+   "key": "enum:TCSObjectEvent.Type.OBJECT_REMOVED",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/TCSObjectEvent.java:133",
+   "enum": "org.opentcs.data.TCSObjectEvent.Type",
+   "term_index_match": null
+  },
+  {
+   "key": "enum:TransportOrder.State.ACTIVE",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1002",
+   "enum": "org.opentcs.data.order.TransportOrder.State",
+   "term_index_match": "enum:ACTIVE"
+  },
+  {
+   "key": "enum:TransportOrder.State.BEING_PROCESSED",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1011",
+   "enum": "org.opentcs.data.order.TransportOrder.State",
+   "term_index_match": "enum:BEING_PROCESSED"
+  },
+  {
+   "key": "enum:TransportOrder.State.DISPATCHABLE",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1007",
+   "enum": "org.opentcs.data.order.TransportOrder.State",
+   "term_index_match": "enum:DISPATCHABLE"
+  },
+  {
+   "key": "enum:TransportOrder.State.FAILED",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1025",
+   "enum": "org.opentcs.data.order.TransportOrder.State",
+   "term_index_match": "enum:FAILED"
+  },
+  {
+   "key": "enum:TransportOrder.State.FINISHED",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1021",
+   "enum": "org.opentcs.data.order.TransportOrder.State",
+   "term_index_match": "enum:FINISHED"
+  },
+  {
+   "key": "enum:TransportOrder.State.RAW",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:997",
+   "enum": "org.opentcs.data.order.TransportOrder.State",
+   "term_index_match": "enum:RAW"
+  },
+  {
+   "key": "enum:TransportOrder.State.UNROUTABLE",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1031",
+   "enum": "org.opentcs.data.order.TransportOrder.State",
+   "term_index_match": "enum:UNROUTABLE"
+  },
+  {
+   "key": "enum:TransportOrder.State.WITHDRAWN",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/order/TransportOrder.java:1017",
+   "enum": "org.opentcs.data.order.TransportOrder.State",
+   "term_index_match": "enum:WITHDRAWN"
+  },
+  {
+   "key": "enum:Vehicle.IntegrationLevel.TO_BE_IGNORED",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1401",
+   "enum": "org.opentcs.data.model.Vehicle.IntegrationLevel",
+   "term_index_match": "enum:TO_BE_IGNORED"
+  },
+  {
+   "key": "enum:Vehicle.IntegrationLevel.TO_BE_NOTICED",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1406",
+   "enum": "org.opentcs.data.model.Vehicle.IntegrationLevel",
+   "term_index_match": "enum:TO_BE_NOTICED"
+  },
+  {
+   "key": "enum:Vehicle.IntegrationLevel.TO_BE_RESPECTED",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1410",
+   "enum": "org.opentcs.data.model.Vehicle.IntegrationLevel",
+   "term_index_match": "enum:TO_BE_RESPECTED"
+  },
+  {
+   "key": "enum:Vehicle.IntegrationLevel.TO_BE_UTILIZED",
+   "kind": "enum",
+   "src": "opentcs-api-base/src/main/java/org/opentcs/data/model/Vehicle.java:1414",
+   "enum": "org.opentcs.data.model.Vehicle.IntegrationLevel",
+   "term_index_match": "enum:TO_BE_UTILIZED"
+  },
+  {
+   "key": "error:IllegalArgumentException: is not a valid operation for location destination ",
+   "kind": "error",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/workingset/TransportOrderPoolManager.java:823",
+   "exception": "IllegalArgumentException",
+   "message": " is not a valid operation for location destination ",
+   "symbol": "org.opentcs.kernel.workingset.TransportOrderPoolManager#toDriveOrders",
+   "symbols": [
+    "org.opentcs.kernel.workingset.TransportOrderPoolManager#toDriveOrders"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "error:IllegalArgumentException: is not a valid operation for point destination ",
+   "kind": "error",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/workingset/TransportOrderPoolManager.java:815",
+   "exception": "IllegalArgumentException",
+   "message": " is not a valid operation for point destination ",
+   "symbol": "org.opentcs.kernel.workingset.TransportOrderPoolManager#toDriveOrders",
+   "symbols": [
+    "org.opentcs.kernel.workingset.TransportOrderPoolManager#toDriveOrders"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "error:IllegalArgumentException:%s: Cannot change integration level to %s while processing orders.",
+   "kind": "error",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/services/StandardVehicleService.java:353",
+   "exception": "IllegalArgumentException",
+   "message": "%s: Cannot change integration level to %s while processing orders.",
+   "symbol": "org.opentcs.kernel.services.StandardVehicleService#updateVehicleIntegrationLevel",
+   "symbols": [
+    "org.opentcs.kernel.services.StandardVehicleService#updateVehicleIntegrationLevel"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "error:IllegalArgumentException:Cannot set intended vehicle '%s' for transport order '%s' in state '%s'",
+   "kind": "error",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/workingset/TransportOrderPoolManager.java:458",
+   "exception": "IllegalArgumentException",
+   "message": "Cannot set intended vehicle '%s' for transport order '%s' in state '%s'",
+   "symbol": "org.opentcs.kernel.workingset.TransportOrderPoolManager#setTransportOrderIntendedVehicle",
+   "symbols": [
+    "org.opentcs.kernel.workingset.TransportOrderPoolManager#setTransportOrderIntendedVehicle"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "error:IllegalArgumentException:Could not parse JSON input",
+   "kind": "error",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/JsonBinder.java:47",
+   "exception": "IllegalArgumentException",
+   "message": "Could not parse JSON input",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.common.JsonBinder#fromJson",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.common.JsonBinder#fromJson"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "error:IllegalStateException:Could not produce JSON output",
+   "kind": "error",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/JsonBinder.java:67",
+   "exception": "IllegalStateException",
+   "message": "Could not produce JSON output",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.common.JsonBinder#toJson",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.common.JsonBinder#toJson"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "error:IllegalStateException:Unexpectedly interrupted",
+   "kind": "error",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/KernelExecutorWrapper.java:56",
+   "exception": "IllegalStateException",
+   "message": "Unexpectedly interrupted",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.common.KernelExecutorWrapper#callAndWait",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.common.KernelExecutorWrapper#callAndWait"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "error:KernelRuntimeException:exc.getCause()",
+   "kind": "error",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/common/KernelExecutorWrapper.java:62",
+   "exception": "KernelRuntimeException",
+   "message": "exc.getCause()",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.common.KernelExecutorWrapper#callAndWait",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.common.KernelExecutorWrapper#callAndWait"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "error:ObjectUnknownException:Unknown transport order: ",
+   "kind": "error",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/TransportOrderDispatcherHandler.java:54",
+   "exception": "ObjectUnknownException",
+   "message": "Unknown transport order: ",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.TransportOrderDispatcherHandler#tryImmediateAssignment",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.v1.TransportOrderDispatcherHandler#tryImmediateAssignment",
+    "org.opentcs.kernel.extensions.servicewebapi.v1.TransportOrderDispatcherHandler#withdrawByTransportOrder",
+    "org.opentcs.kernel.extensions.servicewebapi.v1.TransportOrderHandler#updateTransportOrderIntendedVehicle",
+    "org.opentcs.kernel.extensions.servicewebapi.v1.TransportOrderHandler#getTransportOrderByName"
+   ],
+   "also_at": [
+    "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/TransportOrderDispatcherHandler.java:66",
+    "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/TransportOrderHandler.java:108",
+    "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/TransportOrderHandler.java:167"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "error:ObjectUnknownException:Unknown vehicle: ",
+   "kind": "error",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/TransportOrderHandler.java:112",
+   "exception": "ObjectUnknownException",
+   "message": "Unknown vehicle: ",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.TransportOrderHandler#updateTransportOrderIntendedVehicle",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.v1.TransportOrderHandler#updateTransportOrderIntendedVehicle",
+    "org.opentcs.kernel.extensions.servicewebapi.v1.TransportOrderHandler#getTransportOrders",
+    "org.opentcs.kernel.workingset.TransportOrderPoolManager#setTransportOrderIntendedVehicle"
+   ],
+   "also_at": [
+    "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/TransportOrderHandler.java:142",
+    "opentcs-kernel/src/main/java/org/opentcs/kernel/workingset/TransportOrderPoolManager.java:469"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "error:ObjectUnknownException:destTo.getDestLocationName()",
+   "kind": "error",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/workingset/TransportOrderPoolManager.java:830",
+   "exception": "ObjectUnknownException",
+   "message": "destTo.getDestLocationName()",
+   "symbol": "org.opentcs.kernel.workingset.TransportOrderPoolManager#toDriveOrders",
+   "symbols": [
+    "org.opentcs.kernel.workingset.TransportOrderPoolManager#toDriveOrders"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "error:ObjectUnknownException:name",
+   "kind": "error",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/workingset/TCSObjectRepository.java:224",
+   "exception": "ObjectUnknownException",
+   "message": "name",
+   "symbol": "org.opentcs.kernel.workingset.TCSObjectRepository#getObject",
+   "symbols": [
+    "org.opentcs.kernel.workingset.TCSObjectRepository#getObject"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "error:ObjectUnknownException:ref",
+   "kind": "error",
+   "src": "opentcs-kernel/src/main/java/org/opentcs/kernel/workingset/TCSObjectRepository.java:129",
+   "exception": "ObjectUnknownException",
+   "message": "ref",
+   "symbol": "org.opentcs.kernel.workingset.TCSObjectRepository#getObject",
+   "symbols": [
+    "org.opentcs.kernel.workingset.TCSObjectRepository#getObject"
+   ],
+   "term_index_match": null
+  },
+  {
+   "key": "field:Destination.locationName",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/posttransportorder/Destination.java:17",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.posttransportorder.Destination",
+   "term_index_match": "property:locationName"
+  },
+  {
+   "key": "field:Destination.operation",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/posttransportorder/Destination.java:17",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.posttransportorder.Destination",
+   "term_index_match": "property:operation"
+  },
+  {
+   "key": "field:Destination.properties",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/posttransportorder/Destination.java:17",
+   "type": "List<Property>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.posttransportorder.Destination",
+   "term_index_match": "property:properties"
+  },
+  {
+   "key": "field:DestinationState.locationName",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:16",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DestinationState",
+   "term_index_match": "property:locationName"
+  },
+  {
+   "key": "field:DestinationState.operation",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:16",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DestinationState",
+   "term_index_match": "property:operation"
+  },
+  {
+   "key": "field:DestinationState.properties",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:16",
+   "type": "List<Property>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DestinationState",
+   "term_index_match": "property:properties"
+  },
+  {
+   "key": "field:DestinationState.state",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DestinationState.java:16",
+   "type": "State",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DestinationState",
+   "term_index_match": "property:state"
+  },
+  {
+   "key": "field:DriveOrderTO.DestinationTO.destination",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:77",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO.DestinationTO",
+   "term_index_match": "property:destination"
+  },
+  {
+   "key": "field:DriveOrderTO.DestinationTO.operation",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:77",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO.DestinationTO",
+   "term_index_match": "property:operation"
+  },
+  {
+   "key": "field:DriveOrderTO.DestinationTO.properties",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:77",
+   "type": "List<Property>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO.DestinationTO",
+   "term_index_match": "property:properties"
+  },
+  {
+   "key": "field:DriveOrderTO.destination",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:11",
+   "type": "DestinationTO",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO",
+   "term_index_match": "property:destination"
+  },
+  {
+   "key": "field:DriveOrderTO.name",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:11",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO",
+   "term_index_match": "property:name"
+  },
+  {
+   "key": "field:DriveOrderTO.route",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:11",
+   "type": "RouteTO",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO",
+   "term_index_match": "property:route"
+  },
+  {
+   "key": "field:DriveOrderTO.state",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:11",
+   "type": "StateTO",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO",
+   "term_index_match": "property:state"
+  },
+  {
+   "key": "field:DriveOrderTO.transportOrder",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/DriveOrderTO.java:11",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.DriveOrderTO",
+   "term_index_match": "property:transportOrder"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.creationTime",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "Instant",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:creationTime"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.currentDriveOrderIndex",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "int",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:currentDriveOrderIndex"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.currentRouteStepIndex",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "int",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:currentRouteStepIndex"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.deadline",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "Instant",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:deadline"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.dependencies",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "List<String>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:dependencies"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.destinations",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "List<DestinationState>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:destinations"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.dispensable",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "boolean",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:dispensable"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.driveOrders",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "List<DriveOrderTO>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:driveOrders"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.finishedTime",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "Instant",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:finishedTime"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.history",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "ObjectHistoryTO",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:history"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.intendedVehicle",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:intendedVehicle"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.name",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:name"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.peripheralReservationToken",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:peripheralReservationToken"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.processingVehicle",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:processingVehicle"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.properties",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "List<Property>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:properties"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.state",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "State",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:state"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.type",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:type"
+  },
+  {
+   "key": "field:GetTransportOrderResponseTO.wrappingSequence",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/GetTransportOrderResponseTO.java:19",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.GetTransportOrderResponseTO",
+   "term_index_match": "property:wrappingSequence"
+  },
+  {
+   "key": "field:ObjectHistoryTO.ObjectHistoryEntryTO.eventCode",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/ObjectHistoryTO.java:32",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.ObjectHistoryTO.ObjectHistoryEntryTO",
+   "term_index_match": "property:eventCode"
+  },
+  {
+   "key": "field:ObjectHistoryTO.ObjectHistoryEntryTO.supplements",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/ObjectHistoryTO.java:32",
+   "type": "List<String>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.ObjectHistoryTO.ObjectHistoryEntryTO",
+   "term_index_match": "property:supplements"
+  },
+  {
+   "key": "field:ObjectHistoryTO.ObjectHistoryEntryTO.timestamp",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/ObjectHistoryTO.java:32",
+   "type": "Instant",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.ObjectHistoryTO.ObjectHistoryEntryTO",
+   "term_index_match": "property:timestamp"
+  },
+  {
+   "key": "field:ObjectHistoryTO.entries",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/ObjectHistoryTO.java:12",
+   "type": "List<ObjectHistoryEntryTO>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.ObjectHistoryTO",
+   "term_index_match": "property:entries"
+  },
+  {
+   "key": "field:PostTransportOrderRequestTO.deadline",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/PostTransportOrderRequestTO.java:19",
+   "type": "Instant",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.PostTransportOrderRequestTO",
+   "term_index_match": "property:deadline"
+  },
+  {
+   "key": "field:PostTransportOrderRequestTO.dependencies",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/PostTransportOrderRequestTO.java:19",
+   "type": "List<String>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.PostTransportOrderRequestTO",
+   "term_index_match": "property:dependencies"
+  },
+  {
+   "key": "field:PostTransportOrderRequestTO.destinations",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/PostTransportOrderRequestTO.java:19",
+   "type": "List<Destination>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.PostTransportOrderRequestTO",
+   "term_index_match": "property:destinations"
+  },
+  {
+   "key": "field:PostTransportOrderRequestTO.dispensable",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/PostTransportOrderRequestTO.java:19",
+   "type": "boolean",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.PostTransportOrderRequestTO",
+   "term_index_match": "property:dispensable"
+  },
+  {
+   "key": "field:PostTransportOrderRequestTO.incompleteName",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/PostTransportOrderRequestTO.java:19",
+   "type": "boolean",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.PostTransportOrderRequestTO",
+   "term_index_match": "property:incompleteName"
+  },
+  {
+   "key": "field:PostTransportOrderRequestTO.intendedVehicle",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/PostTransportOrderRequestTO.java:19",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.PostTransportOrderRequestTO",
+   "term_index_match": "property:intendedVehicle"
+  },
+  {
+   "key": "field:PostTransportOrderRequestTO.peripheralReservationToken",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/PostTransportOrderRequestTO.java:19",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.PostTransportOrderRequestTO",
+   "term_index_match": "property:peripheralReservationToken"
+  },
+  {
+   "key": "field:PostTransportOrderRequestTO.properties",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/PostTransportOrderRequestTO.java:19",
+   "type": "List<Property>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.PostTransportOrderRequestTO",
+   "term_index_match": "property:properties"
+  },
+  {
+   "key": "field:PostTransportOrderRequestTO.type",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/PostTransportOrderRequestTO.java:19",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.PostTransportOrderRequestTO",
+   "term_index_match": "property:type"
+  },
+  {
+   "key": "field:PostTransportOrderRequestTO.wrappingSequence",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/PostTransportOrderRequestTO.java:19",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.PostTransportOrderRequestTO",
+   "term_index_match": "property:wrappingSequence"
+  },
+  {
+   "key": "field:Property.key",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/Property.java:14",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.Property",
+   "term_index_match": "property:key"
+  },
+  {
+   "key": "field:Property.value",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/Property.java:14",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.Property",
+   "term_index_match": "property:value"
+  },
+  {
+   "key": "field:RouteTO.Step.costs",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:41",
+   "type": "long",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step",
+   "term_index_match": "property:costs"
+  },
+  {
+   "key": "field:RouteTO.Step.destinationPoint",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:41",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step",
+   "term_index_match": "property:destinationPoint"
+  },
+  {
+   "key": "field:RouteTO.Step.executionAllowed",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:41",
+   "type": "boolean",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step",
+   "term_index_match": "property:executionAllowed"
+  },
+  {
+   "key": "field:RouteTO.Step.path",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:41",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step",
+   "term_index_match": "property:path"
+  },
+  {
+   "key": "field:RouteTO.Step.reroutingType",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:41",
+   "type": "ReroutingTypeTO",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step",
+   "term_index_match": "property:reroutingType"
+  },
+  {
+   "key": "field:RouteTO.Step.routeIndex",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:41",
+   "type": "int",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step",
+   "term_index_match": "property:routeIndex"
+  },
+  {
+   "key": "field:RouteTO.Step.sourcePoint",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:41",
+   "type": "String",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step",
+   "term_index_match": "property:sourcePoint"
+  },
+  {
+   "key": "field:RouteTO.Step.vehicleOrientation",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:41",
+   "type": "VehicleOrientationTO",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO.Step",
+   "term_index_match": "property:vehicleOrientation"
+  },
+  {
+   "key": "field:RouteTO.costs",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:11",
+   "type": "long",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO",
+   "term_index_match": "property:costs"
+  },
+  {
+   "key": "field:RouteTO.steps",
+   "kind": "field",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/binding/shared/RouteTO.java:11",
+   "type": "List<Step>",
+   "owner": "org.opentcs.kernel.extensions.servicewebapi.v1.binding.shared.RouteTO",
+   "term_index_match": "property:steps"
+  },
+  {
+   "key": "param:path:NAME",
+   "kind": "param",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:355",
+   "in_": "path",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostTransportOrder",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostTransportOrder",
+    "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutTransportOrderIntendedVehicle",
+    "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostImmediateAssignment",
+    "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePostWithdrawalByOrder",
+    "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetTransportOrderByName"
+   ],
+   "also_at": [
+    "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:366",
+    "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:421",
+    "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:429",
+    "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:600"
+   ],
+   "term_index_match": "param:path:NAME"
+  },
+  {
+   "key": "param:query:disableVehicle",
+   "kind": "param",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:832",
+   "in_": "query",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#disableVehicle",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#disableVehicle"
+   ],
+   "term_index_match": "param:query:disableVehicle"
+  },
+  {
+   "key": "param:query:immediate",
+   "kind": "param",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:828",
+   "in_": "query",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#immediate",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#immediate"
+   ],
+   "term_index_match": "param:query:immediate"
+  },
+  {
+   "key": "param:query:intendedVehicle",
+   "kind": "param",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:466",
+   "in_": "query",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetTransportOrders",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handleGetTransportOrders"
+   ],
+   "term_index_match": "param:query:intendedVehicle"
+  },
+  {
+   "key": "param:query:vehicle",
+   "kind": "param",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/V1RequestHandler.java:367",
+   "in_": "query",
+   "symbol": "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutTransportOrderIntendedVehicle",
+   "symbols": [
+    "org.opentcs.kernel.extensions.servicewebapi.v1.V1RequestHandler#handlePutTransportOrderIntendedVehicle"
+   ],
+   "term_index_match": "param:query:vehicle"
+  },
+  {
+   "key": "status:IllegalArgumentException->400",
+   "kind": "status",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:175",
+   "exception": "IllegalArgumentException",
+   "http": 400,
+   "thrown_in_slice": true,
+   "term_index_match": "status:400"
+  },
+  {
+   "key": "status:IllegalStateException->500",
+   "kind": "status",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:180",
+   "exception": "IllegalStateException",
+   "http": 500,
+   "thrown_in_slice": true,
+   "term_index_match": null
+  },
+  {
+   "key": "status:KernelRuntimeException->500",
+   "kind": "status",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:197",
+   "exception": "KernelRuntimeException",
+   "http": 500,
+   "thrown_in_slice": true,
+   "term_index_match": null
+  },
+  {
+   "key": "status:ObjectExistsException->409",
+   "kind": "status",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:192",
+   "exception": "ObjectExistsException",
+   "http": 409,
+   "thrown_in_slice": false,
+   "term_index_match": "status:409"
+  },
+  {
+   "key": "status:ObjectUnknownException->404",
+   "kind": "status",
+   "src": "opentcs-kernel-extension-http-services/src/main/java/org/opentcs/kernel/extensions/servicewebapi/v1/ServiceWebApi.java:187",
+   "exception": "ObjectUnknownException",
+   "http": 404,
+   "thrown_in_slice": true,
+   "term_index_match": "status:404"
+  }
+ ],
+ "proposed_terms": [
+  "error:IllegalArgumentException:Could not parse JSON input",
+  "error:IllegalStateException:Could not produce JSON output",
+  "error:IllegalStateException:Unexpectedly interrupted",
+  "error:KernelRuntimeException:exc.getCause()",
+  "error:ObjectUnknownException:Unknown transport order: ",
+  "error:ObjectUnknownException:Unknown vehicle: ",
+  "body:PostTransportOrderRequestTO",
+  "error:IllegalArgumentException:%s: Cannot change integration level to %s while processing orders.",
+  "error:ObjectUnknownException:ref",
+  "error:ObjectUnknownException:name",
+  "error:IllegalArgumentException:Cannot set intended vehicle '%s' for transport order '%s' in state '%s'",
+  "error:IllegalArgumentException: is not a valid operation for point destination ",
+  "error:IllegalArgumentException: is not a valid operation for location destination ",
+  "error:ObjectUnknownException:destTo.getDestLocationName()",
+  "const:OrderConstantsTO.TYPE_NONE",
+  "const:OrderConstants.TYPE_NONE",
+  "const:HttpConstants.CONTENT_TYPE_TEXT_PLAIN_UTF8",
+  "const:HttpConstants.CONTENT_TYPE_APPLICATION_JSON_UTF8",
+  "const:DriveOrder.Destination.OP_MOVE",
+  "const:DriveOrder.Destination.OP_PARK",
+  "const:DriveOrder.Destination.OP_NOP",
+  "const:OrderConstants.TYPE_ANY",
+  "enum:TCSObjectEvent.Type.OBJECT_CREATED",
+  "enum:TCSObjectEvent.Type.OBJECT_MODIFIED",
+  "enum:TCSObjectEvent.Type.OBJECT_REMOVED",
+  "status:IllegalStateException->500",
+  "status:KernelRuntimeException->500"
+ ]
+}
